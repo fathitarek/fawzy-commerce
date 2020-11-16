@@ -58,7 +58,7 @@
 <!-- Tags Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('tags', 'Tags:') !!}
-    {!! Form::text('tags', null, ['class' => 'form-control']) !!}
+    {!! Form::text('tags', null, ['class' => 'form-control','data-role'=>"tagsinput" ,'id'=>"tags"]) !!}
 </div>
 
 <!-- Publish Field -->
