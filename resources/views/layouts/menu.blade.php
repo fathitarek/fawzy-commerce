@@ -26,3 +26,7 @@
     <a href="{{ route('blogs.index') }}"><i class="fa fa-edit"></i><span>Blogs</span></a>
 </li>
 
+<li class="{{ Request::is('shopItems*') ? 'active' : '' }}">
+    <a href="{{ route('shopItems.index') }}"><i class="fa fa-edit"></i><span>Shop Items</span></a>
+</li>
+

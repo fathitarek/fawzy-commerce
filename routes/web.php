@@ -33,3 +33,5 @@ Route::resource('subCategories', 'sub_categoriesController');
 Route::resource('sliders', 'sliderController');
 
 Route::resource('blogs', 'blogsController');
+
+Route::resource('shopItems', 'shop_itemsController');
