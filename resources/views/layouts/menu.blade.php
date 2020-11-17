@@ -30,3 +30,7 @@
     <a href="{{ route('shopItems.index') }}"><i class="fa fa-edit"></i><span>Shop Items</span></a>
 </li>
 
+<li class="{{ Request::is('bankInformations*') ? 'active' : '' }}">
+    <a href="{{ route('bankInformations.index') }}"><i class="fa fa-edit"></i><span>Bank Informations</span></a>
+</li>
+

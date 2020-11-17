@@ -65,6 +65,13 @@ class slider extends Model
         'image' => 'required|image|mimes:png,jpeg,gif',
         'slide_order' => 'required|integer'
     ];
-
+    public static $rulesUpdate = [
+        'title_en' => 'required',
+        'title_ar' => 'required',
+        'description_en' => 'required',
+        'description_ar' => 'required',
+        'image' => 'image|mimes:png,jpeg,gif',
+        'slide_order' => 'required|integer'
+    ];
     
 }

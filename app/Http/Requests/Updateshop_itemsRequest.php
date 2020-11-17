@@ -25,7 +25,7 @@ class Updateshop_itemsRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = shop_items::$rules;
+        $rules = shop_items::$rulesUpdate;
         
         return $rules;
     }

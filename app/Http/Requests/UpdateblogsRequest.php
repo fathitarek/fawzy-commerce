@@ -25,7 +25,7 @@ class UpdateblogsRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = blogs::$rules;
+        $rules = blogs::$rulesUpdate;
         
         return $rules;
     }

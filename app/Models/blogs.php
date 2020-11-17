@@ -71,5 +71,15 @@ class blogs extends Model
         'tags' => 'required',
     ];
 
+
+    public static $rulesUpdate = [
+        'name_en' => 'required',
+        'name_ar' => 'required',
+        'description_en' => 'required',
+        'description_ar' => 'required',
+        'image' => 'image|mimes:png,jpeg,gif',
+        'date' => 'required', //|after_or_equal:'.$this->todayDate
+        'tags' => 'required',
+    ];
     
 }

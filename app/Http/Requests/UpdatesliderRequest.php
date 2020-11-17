@@ -25,7 +25,7 @@ class UpdatesliderRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = slider::$rules;
+        $rules = slider::$rulesUpdate;
         
         return $rules;
     }

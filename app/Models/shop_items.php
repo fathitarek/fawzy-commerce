@@ -86,6 +86,21 @@ class shop_items extends Model
         'publish' => 'required'
     ];
 
+
+    public static $rulesUpdate = [
+        'name_en' => 'required',
+        'name_ar' => 'required',
+        'description_en' => 'required',
+        'description_ar' => 'required',
+        'main_price' => 'required|integer',
+        'sale_price' => 'required|integer',
+        'main_image' => 'image|mimes:png,jpeg,gif',
+        'category_id' => 'required|integer',
+        'sub_category_id' => 'required|integer',
+        'tags' => 'required',
+        'publish' => 'required'
+    ];
+
     public function category() {
         return $this->belongsTo('App\Models\categories');
     }
