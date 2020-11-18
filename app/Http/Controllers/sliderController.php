@@ -14,6 +14,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 use Response;
+use Illuminate\Support\Facades\Input;
 
 class sliderController extends AppBaseController
 {
@@ -56,7 +57,14 @@ class sliderController extends AppBaseController
     public function store(CreatesliderRequest $request)
     {
         $input = $request->all();
+        $destination = 'images/slider';
+        if (!is_null(Input::file('image'))) {
+            $image = $this->uploadFile('image', $destination);
+            if (gettype($image) == 'string') {
 
+                $input['image'] = $destination . '/' . $image;
+            }
+        }
         $slider = $this->sliderRepository->create($input);
 
         Flash::success('Slider saved successfully.');
@@ -115,6 +123,16 @@ class sliderController extends AppBaseController
     public function update($id, UpdatesliderRequest $request)
     {
         $slider = $this->sliderRepository->find($id);
+        $input = $request->all();
+        $destination = 'images/slider';
+        if (!is_null(Input::file('image'))) {
+
+            $image = $this->uploadFile('image', $destination);
+            // return $similar_sections['image_en'].$image_en ;
+            if (gettype($image) == 'string') {
+                $input['image'] = $destination . '/' . $image;
+            }
+        }
 
         if (empty($slider)) {
             Flash::error('Slider not found');
@@ -122,7 +140,7 @@ class sliderController extends AppBaseController
             return redirect(route('sliders.index'));
         }
 
-        $slider = $this->sliderRepository->update($request->all(), $id);
+        $slider = $this->sliderRepository->update($input, $id);
 
         Flash::success('Slider updated successfully.');
 

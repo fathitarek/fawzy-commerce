@@ -14,6 +14,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 use Response;
+use Illuminate\Support\Facades\Input;
 
 class blogsController extends AppBaseController
 {
@@ -56,7 +57,14 @@ class blogsController extends AppBaseController
     public function store(CreateblogsRequest $request)
     {
         $input = $request->all();
+        $destination = 'images/blogs';
+        if (!is_null(Input::file('image'))) {
+            $image = $this->uploadFile('image', $destination);
+            if (gettype($image) == 'string') {
 
+                $input['image'] = $destination . '/' . $image;
+            }
+        }
         $blogs = $this->blogsRepository->create($input);
 
         Flash::success('Blogs saved successfully.');
@@ -115,14 +123,22 @@ class blogsController extends AppBaseController
     public function update($id, UpdateblogsRequest $request)
     {
         $blogs = $this->blogsRepository->find($id);
+        $input = $request->all();
+        $destination = 'images/blogs';
+        if (!is_null(Input::file('image'))) {
+            $image = $this->uploadFile('image', $destination);
+            if (gettype($image) == 'string') {
 
+                $input['image'] = $destination . '/' . $image;
+            }
+        }
         if (empty($blogs)) {
             Flash::error('Blogs not found');
 
             return redirect(route('blogs.index'));
         }
 
-        $blogs = $this->blogsRepository->update($request->all(), $id);
+        $blogs = $this->blogsRepository->update($input, $id);
 
         Flash::success('Blogs updated successfully.');
 

@@ -13,7 +13,7 @@
 <!-- Image Field -->
 <div class="form-group">
     {!! Form::label('image', 'Image:') !!}
-    <p>{{ $bankInformation->image }}</p>
+    <img src= "{{URL($bankInformation->image )}}" height="160"/>
 </div>
 
 <!-- Video Url Field -->

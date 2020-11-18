@@ -14,6 +14,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 use Response;
+use Illuminate\Support\Facades\Input;
 
 class sucess_storiesController extends AppBaseController
 {
@@ -56,7 +57,14 @@ class sucess_storiesController extends AppBaseController
     public function store(Createsucess_storiesRequest $request)
     {
         $input = $request->all();
+        $destination = 'images/sucess_stories';
+        if (!is_null(Input::file('image'))) {
+            $image = $this->uploadFile('image', $destination);
+            if (gettype($image) == 'string') {
 
+                $input['image'] = $destination . '/' . $image;
+            }
+        }
         $sucessStories = $this->sucessStoriesRepository->create($input);
 
         Flash::success('Sucess Stories saved successfully.');
@@ -115,14 +123,22 @@ class sucess_storiesController extends AppBaseController
     public function update($id, Updatesucess_storiesRequest $request)
     {
         $sucessStories = $this->sucessStoriesRepository->find($id);
+        $input = $request->all();
+        $destination = 'images/sucess_stories';
+        if (!is_null(Input::file('image'))) {
+            $image = $this->uploadFile('image', $destination);
+            if (gettype($image) == 'string') {
 
+                $input['image'] = $destination . '/' . $image;
+            }
+        }
         if (empty($sucessStories)) {
             Flash::error('Sucess Stories not found');
 
             return redirect(route('sucessStories.index'));
         }
 
-        $sucessStories = $this->sucessStoriesRepository->update($request->all(), $id);
+        $sucessStories = $this->sucessStoriesRepository->update($input, $id);
 
         Flash::success('Sucess Stories updated successfully.');
 

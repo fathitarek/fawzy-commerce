@@ -37,7 +37,8 @@
 <!-- Main Image Field -->
 <div class="form-group">
     {!! Form::label('main_image', 'Main Image:') !!}
-    <p>{{ $shopItems->main_image }}</p>
+    <img src= "{{URL($shopItems->main_image )}}" height="160"/>
+
 </div>
 
 <!-- Category Id Field -->

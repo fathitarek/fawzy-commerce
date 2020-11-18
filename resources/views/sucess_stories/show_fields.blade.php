@@ -25,7 +25,8 @@
 <!-- Image Field -->
 <div class="form-group">
     {!! Form::label('image', 'Image:') !!}
-    <p>{{ $sucessStories->image }}</p>
+    <img src= "{{URL($sucessStories->image )}}" height="160"/>
+
 </div>
 
 <!-- Created At Field -->

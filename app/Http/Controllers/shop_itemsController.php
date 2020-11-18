@@ -16,6 +16,8 @@ use Illuminate\View\View;
 use Response;
 use App\Models\categories;
 use App\Models\sub_categories;
+use Illuminate\Support\Facades\Input;
+
 class shop_itemsController extends AppBaseController
 {
     /** @var  shop_itemsRepository */
@@ -59,7 +61,14 @@ class shop_itemsController extends AppBaseController
     public function store(Createshop_itemsRequest $request)
     {
         $input = $request->all();
+        $destination = 'images/shop_items';
+        if (!is_null(Input::file('main_image'))) {
+            $image = $this->uploadFile('main_image', $destination);
+            if (gettype($image) == 'string') {
 
+                $input['main_image'] = $destination . '/' . $image;
+            }
+        }
         $shopItems = $this->shopItemsRepository->create($input);
 
         Flash::success('Shop Items saved successfully.');
@@ -119,14 +128,21 @@ class shop_itemsController extends AppBaseController
     public function update($id, Updateshop_itemsRequest $request)
     {
         $shopItems = $this->shopItemsRepository->find($id);
+        $destination = 'images/shop_items';
+        if (!is_null(Input::file('main_image'))) {
+            $image = $this->uploadFile('main_image', $destination);
+            if (gettype($image) == 'string') {
 
+                $input['main_image'] = $destination . '/' . $image;
+            }
+        }
         if (empty($shopItems)) {
             Flash::error('Shop Items not found');
 
             return redirect(route('shopItems.index'));
         }
 
-        $shopItems = $this->shopItemsRepository->update($request->all(), $id);
+        $shopItems = $this->shopItemsRepository->update($input, $id);
 
         Flash::success('Shop Items updated successfully.');
 

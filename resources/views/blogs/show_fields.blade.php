@@ -25,7 +25,8 @@
 <!-- Image Field -->
 <div class="form-group">
     {!! Form::label('image', 'Image:') !!}
-    <p>{{ $blogs->image }}</p>
+    <img src= "{{URL($blogs->image )}}" height="160"/>
+
 </div>
 
 <!-- Date Field -->

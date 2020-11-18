@@ -25,7 +25,8 @@
 <!-- Image Field -->
 <div class="form-group">
     {!! Form::label('image', 'Image:') !!}
-    <p>{{ $slider->image }}</p>
+    
+    <img src= "{{URL($slider->image )}}" height="160"/>
 </div>
 
 <!-- Slide Order Field -->

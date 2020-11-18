@@ -14,6 +14,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 use Response;
+use Illuminate\Support\Facades\Input;
 
 class settingsController extends AppBaseController
 {
@@ -56,7 +57,14 @@ class settingsController extends AppBaseController
     public function store(CreatesettingsRequest $request)
     {
         $input = $request->all();
+        $destination = 'images/settings';
+        if (!is_null(Input::file('logo'))) {
+            $image = $this->uploadFile('logo', $destination);
+            if (gettype($image) == 'string') {
 
+                $input['logo'] = $destination . '/' . $image;
+            }
+        }
         $settings = $this->settingsRepository->create($input);
 
         Flash::success('Settings saved successfully.');
@@ -115,14 +123,21 @@ class settingsController extends AppBaseController
     public function update($id, UpdatesettingsRequest $request)
     {
         $settings = $this->settingsRepository->find($id);
+        $destination = 'images/settings';
+        if (!is_null(Input::file('logo'))) {
+            $image = $this->uploadFile('logo', $destination);
+            if (gettype($image) == 'string') {
 
+                $input['logo'] = $destination . '/' . $image;
+            }
+        }
         if (empty($settings)) {
             Flash::error('Settings not found');
 
             return redirect(route('settings.index'));
         }
 
-        $settings = $this->settingsRepository->update($request->all(), $id);
+        $settings = $this->settingsRepository->update($input, $id);
 
         Flash::success('Settings updated successfully.');
 

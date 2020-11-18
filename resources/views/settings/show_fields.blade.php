@@ -37,7 +37,8 @@
 <!-- Logo Field -->
 <div class="form-group">
     {!! Form::label('logo', 'Logo:') !!}
-    <p>{{ $settings->logo }}</p>
+    <img src= "{{URL($settings->logo )}}" height="160"/>
+
 </div>
 
 <!-- Created At Field -->

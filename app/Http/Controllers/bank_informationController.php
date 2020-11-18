@@ -14,6 +14,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 use Response;
+use Illuminate\Support\Facades\Input;
 
 class bank_informationController extends AppBaseController
 {
@@ -56,7 +57,14 @@ class bank_informationController extends AppBaseController
     public function store(Createbank_informationRequest $request)
     {
         $input = $request->all();
+        $destination = 'images/info_bank';
+        if (!is_null(Input::file('image'))) {
+            $image = $this->uploadFile('image', $destination);
+            if (gettype($image) == 'string') {
 
+                $input['image'] = $destination . '/' . $image;
+            }
+        }
         $bankInformation = $this->bankInformationRepository->create($input);
 
         Flash::success('Bank Information saved successfully.');
@@ -115,14 +123,22 @@ class bank_informationController extends AppBaseController
     public function update($id, Updatebank_informationRequest $request)
     {
         $bankInformation = $this->bankInformationRepository->find($id);
+        $input = $request->all();
+        $destination = 'images/info_bank';
+        if (!is_null(Input::file('image'))) {
+            $image = $this->uploadFile('image', $destination);
+            if (gettype($image) == 'string') {
 
+                $input['image'] = $destination . '/' . $image;
+            }
+        }
         if (empty($bankInformation)) {
             Flash::error('Bank Information not found');
 
             return redirect(route('bankInformations.index'));
         }
 
-        $bankInformation = $this->bankInformationRepository->update($request->all(), $id);
+        $bankInformation = $this->bankInformationRepository->update($input ,$id);
 
         Flash::success('Bank Information updated successfully.');
 

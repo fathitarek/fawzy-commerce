@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use InfyOm\Generator\Utils\ResponseUtil;
 use Response;
+use Illuminate\Support\Facades\Input;
 
 /**
  * @SWG\Swagger(
@@ -35,4 +36,19 @@ class AppBaseController extends Controller
             'message' => $message
         ], 200);
     }
+
+    public function uploadFile($field_name, $destination) {
+        // dd(Input::file($field_name));
+        if (!is_null(Input::file($field_name))) {
+            $file = Input::file($field_name)->getClientOriginalName();
+            $input[$field_name] = $file;
+            $file1 = Input::file($field_name);
+            $file = ucwords(str_replace(" ", "-", $file));
+            $uploadSuccess = $file1->move($destination, $file);
+            return $file;
+        } else {
+            return false;
+        }
+    }
+
 }
