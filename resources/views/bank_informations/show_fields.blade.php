@@ -10,6 +10,20 @@
     <p>{{ $bankInformation->name_ar }}</p>
 </div>
 
+
+<!-- Name En Field -->
+<div class="form-group">
+    {!! Form::label('details_en', 'Details English:') !!}
+    <p>{{ $bankInformation->details_en }}</p>
+</div>
+
+<!-- Name Ar Field -->
+<div class="form-group">
+    {!! Form::label('details_ar', 'Details Arabic:') !!}
+    <p>{{ $bankInformation->details_ar }}</p>
+</div>
+
+
 <!-- Image Field -->
 <div class="form-group">
     {!! Form::label('image', 'Image:') !!}

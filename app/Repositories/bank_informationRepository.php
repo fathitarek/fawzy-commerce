@@ -20,6 +20,8 @@ class bank_informationRepository extends BaseRepository
         'name_en',
         'name_ar',
         'image',
+        'details_en',
+        'details_ar',
         'video_url'
     ];
 

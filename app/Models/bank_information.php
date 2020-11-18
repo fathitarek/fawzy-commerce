@@ -30,7 +30,9 @@ class bank_information extends Model
         'name_en',
         'name_ar',
         'image',
-        'video_url'
+        'video_url',
+        'details_en',
+        'details_ar',
     ];
 
     /**
@@ -42,6 +44,8 @@ class bank_information extends Model
         'id' => 'integer',
         'name_en' => 'string',
         'name_ar' => 'string',
+        'details_en' => 'string',
+        'details_ar' => 'string',
         'image' => 'string',
         'video_url' => 'string'
     ];
@@ -55,14 +59,18 @@ class bank_information extends Model
         'name_en' => 'required',
         'name_ar' => 'required',
         'image' => 'required|image|mimes:png,jpeg,gif',
-        'video_url' => 'required|url'
+        'video_url' => 'required|url',
+        'details_en' => 'required',
+        'details_ar' => 'required',
     ];
 
     public static $rulesUpdate = [
         'name_en' => 'required',
         'name_ar' => 'required',
         'image' => 'image|mimes:png,jpeg,gif',
-        'video_url' => 'required|url'
+        'video_url' => 'required|url',
+        'details_en' => 'required',
+        'details_ar' => 'required',
     ];
     
 }

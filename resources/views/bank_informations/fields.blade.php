@@ -9,7 +9,17 @@
     {!! Form::label('name_ar', 'Name Arabic:') !!}
     {!! Form::text('name_ar', null, ['class' => 'form-control']) !!}
 </div>
+<!-- Description En Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('details_en', 'Details English:') !!}
+    {!! Form::textarea('details_en', null, ['class' => 'form-control']) !!}
+</div>
 
+<!-- Description Ar Field -->
+<div class="form-group col-sm-6 col-lg-6">
+    {!! Form::label('details_ar', 'Details Arabic:') !!}
+    {!! Form::textarea('details_ar', null, ['class' => 'form-control']) !!}
+</div>
 <!-- Image Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('image', 'Image:') !!}
