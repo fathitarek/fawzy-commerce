@@ -34,3 +34,15 @@
     <a href="{{ route('bankInformations.index') }}"><i class="fa fa-edit"></i><span>Bank Informations</span></a>
 </li>
 
+<li class="{{ Request::is('infoBankForms*') ? 'active' : '' }}">
+    <a href="{{ route('infoBankForms.index') }}"><i class="fa fa-edit"></i><span>Information Bank Form</span></a>
+</li>
+
+<li class="{{ Request::is('competitions*') ? 'active' : '' }}">
+    <a href="{{ route('competitions.index') }}"><i class="fa fa-edit"></i><span>Competitions</span></a>
+</li>
+
+<li class="{{ Request::is('competitionsForms*') ? 'active' : '' }}">
+    <a href="{{ route('competitionsForms.index') }}"><i class="fa fa-edit"></i><span>Competitions Forms</span></a>
+</li>
+

@@ -37,3 +37,9 @@ Route::resource('blogs', 'blogsController');
 Route::resource('shopItems', 'shop_itemsController');
 
 Route::resource('bankInformations', 'bank_informationController');
+
+Route::resource('infoBankForms', 'info_bank_formController');
+
+Route::resource('competitions', 'competitionsController');
+
+Route::resource('competitionsForms', 'competitions_formController');
