@@ -43,3 +43,7 @@ Route::resource('infoBankForms', 'info_bank_formController');
 Route::resource('competitions', 'competitionsController');
 
 Route::resource('competitionsForms', 'competitions_formController');
+
+Route::resource('liveCertificates', 'live_certificateController');
+
+Route::resource('liveCertificateForms', 'live_certificate_formController');

@@ -46,3 +46,11 @@
     <a href="{{ route('competitionsForms.index') }}"><i class="fa fa-edit"></i><span>Competitions Forms</span></a>
 </li>
 
+<li class="{{ Request::is('liveCertificates*') ? 'active' : '' }}">
+    <a href="{{ route('liveCertificates.index') }}"><i class="fa fa-edit"></i><span>Live Certificates</span></a>
+</li>
+
+<li class="{{ Request::is('liveCertificateForms*') ? 'active' : '' }}">
+    <a href="{{ route('liveCertificateForms.index') }}"><i class="fa fa-edit"></i><span>Live Certificate Forms</span></a>
+</li>
+
