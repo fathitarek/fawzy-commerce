@@ -213,4 +213,10 @@ class shop_itemsController extends AppBaseController
 
         return redirect(route('shopItems.index'));
     }
+
+    public function removeImage($id){
+        $delete= shopImage::destroy($id);
+        return $delete;
+   }
+    
 }

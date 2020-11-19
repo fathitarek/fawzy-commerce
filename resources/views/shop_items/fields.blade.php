@@ -71,12 +71,7 @@
     </label>
 </div>
 
-<div class="form-group col-sm-6" style="">
-<div class=" col-sm-6"></div>
-<button type="button" id="more_img" class="btn btn-success col-sm-6" style="margin-top:13px" 
- >Add More Images</button>
-</div>
-<div id="div_img_more" style="float: left;"></div>
+
 
 
 <!-- more images -->
@@ -86,7 +81,7 @@
    @foreach($images as $image) 
     <div class="col-sm-6" id="div_{{$image->id}}"> 
 <img src="{{URL($image->images)}}" alt="{{$shopItems->name_en}}"  height="300px" width="300px">
-<a class="btn btn-danger" onclick="removeImg(this)" id="{{$image->id}}"> Remove This Image</a>
+<a class="btn btn-danger" onclick="removeImgItem(this)" id="{{$image->id}}"> Remove This Image</a>
 </div>
 @endforeach
 </div>
@@ -94,6 +89,13 @@
 <div></div>
 
 <!-- end more images -->
+
+<div class="form-group col-sm-12" style="">
+<!-- <div class=" col-sm-6"></div> -->
+<button type="button" id="more_img" class="btn btn-success col-sm-3" style="margin-top:13px" 
+ >Add More Images</button>
+</div>
+<div id="div_img_more" class=" col-sm-6" style="padding-right: 17px;"></div>
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}

@@ -207,6 +207,45 @@
     });
   });
   </script>
+  <script type="text/javascript">
+     function removeImgItem(element){
+        
+        console.log(element.id);
+
+                                $.ajax({
+                                    type: "GET",
+                                    url:"/remove_image_item/"+element.id,
+                                    success: function (msg) {
+                                    $("#div_"+element.id).hide();
+                                    console.log(msg);
+                                    },
+                                    error: function (msg) {
+                                    console.log(msg);
+                                    }
+                                });
+    }
+    
+</script>
+
+<script type="text/javascript">
+     function removeImgProject(element){
+        
+        console.log(element.id);
+
+                                $.ajax({
+                                    type: "GET",
+                                    url:"/remove_image_project/"+element.id,
+                                    success: function (msg) {
+                                    $("#div_"+element.id).hide();
+                                    console.log(msg);
+                                    },
+                                    error: function (msg) {
+                                    console.log(msg);
+                                    }
+                                });
+    }
+    
+</script>
     @stack('scripts')
 </body>
 </html>

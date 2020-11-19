@@ -188,4 +188,8 @@ class projectsController extends AppBaseController
 
         return redirect(route('projects.index'));
     }
+    public function removeImage($id){
+        $delete= galleryProjects::destroy($id);
+        return $delete;
+   }
 }
