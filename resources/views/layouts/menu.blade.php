@@ -62,3 +62,7 @@
     <a href="{{ route('projectsForms.index') }}"><i class="fa fa-edit"></i><span>Projects Forms</span></a>
 </li>
 
+<li class="{{ Request::is('aboutUses*') ? 'active' : '' }}">
+    <a href="{{ route('aboutUses.index') }}"><i class="fa fa-edit"></i><span>About Us</span></a>
+</li>
+

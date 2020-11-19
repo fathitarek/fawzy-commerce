@@ -51,3 +51,5 @@ Route::resource('liveCertificateForms', 'live_certificate_formController');
 Route::resource('projects', 'projectsController');
 
 Route::resource('projectsForms', 'projects_formController');
+
+Route::resource('aboutUses', 'about_usController');
