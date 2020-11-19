@@ -37,10 +37,11 @@
 
 @push('scripts')
     <script type="text/javascript">
-        $('#date').datetimepicker({
-            format: 'YYYY-MM-DD HH:mm:ss',
-            useCurrent: false
-        })
+        // $('#date').datetimepicker({
+        //     format: 'YYYY-MM-DD HH:mm:ss',  
+        //     useCurrent: false
+        // })
+        $('#date').datepicker();
     </script>
 @endpush
 

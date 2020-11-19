@@ -24,7 +24,7 @@ class blogs extends Model
 
     public $table = 'blogs';
     
-    // public $todayDate = date('m/d/Y');
+    // public $todayDate = date('Y-m-d');
 
     protected $dates = ['deleted_at'];
 
