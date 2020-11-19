@@ -10,9 +10,12 @@
     {!! Form::text('name_ar', null, ['class' => 'form-control']) !!}
 </div>
 
-<div id="div_img_more" ></div>
- <button type="button" id="more_img" class="btn btn-success" style="margin-top:13px" 
+<div class="form-group col-sm-6" style="">
+<div class=" col-sm-6"></div>
+<button type="button" id="more_img" class="btn btn-success col-sm-6" style="margin-top:13px" 
  >Add More Images</button>
+</div>
+<div id="div_img_more" style="float: left;"></div>
 
 <!-- more images -->
 @if(isset($images))

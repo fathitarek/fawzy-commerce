@@ -202,7 +202,7 @@
   
   $( document ).ready(function() {
     $("#more_img").click(function(){
-  $("#div_img_more").append("<input type='file' name='images[]'>");
+  $("#div_img_more").append("<input type='file' name='images[]'  style='padding-bottom: 10px;' 'class' = 'form-control'>");
   
     });
   });

@@ -62,18 +62,22 @@
 </div>
 
 <!-- Publish Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-6" style="padding-top: 25px;">
     {!! Form::label('publish', 'Publish:') !!}
-    <label class="checkbox-inline">
+    <label class=""> 
+    <!-- checkbox-inline -->
         {!! Form::hidden('publish', 0) !!}
         {!! Form::checkbox('publish', '1', null) !!}
     </label>
 </div>
 
-
-<div id="div_img_more" ></div>
- <button type="button" id="more_img" class="btn btn-success" style="margin-top:13px" 
+<div class="form-group col-sm-6" style="">
+<div class=" col-sm-6"></div>
+<button type="button" id="more_img" class="btn btn-success col-sm-6" style="margin-top:13px" 
  >Add More Images</button>
+</div>
+<div id="div_img_more" style="float: left;"></div>
+
 
 <!-- more images -->
 @if(isset($images))
