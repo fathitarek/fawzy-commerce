@@ -62,5 +62,7 @@ class info_bank_form extends Model
         'bank_informations_id' => 'required'
     ];
 
-    
+    public function info_bank() {
+        return $this->belongsTo('App\Models\bank_information');
+    }  
 }

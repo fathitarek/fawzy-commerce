@@ -70,7 +70,17 @@
     @endif
     </p>
 </div>
+<!-- show more images -->
+{!! Form::label('images', 'Images:') !!}
+<div class="form-group">
 
+   @foreach($images as $image) 
+        <div class="col-lg-6"> 
+         <img src="{{URL($image->images)}}" alt="{{$shopItems->name_en}}"  height="200px" width="200px">
+        </div>
+@endforeach
+</div>
+<!-- end more images -->
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}

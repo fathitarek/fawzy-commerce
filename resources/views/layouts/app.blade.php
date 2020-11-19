@@ -197,6 +197,16 @@
             });
         });
     </script>
+
+<script type="text/javascript">
+  
+  $( document ).ready(function() {
+    $("#more_img").click(function(){
+  $("#div_img_more").append("<input type='file' name='images[]'>");
+  
+    });
+  });
+  </script>
     @stack('scripts')
 </body>
 </html>

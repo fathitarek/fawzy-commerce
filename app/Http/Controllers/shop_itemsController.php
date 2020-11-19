@@ -17,6 +17,7 @@ use Response;
 use App\Models\categories;
 use App\Models\sub_categories;
 use Illuminate\Support\Facades\Input;
+use App\shopImage;
 
 class shop_itemsController extends AppBaseController
 {
@@ -28,6 +29,16 @@ class shop_itemsController extends AppBaseController
         $this->shopItemsRepository = $shopItemsRepo;
     }
 
+
+    function saveFile($image , $directory)
+    {
+         $filename = str_random(6).'_'.time() . "." . $image->getClientOriginalExtension();
+        //$filename = $image->getClientOriginalName();
+        $path = public_path() . $directory ;
+        $image->move($directory , $filename);
+        return $filename;
+    }
+    
     /**
      * Display a listing of the shop_items.
      *
@@ -69,7 +80,21 @@ class shop_itemsController extends AppBaseController
                 $input['main_image'] = $destination . '/' . $image;
             }
         }
+
         $shopItems = $this->shopItemsRepository->create($input);
+        if(!is_null($input['images'])&&isset($input['images'])){
+            foreach ($input['images'] as $index => $image){
+                $filename = $this->saveFile($image ,$destination) ;
+                if(isset($input['images'])){
+                    $product_image = shopImage::create(['images' =>$destination.'/'.$filename,'shop_item_id'=>$shopItems->id]);
+                }else{
+                    $input['images'] = $filename;
+                }
+            }
+            
+        }
+
+        
 
         Flash::success('Shop Items saved successfully.');
 
@@ -86,14 +111,15 @@ class shop_itemsController extends AppBaseController
     public function show($id)
     {
         $shopItems = $this->shopItemsRepository->find($id);
-
+        $images=shopImage::where('shop_item_id',$id)->get();
+// dd($images);
         if (empty($shopItems)) {
             Flash::error('Shop Items not found');
 
             return redirect(route('shopItems.index'));
         }
 
-        return view('shop_items.show')->with('shopItems', $shopItems);
+        return view('shop_items.show')->with('shopItems', $shopItems)->with('images',$images);
     }
 
     /**
@@ -108,13 +134,14 @@ class shop_itemsController extends AppBaseController
         $shopItems = $this->shopItemsRepository->find($id);
         $sub_categories=sub_categories::latest()->pluck('name_en', 'id');
         $categories = categories::latest()->pluck('name_en', 'id');
+        $images=shopImage::where('shop_item_id',$id)->get();
         if (empty($shopItems)) {
             Flash::error('Shop Items not found');
 
             return redirect(route('shopItems.index'));
         }
 
-        return view('shop_items.edit')->with('shopItems', $shopItems)->with('categories',$categories)->with('sub_categories',$sub_categories);
+        return view('shop_items.edit')->with('shopItems', $shopItems)->with('images',$images)->with('categories',$categories)->with('sub_categories',$sub_categories);
     }
 
     /**
@@ -128,6 +155,7 @@ class shop_itemsController extends AppBaseController
     public function update($id, Updateshop_itemsRequest $request)
     {
         $shopItems = $this->shopItemsRepository->find($id);
+        $input = $request->all();
         $destination = 'images/shop_items';
         if (!is_null(Input::file('main_image'))) {
             $image = $this->uploadFile('main_image', $destination);
@@ -135,6 +163,19 @@ class shop_itemsController extends AppBaseController
 
                 $input['main_image'] = $destination . '/' . $image;
             }
+        }
+
+        if(!is_null($request->images)&&isset($request->images)){
+            foreach ($request->images as $index => $image){
+                 // dd($image);
+                $filename = $this->saveFile($image ,$destination);
+                if(isset($request->images)){
+                    $product_image = shopImage::create(['images' =>$destination.'/'.$filename,'shop_item_id'=>$id]);
+                }else{
+                    $request->images= $filename;
+                }
+            }
+            
         }
         if (empty($shopItems)) {
             Flash::error('Shop Items not found');

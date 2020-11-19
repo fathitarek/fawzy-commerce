@@ -62,5 +62,7 @@ class live_certificate_form extends Model
         'live_certificates_id' => 'required'
     ];
 
-    
+    public function live_certificate() {
+        return $this->belongsTo('App\Models\live_certificate');
+    }   
 }

@@ -6,21 +6,21 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class competitions_form
+ * Class projects_form
  * @package App\Models
- * @version November 18, 2020, 8:58 am UTC
+ * @version November 19, 2020, 9:27 am UTC
  *
  * @property string $name
  * @property integer $mobile
- * @property string $note
  * @property string $address
- * @property integer $competition_id
+ * @property string $note
+ * @property integer $project_id
  */
-class competitions_form extends Model
+class projects_form extends Model
 {
     use SoftDeletes;
 
-    public $table = 'competitions_forms';
+    public $table = 'projects_forms';
     
 
     protected $dates = ['deleted_at'];
@@ -30,9 +30,9 @@ class competitions_form extends Model
     public $fillable = [
         'name',
         'mobile',
-        'note',
         'address',
-        'competition_id'
+        'note',
+        'project_id'
     ];
 
     /**
@@ -44,9 +44,9 @@ class competitions_form extends Model
         'id' => 'integer',
         'name' => 'string',
         'mobile' => 'integer',
-        'note' => 'string',
         'address' => 'string',
-        'competition_id' => 'integer'
+        'note' => 'string',
+        'project_id' => 'integer'
     ];
 
     /**
@@ -57,12 +57,12 @@ class competitions_form extends Model
     public static $rules = [
         'name' => 'required',
         'mobile' => 'required|integer',
-        'note' => 'required',
         'address' => 'required',
-        'competition_id' => 'required'
+        'note' => 'required',
+        'project_id' => 'required|integer'
     ];
 
-    public function competition() {
-        return $this->belongsTo('App\Models\competitions');
-    } 
+    public function project() {
+        return $this->belongsTo('App\Models\projects');
+    }
 }
