@@ -78,7 +78,7 @@ class shop_items extends Model
         'description_en' => 'required',
         'description_ar' => 'required',
         'main_price' => 'required|integer',
-        'sale_price' => 'integer',
+        'sale_price' => 'integer|lt:main_price',
         'main_image' => 'required|image|mimes:png,jpeg,gif',
         'category_id' => 'required|integer',
         'sub_category_id' => 'required|integer',
