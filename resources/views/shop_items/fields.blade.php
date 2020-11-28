@@ -51,8 +51,9 @@
 <!-- Sub Category Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('sub_category_id', 'Sub Category:') !!}
-    {{ Form::select('sub_category_id',$sub_categories,null,['placeholder' => 'Select Sub Category...','class'=> 'form-control','id'=>'sub_category_id'],['option'=>' Sub Categories']) }}
-
+    <select class="form-control" name="sub_category_id" id="sub_category_id">
+    <option>Select Sub Category...</option>
+    </select>
 </div>
 
 <!-- Tags Field -->

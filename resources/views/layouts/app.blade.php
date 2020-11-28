@@ -168,16 +168,12 @@
     <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
 	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script> -->
     <script src="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
-
     <script>
-        $(function () {
-            //Initialize Select2 Elements
-            $('.select2').select2();
-            $('.input-sm').val('');
-            $('.dt-button .buttons-csv').hide();
-            $('.fa .fa-file-excel-o').hide();
-        });
-    </script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Hello World";
+}
+</script>
+    
     <style>
         .buttons-csv{display:none}
          .buttons-pdf{display:none;}
@@ -202,11 +198,18 @@
   
   $( document ).ready(function() {
     $("#more_img").click(function(){
-  $("#div_img_more").append("<input type='file' name='images[]'  style='padding-bottom: 10px;' 'class' = 'form-control'>");
+  $("#div_img_more").append("<div><input type='file' name='images[]'  style='padding-bottom: 10px;padding-top: 6px;' class = 'form-control add_more_image_input'> <span onclick='removeInput(this)' style='float: right;top: 10px;right: -5px;' class='fa fa-times close_image'></span></div>");
   
     });
   });
   </script>
+  
+  <script>
+function removeInput(el) {
+    $(el).parent().hide();
+}
+</script>
+
   <script type="text/javascript">
      function removeImgItem(element){
         
@@ -246,6 +249,48 @@
     }
     
 </script>
+<script>
+$(document).ready(function(){
+  $(".close_image").click(function(){
+    $(".add_more_image_input").hide();
+  });
+});
+</script>
+
+<script type="text/javascript">
+            $(document).ready(function () {
+             
+                $('#category_id').on('change',function(e) {
+                 
+                 var cat_id = jQuery(this).val();
+if (cat_id) {
+    
+
+                 $.ajax({
+                       
+                       url:"/subcat/"+cat_id,
+                       type:"get",
+                       data: {
+                       // "category_id": cat_id,
+                        //"_token": "{{ csrf_token() }}",
+                        },
+                      
+                       success:function (data) {
+                        $('#sub_category_id').empty();
+                        $.each(data.subcategories[0].subcategories,function(index,subcategory){    
+                            $('#sub_category_id').append('<option value="'+subcategory.id+'">'+subcategory.name_en+'</option>');
+                        })
+
+                       }
+                   })
+}else{
+    $('#sub_category_id').empty();  
+    $('#sub_category_id').append('<option>Select Sub Category...</option>');
+}
+                });
+
+            });
+        </script>
     @stack('scripts')
 </body>
 </html>

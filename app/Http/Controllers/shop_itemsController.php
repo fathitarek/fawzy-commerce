@@ -219,4 +219,8 @@ class shop_itemsController extends AppBaseController
         return $delete;
    }
     
+   public function getSubCategories($category_id){
+    $subcategories = categories::where('id',$category_id)->with('subcategories')->get();
+    return response()->json(['subcategories' => $subcategories]);
+   }
 }

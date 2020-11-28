@@ -50,5 +50,9 @@ class categories extends Model
         'name_ar' => 'required'
     ];
 
-    
+    public function subcategories(){
+
+        return $this->hasMany('App\Models\sub_categories','category_id');
+
+    }  
 }
