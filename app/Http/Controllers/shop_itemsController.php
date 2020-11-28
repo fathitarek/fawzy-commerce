@@ -82,6 +82,9 @@ class shop_itemsController extends AppBaseController
         }
 
         $shopItems = $this->shopItemsRepository->create($input);
+
+        if (isset($input['images'])) {
+
         if(!is_null($input['images'])&&isset($input['images'])){
             foreach ($input['images'] as $index => $image){
                 $filename = $this->saveFile($image ,$destination) ;
@@ -93,6 +96,7 @@ class shop_itemsController extends AppBaseController
             }
             
         }
+    }
 
         
 
@@ -164,7 +168,7 @@ class shop_itemsController extends AppBaseController
                 $input['main_image'] = $destination . '/' . $image;
             }
         }
-
+        if (isset($input['images'])) {
         if(!is_null($request->images)&&isset($request->images)){
             foreach ($request->images as $index => $image){
                  // dd($image);
@@ -177,6 +181,7 @@ class shop_itemsController extends AppBaseController
             }
             
         }
+    }
         if (empty($shopItems)) {
             Flash::error('Shop Items not found');
 
