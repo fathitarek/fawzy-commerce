@@ -47,12 +47,14 @@
     {{ Form::select('category_id',$categories,null,['placeholder' => 'Select Category...','class'=> 'form-control','id'=>'category_id'],['option'=>'Categories']) }}
 
 </div>
-
 <!-- Sub Category Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('sub_category_id', 'Sub Category:') !!}
     <select class="form-control" name="sub_category_id" id="sub_category_id">
     <option>Select Sub Category...</option>
+    @if($shopItems->sub_category_id)
+    <option selected value="{{$shopItems->sub_category_id}}">{{$shopItems->sub_category->name_en}}</option>
+    @endif
     </select>
 </div>
 
