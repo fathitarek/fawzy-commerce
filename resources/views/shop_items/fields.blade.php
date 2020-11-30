@@ -52,7 +52,7 @@
     {!! Form::label('sub_category_id', 'Sub Category:') !!}
     <select class="form-control" name="sub_category_id" id="sub_category_id">
     <option>Select Sub Category...</option>
-    @if($shopItems->sub_category_id)
+    @if(isset($shopItems->sub_category_id))
     <option selected value="{{$shopItems->sub_category_id}}">{{$shopItems->sub_category->name_en}}</option>
     @endif
     </select>
