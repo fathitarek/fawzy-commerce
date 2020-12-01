@@ -24,6 +24,9 @@ class sucess_storiesController extends AppBaseController
     public function __construct(sucess_storiesRepository $sucessStoriesRepo)
     {
         $this->sucessStoriesRepository = $sucessStoriesRepo;
+        
+            $this->middleware('auth');
+        
     }
 
     /**

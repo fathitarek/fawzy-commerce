@@ -24,6 +24,7 @@ class competitionsController extends AppBaseController
     public function __construct(competitionsRepository $competitionsRepo)
     {
         $this->competitionsRepository = $competitionsRepo;
+        $this->middleware('auth');
     }
 
     /**

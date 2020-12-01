@@ -24,6 +24,7 @@ class live_certificateController extends AppBaseController
     public function __construct(live_certificateRepository $liveCertificateRepo)
     {
         $this->liveCertificateRepository = $liveCertificateRepo;
+        $this->middleware('auth');
     }
 
     /**

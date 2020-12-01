@@ -24,6 +24,7 @@ class sub_categoriesController extends AppBaseController
     public function __construct(sub_categoriesRepository $subCategoriesRepo)
     {
         $this->subCategoriesRepository = $subCategoriesRepo;
+        $this->middleware('auth');
     }
 
     /**

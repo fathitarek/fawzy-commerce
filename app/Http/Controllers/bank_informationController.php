@@ -24,6 +24,7 @@ class bank_informationController extends AppBaseController
     public function __construct(bank_informationRepository $bankInformationRepo)
     {
         $this->bankInformationRepository = $bankInformationRepo;
+        $this->middleware('auth');
     }
 
     /**

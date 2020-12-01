@@ -23,6 +23,7 @@ class socialController extends AppBaseController
     public function __construct(socialRepository $socialRepo)
     {
         $this->socialRepository = $socialRepo;
+        $this->middleware('auth');
     }
 
     /**

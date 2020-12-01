@@ -24,6 +24,7 @@ class sliderController extends AppBaseController
     public function __construct(sliderRepository $sliderRepo)
     {
         $this->sliderRepository = $sliderRepo;
+        $this->middleware('auth');
     }
 
     /**

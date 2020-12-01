@@ -25,6 +25,7 @@ class projectsController extends AppBaseController
     public function __construct(projectsRepository $projectsRepo)
     {
         $this->projectsRepository = $projectsRepo;
+        $this->middleware('auth');
     }
     function saveFile($image , $directory)
     {

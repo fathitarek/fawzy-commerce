@@ -23,6 +23,7 @@ class info_bank_formController extends AppBaseController
     public function __construct(info_bank_formRepository $infoBankFormRepo)
     {
         $this->infoBankFormRepository = $infoBankFormRepo;
+        $this->middleware('auth');
     }
 
     /**
