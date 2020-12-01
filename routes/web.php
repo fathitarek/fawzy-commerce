@@ -40,3 +40,5 @@ Route::get("remove_image_item/{id}","shop_itemsController@removeImage");
 Route::get("remove_image_project/{id}","projectsController@removeImage");
 
 Route::get('subcat/{category_id}','shop_itemsController@getSubCategories')->name('subcat');
+
+Route::resource('categoryBlogs', 'category_blogController');

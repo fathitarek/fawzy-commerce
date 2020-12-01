@@ -66,3 +66,7 @@
     <a href="{{ route('aboutUses.index') }}"><i class="fa fa-edit"></i><span>About Us</span></a>
 </li>
 
+<li class="{{ Request::is('categoryBlogs*') ? 'active' : '' }}">
+    <a href="{{ route('categoryBlogs.index') }}"><i class="fa fa-edit"></i><span>Category Blogs</span></a>
+</li>
+
