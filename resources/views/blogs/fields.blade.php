@@ -34,6 +34,10 @@
     {!! Form::label('date', 'Date:') !!}
     {!! Form::date('date', null, ['class' => 'form-control','id'=>'date']) !!}
 </div>
+<div class="form-group col-sm-6">
+    {!! Form::label('category_blog_id', 'Category:') !!}
+    {{ Form::select('category_blog_id',$category_blog,null,['placeholder' => 'Select Category...','class'=> 'form-control','id'=>'category_blog_id'],['option'=>'category_blog']) }}
+</div>
 
 @push('scripts')
     <script type="text/javascript">

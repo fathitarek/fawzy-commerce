@@ -15,7 +15,7 @@ use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 use Response;
 use Illuminate\Support\Facades\Input;
-
+use App\Models\category_blog;
 class blogsController extends AppBaseController
 {
     /** @var  blogsRepository */
@@ -45,7 +45,8 @@ class blogsController extends AppBaseController
      */
     public function create()
     {
-        return view('blogs.create');
+        $category_blog = category_blog::latest()->pluck('name_en', 'id');
+        return view('blogs.create')->with('category_blog',$category_blog);
     }
 
     /**
@@ -103,14 +104,14 @@ class blogsController extends AppBaseController
     public function edit($id)
     {
         $blogs = $this->blogsRepository->find($id);
-
+        $category_blog = category_blog::latest()->pluck('name_en', 'id');
         if (empty($blogs)) {
             Flash::error('Blogs not found');
 
             return redirect(route('blogs.index'));
         }
 
-        return view('blogs.edit')->with('blogs', $blogs);
+        return view('blogs.edit')->with('blogs', $blogs)->with('category_blog',$category_blog);
     }
 
     /**

@@ -37,7 +37,8 @@ class blogs extends Model
         'description_ar',
         'image',
         'date',
-        'tags'
+        'tags',
+        'category_blog_id'
     ];
 
     /**
@@ -53,7 +54,8 @@ class blogs extends Model
         'description_ar' => 'string',
         'image' => 'string',
         'date' => 'date',
-        'tags' => 'string'
+        'tags' => 'string',
+        'category_blog_id'=>'integer    '
     ];
 
     /**
@@ -81,5 +83,7 @@ class blogs extends Model
         'date' => 'required', //|after_or_equal:'.$this->todayDate
         'tags' => 'required',
     ];
-    
+    public function category_blog() {
+        return $this->belongsTo('App\Models\category_blog');
+    }
 }

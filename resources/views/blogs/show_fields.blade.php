@@ -40,7 +40,10 @@
     {!! Form::label('tags', 'Tags:') !!}
     <p>{{ $blogs->tags }}</p>
 </div>
-
+<div class="form-group">
+    {!! Form::label('category_blog_id', 'Category:') !!}
+    <p>{{ $blogs->category_blog->name_en }}</p>
+</div>
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}
