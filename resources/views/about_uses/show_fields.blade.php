@@ -13,13 +13,13 @@
 <!-- Description En Field -->
 <div class="form-group">
     {!! Form::label('description_en', 'Description English:') !!}
-    <p>{{ $aboutUs->description_en }}</p>
+    <p>{!! $aboutUs->description_en !!}</p>
 </div>
 
 <!-- Description Ar Field -->
 <div class="form-group">
     {!! Form::label('description_ar', 'Description Arabic:') !!}
-    <p>{{ $aboutUs->description_ar }}</p>
+    <p>{!! $aboutUs->description_ar !!}</p>
 </div>
 
 <!-- Image Field -->

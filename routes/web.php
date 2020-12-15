@@ -15,7 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->middleware('verified');
@@ -38,7 +37,10 @@ Route::resource('projectsForms', 'projects_formController');
 Route::resource('aboutUses', 'about_usController');
 Route::get("remove_image_item/{id}","shop_itemsController@removeImage");
 Route::get("remove_image_project/{id}","projectsController@removeImage");
-
 Route::get('subcat/{category_id}','shop_itemsController@getSubCategories')->name('subcat');
-
 Route::resource('categoryBlogs', 'category_blogController');
+Route::GET('changelanguage', 'LanguageController@changelanguage');
+
+//front
+Route::GET('contact', 'ContactPageController@contactPage');
+Route::GET('about', 'aboutPageController@aboutPage');
