@@ -12,21 +12,21 @@
 
 <!-- Styles -->
 @if(Session::get('locale')=='en')
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+{!! Html::style('css/bootstrap.css') !!}
 @else
-<link href="css/bootstrap-arabic.css" rel="stylesheet" type="text/css" />
+{!! Html::style('css/bootstrap-arabic.css') !!}
 
 @endif
-<link href="font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+{!! Html::style('font-awesome/css/font-awesome.css') !!}
 @if(Session::get('locale')=='en')
-<link href="css/style.css" rel="stylesheet" type="text/css" />
+{!! Html::style('css/style.css') !!}
 @else
-<link href="css/style_ar.css" rel="stylesheet" type="text/css" />
+{!! Html::style('css/style_ar.css') !!} 
 
 @endif
-<link href="css/responsive.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="layerslider/css/layerslider.css" type="text/css">
-<link rel="stylesheet" type="text/css" href="css/sea-green.css" title="sea-green" />
+{!! Html::style('css/responsive.css') !!}
+{!! Html::style('layerslider/css/layerslider.css') !!} 
+{!! Html::style('css/sea-green.css') !!}
 
 
 
@@ -35,7 +35,11 @@
 
 
 <link href="css/contact.css" rel="stylesheet" type="text/css" /> <!-- AJAX Contact Form Stylesheet -->
-
+<style>
+	.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+		background-color: #4fc0aa;
+	}
+</style>
 <!--[if lt IE 9]>
 <link rel="stylesheet" type="text/css" href="css/ie.css" />
 <script type="text/javascript" language="javascript" src="js/html5shiv.js"></script>
@@ -43,13 +47,13 @@
 
 
 <!-- Scripts -->
-<script src="js/jquery.1.9.1.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/jquery.jigowatt.js"></script><!-- AJAX Form Submit -->
-<script src='js/script.js'></script>
-<script src='js/bootstrap.js'></script>
-<script src="js/html5lightbox.js"></script>
-<script defer src="js/jquery.flexslider.js"></script>
-<script defer src="js/jquery.mousewheel.js"></script>
+{!! Html::script('js/jquery.1.9.1.js') !!}
+{!! Html::script('js/jquery.jigowatt.js') !!}<!-- AJAX Form Submit -->
+{!! Html::script('js/script.js') !!}
+{!! Html::script('js/bootstrap.js') !!}
+{!! Html::script('js/html5lightbox.js') !!}
+{!! Html::script('js/jquery.flexslider.js') !!}
+{!! Html::script('js/jquery.mousewheel.js') !!}
 
 <script>
 $(window).load(function(){
@@ -90,15 +94,15 @@ $(window).load(function(){
 		<ul>
 			<li>
 				<i class="icon-home"></i>
-				425 Street Name, UK, London
+				{{$settings[0]->address}}
 			</li>
 			<li>
 				<i class="icon-phone"></i>
-				(123) 456-7890
+				{{$settings[0]->mobile}}
 			</li>
 			<li>
 				<i class="icon-envelope"></i>
-				contact@companymail.com
+				{{$settings[0]->email}}
 			</li>
 		</ul> 
 		<div class="search-box">
@@ -112,7 +116,7 @@ $(window).load(function(){
 <header>
 	<div class="container">
 		<div class="logo">
-			<a href="#" title=""><img src="images/logo.png" alt="Logo" /><h1><i>L</i>ifeline</h1></a>
+			<a href="#" title=""><img src="{{URL('images/logo.png')}}" alt="Logo" /><h1><i>L</i>ifeline</h1></a>
 		</div><!-- Logo -->
 		<nav class="menu">
 			<ul id="menu-navigation">
@@ -255,14 +259,14 @@ $(window).load(function(){
 				<li><a href="elements.html">{{__('home.more')}}</a>
 					<ul class="drop-right">
 						<li><a href="elements.html#tabs-style">{{__('home.info_bank')}} </a></li>
-						<li><a href="elements.html#accordions-style">{{__('home.sucess_stories')}}</a></li>
+						<li><a href="{{URL('successful-stories')}}">{{__('home.sucess_stories')}}</a></li>
 						<li><a href="elements.html#blockquotes-style">{{__('home.compitiion')}} </a></li>
 						<li><a href="elements.html#highlightedtext">{{__('home.partners')}}</a></li>
 						<li><a href="elements.html#buttons-style">{{__('home.live_certificate')}}</a></li>
 					</ul>
 				</li>
 				<li>
-				<select id="language_select">
+				<select id="language_select" class="form-control" style="border: 1px solid #4fc0aa;color: #3d3d3d;margin-top: 30px;">
                     <option value="">@lang('home.select_language') </option>
                     <option value="en">English</option>
                     <option value="ar">عربي</option>
@@ -387,24 +391,24 @@ $(window).load(function(){
 			</div><!-- Flickr Widget -->
 			<div class="col-md-3">
 				<div class="footer-widget-title">
-					<h4><strong><span>C</span>ontact</strong> Us</h4>
+					<h4><strong>{{__('home.contact')}}</strong> {{__('home.us')}}</h4>
 				</div>
 				<ul class="contact-details">
 					<li>
-						<span><i class="icon-home"></i>ADDRESS</span>
-						<p>#8901 Marmora Road Chi Minh City, Vietnam</p>
+						<span><i class="icon-home"></i>{{__('home.address')}}</span>
+						<p>{{$settings[0]->address}}</p>
 					</li>
 					<li>
-						<span><i class="icon-phone-sign"></i>PHONE NO</span>
-						<p>+00 035 835 282 / +00 034 965 353</p>
+						<span><i class="icon-phone-sign"></i>{{__('home.phone_no')}}</span>
+						<p>{{$settings[0]->mobile}}</p>
 					</li>
+					<!-- <li> -->
+						<!-- <span><i class="icon-envelope-alt"></i>EMAIL ID</span> -->
+						<!-- <p>#8901 Marmora Road Chi Minh City, Vietnam</p> -->
+					<!-- </li> -->
 					<li>
-						<span><i class="icon-envelope-alt"></i>EMAIL ID</span>
-						<p>#8901 Marmora Road Chi Minh City, Vietnam</p>
-					</li>
-					<li>
-						<span><i class="icon-link"></i>WEB ADDRESS</span>
-						<p>http://www.yourwebsite.com</p>
+						<span><i class="icon-link"></i>{{__('home.web_address')}}</span>
+						<p>{{$settings[0]->email}}</p>
 					</li>
 				</ul>
 			</div><!-- Contact Us Widget -->
@@ -415,11 +419,11 @@ $(window).load(function(){
 					<input class="form-control" type="email" placeholder="Email" />
 				</div>
 				<ul class="social-bar">
-					<li><a href="#" title=""><img src="images/rss.jpg" alt="" /></a></li>
-					<li><a href="#" title=""><img src="images/facebook.jpg" alt="" /></a></li>
-					<li><a href="#" title=""><img src="images/gplus.jpg" alt="" /></a></li>
-					<li><a href="#" title=""><img src="images/linked-in.jpg" alt="" /></a></li>
-					<li><a href="#" title=""><img src="images/pinterest.jpg" alt="" /></a></li>
+					<!-- <li><a href="#" title=""><img src="images/rss.jpg" alt="" /></a></li> -->
+					<li><a href="{{$social[0]->facebook}}" title=""><img src="{{URL('images/facebook.jpg')}}" alt="" /></a></li>
+					<li><a href="{{$social[0]->youtube}}" title=""><img src="{{URL('images/youtube.png')}}" alt=""  style="width: 35px; height: 35px;"/></a></li>
+					<li><a href="{{$social[0]->linkedin}}" title=""><img src="{{URL('images/linked-in.jpg')}}" alt="" /></a></li>
+					<li><a href="{{$social[0]->instgram}}" title=""><img src="{{URL('images/ins.png')}}" alt="" style="width: 35px; height: 35px;"  /></a></li>
 				</ul>
 				<div class="newsletter-btn">
 					<input type="button" value="Submit" />
@@ -434,12 +438,12 @@ $(window).load(function(){
 	<div class="container">
 		<p>Copyright © 2013 Global News. <span>All rights reserved.</span> </p>
 		<ul>
-			<li><a href="index.html" title="">HOME</a></li>
-			<li><a href="about.html" title="">ABOUT</a></li>
-			<li><a href="elements.html" title="">ELEMENTS</a></li>
-			<li><a href="blog-with-sidebar.html" title="">BLOG</a></li>
-			<li><a href="events.html" title="">EVENTS</a></li>
-			<li><a href="contact.html" title="">CONTACT</a></li>
+			<li><a href="index.html" title="">{{__('home.home')}}</a></li>
+			<li><a href="about.html" title="">{{__('home.blog')}}</a></li>
+			<li><a href="elements.html" title="">{{__('home.projects')}}</a></li>
+			<li><a href="blog-with-sidebar.html" title="">{{__('home.about_us')}}</a></li>
+			<li><a href="events.html" title="">{{__('home.contact')}} {{__('home.us')}}</a></li>
+			<!-- <li><a href="contact.html" title="">CONTACT</a></li> -->
 		</ul>
 	
 	</div>

@@ -14,24 +14,24 @@
 			<div class="col-md-6">
 				<div class="contact-info">
 					<h3 class="sub-head">{{__('home.contact_information')}}</h3>
-					<iframe src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=australia&amp;aq=&amp;sll=-25.274398,133.775136&amp;sspn=41.490127,85.166016&amp;ie=UTF8&amp;hq=&amp;hnear=Australia&amp;t=m&amp;z=4&amp;ll=-25.274398,133.775136&amp;output=embed"></iframe>
-					<p>Aenean sit a ametlandit a urna. Sed vehicula rhoncus tellus, quis accumsan nunc dicti quiis enean sit amet nibh ut magna malesuada convallis. Quisque pulvinar odio et justo convalis mollis.Aenean elit eros, molestie ac viverra nec, blandit a urna.</p>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d513.2386281321495!2d31.271997829060847!3d30.075732207530155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583f857df1babb%3A0x945a56eeaf4e9117!2z2YXYpNiz2LPYqSDYo9i22YjYp9ihINin2YTZhdiz2KrZgtio2YQg2YTZhNiq2YbZhdmK2Kk!5e0!3m2!1sen!2seg!4v1608056896771!5m2!1sen!2seg"></iframe>
+<p>{!! $settings[0]->{'description_'.strtolower(app()->getLocale())} !!}</p>
 					<ul class="contact-details">
 						<li>
 							<span><i class="icon-home"></i>{{__('home.address')}}</span>
-							<p>#8901 Marmora Road Chi Minh City, Vietnam</p>
+							<p>{{$settings[0]->address}}</p>
 						</li>
 						<li>
 							<span><i class="icon-phone-sign"></i>{{__('home.phone_no')}}</span>
 							<p>{{$settings[0]->mobile}}</p>
 						</li>
 						<li>
-							<span><i class="icon-envelope-alt"></i>{{__('home.email_id')}}</span>
-							<p>#8901 Marmora Road Chi Minh City, Vietnam</p>
+							<!-- <span><i class="icon-envelope-alt"></i>{{__('home.email_id')}}</span> -->
+							<!-- <p>#8901 Marmora Road Chi Minh City, Vietnam</p> -->
 						</li>
 						<li>
 							<span><i class="icon-link"></i>{{__('home.web_address')}}</span>
-							<p>http://www.yourwebsite.com</p>
+							<p>{{$settings[0]->email}}</p>
 						</li>
 					</ul>
 				</div>
@@ -40,7 +40,7 @@
 				<div id="message"></div>
 				<div class="form">
 					<h3 class="sub-head">{{__('home.contact_us_by_message')}}</h3>
-					<p>Anean sit amet nibh ut magna malesuada <span>*</span></p>
+					<!-- <p>Anean sit amet nibh ut magna malesuada <span>*</span></p> -->
 					<form method="post"  action="contact.php" name="contactform" id="contactform">
 						<label for="name" accesskey="U">{{__('home.full_name')}} <span>*</span></label>
 						<input name="name" class="form-control input-field" type="text" id="name" size="30" value="" />

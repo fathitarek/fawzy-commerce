@@ -124,6 +124,7 @@ class settingsController extends AppBaseController
     public function update($id, UpdatesettingsRequest $request)
     {
         $settings = $this->settingsRepository->find($id);
+        $input = $request->all();
         $destination = 'images/settings';
         if (!is_null(Input::file('logo'))) {
             $image = $this->uploadFile('logo', $destination);

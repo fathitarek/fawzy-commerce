@@ -33,7 +33,16 @@
     {!! Form::label('working_hours', 'Working Hours:') !!}
     {!! Form::number('working_hours', null, ['class' => 'form-control']) !!}
 </div>
+<div class="form-group col-sm-6">
+    {!! Form::label('email', 'Email:') !!}
+    {!! Form::text('email', null, ['class' => 'form-control']) !!}
+</div>
 
+<!-- Name Ar Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('address', 'Address:') !!}
+    {!! Form::text('address', null, ['class' => 'form-control']) !!}
+</div>
 <!-- Logo Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('logo', 'Logo:') !!}

@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use App\Models\settings;
+use App\Models\social;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-  
+        $social=social::get();
+        $settings=settings::get();
+        view()->share('social',$social);
+        view()->share('settings',$settings);
      }
 }

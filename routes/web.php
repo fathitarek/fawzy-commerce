@@ -44,3 +44,12 @@ Route::GET('changelanguage', 'LanguageController@changelanguage');
 //front
 Route::GET('contact', 'ContactPageController@contactPage');
 Route::GET('about', 'aboutPageController@aboutPage');
+Route::GET('successful-stories', 'sucessStoriesPageController@sucessStoriesPage');
+Route::GET('our-competitions', 'competitionsPageController@competitionsPage');
+Route::GET('inner-successful-stories/{id}', 'sucessStoriesPageController@innerSucessStory');
+Route::GET('inner-competition/{id}', 'competitionsPageController@innerCompetition');
+Route::GET('our-projects', 'projectsPageController@projectsPage');
+Route::GET('inner-project/{id}', 'projectsPageController@innerProject');
+Route::GET('our-certifcate', 'liveCertificatePageController@certificatesPage');
+Route::GET('inner-certifcate/{id}', 'liveCertificatePageController@innerCertificate');
+

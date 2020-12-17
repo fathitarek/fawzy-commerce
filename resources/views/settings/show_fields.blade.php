@@ -34,6 +34,16 @@
     <p>{{ $settings->working_hours }}</p>
 </div>
 
+<!-- Description En Field -->
+<div class="form-group">
+    {!! Form::label('email', 'Email:') !!}
+    <p>{{ $settings->email }}</p>
+</div>
+<!-- Description En Field -->
+<div class="form-group">
+    {!! Form::label('address', 'Adress:') !!}
+    <p>{{ $settings->address }}</p>
+</div>
 <!-- Logo Field -->
 <div class="form-group">
     {!! Form::label('logo', 'Logo:') !!}

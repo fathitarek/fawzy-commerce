@@ -36,7 +36,9 @@ class settings extends Model
         'description_ar',
         'mobile',
         'working_hours',
-        'logo'
+        'logo',
+        'email',
+        'address'
     ];
 
     /**
@@ -51,7 +53,9 @@ class settings extends Model
         'description_en' => 'string',
         'description_ar' => 'string',
         'mobile' => 'string',
-        'logo' => 'string'
+        'logo' => 'string',
+        'email'=> 'string',
+        'address'=> 'string',
     ];
 
     /**
@@ -66,7 +70,9 @@ class settings extends Model
         'description_ar' => 'required',
         'mobile' => 'required|numeric|regex:/^([0-9\s\-\+\(\)]*)$/|min:9',
         'working_hours' => 'required|numeric|regex:/^([0-9\s\-\+\(\)]*)$/|min:1',
-        'logo' => 'required|image|mimes:png,jpeg,gif'
+        'logo' => 'required|image|mimes:png,jpeg,gif',
+        'email'=> 'required',
+        'address'=> 'required',
     ];
     
     public static $rulesUpdate = [
@@ -76,7 +82,9 @@ class settings extends Model
         'description_ar' => 'required',
         'mobile' => 'required|numeric|regex:/^([0-9\s\-\+\(\)]*)$/|min:9',
         'working_hours' => 'required|numeric|regex:/^([0-9\s\-\+\(\)]*)$/|min:1',
-        'logo' => 'image|mimes:png,jpeg,gif'
+        'logo' => 'image|mimes:png,jpeg,gif',
+        'email'=> 'required',
+        'address'=> 'required',
     ];
     
 }
