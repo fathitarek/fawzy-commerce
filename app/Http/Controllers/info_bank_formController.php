@@ -61,8 +61,9 @@ class info_bank_formController extends AppBaseController
         $infoBankForm = $this->infoBankFormRepository->create($input);
 
         Flash::success('Info Bank Form saved successfully.');
+        return redirect()->back()->with('success', 'successfully ');   
 
-        return redirect(route('infoBankForms.index'));
+        // return redirect(route('infoBankForms.index'));
     }
 
     /**

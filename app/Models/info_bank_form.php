@@ -63,6 +63,6 @@ class info_bank_form extends Model
     ];
 
     public function info_bank() {
-        return $this->belongsTo('App\Models\bank_information');
+        return $this->belongsTo('App\Models\bank_information','bank_informations_id');
     }  
 }

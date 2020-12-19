@@ -24,8 +24,8 @@
 
 <!-- Bank Informations Id Field -->
 <div class="form-group">
-    {!! Form::label('bank_informations_id', 'Bank Informations Id:') !!}
-    <p>{{ $infoBankForm->bank_informations_id }}</p>
+    {!! Form::label('bank_informations_id', 'Bank Informations:') !!}
+    <p>{{ $infoBankForm->info_bank->name_en }}</p>
 </div>
 
 <!-- Created At Field -->

@@ -9,11 +9,13 @@
 		<div class="row">
 		<div class="left-content col-md-9">
 			<div class="post">
-                <img src="{{URL($live_certificate->image )}}" alt="" /><!-- Post Image -->
-               
-				<h1>{{$live_certificate->{'name_'.strtolower(app()->getLocale())} }}</h1>
+                <img src="{{URL($bank_information->image )}}" alt="" /><!-- Post Image -->
+                <div class="post-desc">
+                <iframe src="{{$bank_information->video_url}}" style="width: 100%;height: 100%;"></iframe>			
+            	</div>
+				<h1>{{$bank_information->{'name_'.strtolower(app()->getLocale())} }}</h1>
 				<div class="post-desc">
-<p>{!! $live_certificate->{'description_'.strtolower(app()->getLocale())} !!}  </p>
+				<p>{!! $bank_information->{'details_'.strtolower(app()->getLocale())} !!}</p>						
 				</div>
 				
 				<div class="post-image-list">
@@ -28,6 +30,9 @@
 					</a>						 -->
                 </div>
                 <!-- Post Images -->
+								
+				
+				
 				<div class="form">
 					<h3 class="sub-head">{{__('home.contact_us_by_message')}}</h3>
 					<!-- <p>Anean sit amet nibh ut magna malesuada <span>*</span></p> -->
@@ -38,7 +43,7 @@
 							</ul>
 						</div>
 					@endif
-					{!! Form::open(['route' => 'liveCertificateForms.store']) !!}
+					{!! Form::open(['route' => 'infoBankForms.store']) !!}
 						
 						<label>{{__('home.full_name')}} <span>*</span></label>
 						<input type="text" class="form-control input-field" name="name" required/>
@@ -48,12 +53,12 @@
 						<input type="text" class="form-control input-field" name="address" required/>
 						<label>{{__('home.message')}} <span>*</span></label>
 						<textarea rows="7" class="form-control input-field" name="note" required></textarea>
-						<input type="hidden" class="form-control input-field" name="live_certificates_id" value="{{$live_certificate->id}}"/>
+						<input type="hidden" class="form-control input-field" name="bank_informations_id" value="{{$bank_information->id}}"/>
 						<input type="submit" class="form-button" value="{{__('home.send_msg')}}" />
 					</form>
 				
 				</div><!-- Form -->
-						
+					
 			</div>
 			
 			
@@ -62,22 +67,28 @@
 		</div>
 		
 		<div class="sidebar col-md-3 pull-right">
-		  
+			<!-- <div class="sidebar-widget">
+				<div class="sidebar-search">
+					<input class="search" type="text" placeholder="Enter Search Item" />
+					<input class="search-button" type="submit" value="" />
+				</div>
+			</div> -->
 			<!-- Sidebar Search -->
-            <div class="sidebar-widget">
+			<div class="sidebar-widget">
 				<div class="sidebar-title">
-				<h4>{{__('home.recent')}} <span> {{__('home.info_bank')}}</span></h4>
+				<h4>{{__('home.recent')}} <span> {{__('home.compitiion')}}</span></h4>
                 </div>
-               @foreach($bank_information as $bank_info)
+               @foreach($competitions as $competition)
 				<div class="popular-post">
-					<img src="{{URL($bank_info->image )}}" alt="" />
+					<img src="{{URL($competition->image)}}" alt="" />
 					<div class="popular-post-title">
-						<h6><a href="inner-infoBank/{{$bank_info->id}}" title="">{{$bank_info->{'name_'.strtolower(app()->getLocale())} }}</a></h6>
+						<h6><a href="{{URL('inner-competition')}}/{{$competition->id}}" title="">{{$competition->{'name_'.strtolower(app()->getLocale())} }}</a></h6>
 					</div>
 				</div>
 		@endforeach
 
 			</div><!-- Recent Events -->
+			
 			<div class="sidebar-widget">
 				<div class="sidebar-title">
 				<h4>{{__('home.recent')}} <span> {{__('home.sucess_stories')}}</span></h4>
@@ -95,13 +106,13 @@
 			
             <div class="sidebar-widget">
 				<div class="sidebar-title">
-				<h4>{{__('home.recent')}} <span> {{__('home.compitiion')}}</span></h4>
+				<h4>{{__('home.recent')}} <span>{{__('home.live_certificate')}} </span></h4>
                 </div>
-               @foreach($competitions as $competition)
+               @foreach($live_certificate as $live_certific)
 				<div class="popular-post">
-					<img src="{{URL($competition->image )}}" alt="" />
+					<img src="{{URL($live_certific->image )}}" alt="" />
 					<div class="popular-post-title">
-						<h6><a href="{{URL('inner-competition')}}/{{$competition->id}}" title="">{{$competition->{'name_'.strtolower(app()->getLocale())} }}</a></h6>
+						<h6><a href="{{URL('inner-certifcate/')}}/{{$live_certific->id}}" title="">{{$live_certific->{'name_'.strtolower(app()->getLocale())} }}</a></h6>
 					</div>
 				</div>
 		@endforeach
