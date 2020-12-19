@@ -67,7 +67,7 @@ class live_certificate_formDataTable extends DataTable
         return [
             'name',
             'mobile',
-            'note',
+           // 'note',
             'address',
             // 'live_certificates_id' => ['searchable' => false]
         ];

@@ -61,8 +61,9 @@ class competitions_formController extends AppBaseController
         $competitionsForm = $this->competitionsFormRepository->create($input);
 
         Flash::success('Competitions Form saved successfully.');
+        return redirect()->back()->with('success', 'successfully ');   
 
-        return redirect(route('competitionsForms.index'));
+        // return redirect(route('competitionsForms.index'));
     }
 
     /**

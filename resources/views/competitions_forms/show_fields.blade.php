@@ -24,8 +24,8 @@
 
 <!-- Competition Id Field -->
 <div class="form-group">
-    {!! Form::label('competition_id', 'Competition Id:') !!}
-    <p>{{ $competitionsForm->competition_id }}</p>
+    {!! Form::label('competition_id', 'Competition:') !!}
+    <p>{{ $competitionsForm->competition->name_en }}</p>
 </div>
 
 <!-- Created At Field -->

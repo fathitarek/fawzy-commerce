@@ -57,4 +57,7 @@ class sub_categories extends Model
     public function category() {
         return $this->belongsTo('App\Models\categories');
     }
+    public function shop_items() {
+        return $this->hasMany('App\Models\shop_items','sub_category_id');
+    }
 }

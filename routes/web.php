@@ -52,4 +52,6 @@ Route::GET('our-projects', 'projectsPageController@projectsPage');
 Route::GET('inner-project/{id}', 'projectsPageController@innerProject');
 Route::GET('our-certifcate', 'liveCertificatePageController@certificatesPage');
 Route::GET('inner-certifcate/{id}', 'liveCertificatePageController@innerCertificate');
+Route::GET('our-products', 'productsPageController@productsPage');
+
 

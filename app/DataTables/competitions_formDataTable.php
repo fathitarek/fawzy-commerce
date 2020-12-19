@@ -67,7 +67,7 @@ class competitions_formDataTable extends DataTable
         return [
             'name',
             'mobile',
-            'note',
+           // 'note',
             'address',
             // 'competition_id' => ['searchable' => false]
         ];

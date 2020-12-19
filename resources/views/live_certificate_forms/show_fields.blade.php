@@ -24,8 +24,8 @@
 
 <!-- Live Certificates Id Field -->
 <div class="form-group">
-    {!! Form::label('live_certificates_id', 'Live Certificates Id:') !!}
-    <p>{{ $liveCertificateForm->live_certificates_id }}</p>
+    {!! Form::label('live_certificates_id', 'Live Certificates:') !!}
+    <p>{{ $liveCertificateForm->live_certificate->name_en }}</p>
 </div>
 
 <!-- Created At Field -->

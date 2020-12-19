@@ -20,7 +20,7 @@
 </a>
 							<a href="inner-successful-stories/{{$sucess_story->id}}" title=""><span></span></a>
 						</div>
-						<p>{!! $sucess_story->{'description_'.strtolower(app()->getLocale())} !!}</p>
+						<p>{!! str_limit($sucess_story->{'description_'.strtolower(app()->getLocale())},250) !!}</p>
 						<!-- <h6><i>$</i> 85920<span>Money Spent</span></h6> -->
 						<!-- <span><i class="icon-map-marker"></i>In SouthAfrica</span> -->
 					</div><!--Story-->
@@ -35,22 +35,7 @@
 @endforeach
 			</div>
 
-			<div class="pagination-area">
-				<!-- <ul class="pagination">
-				  <li><a href="#">1</a></li>
-				  <li><a href="#">2</a></li>
-				  <li><a href="#">3</a></li>
-				  <li><a href="#">4</a></li>
-				  <li><a href="#">5</a></li>
-				</ul> -->
-				{!! $sucess_stories->render() !!}
-				<!-- <div class="pagination-buttons">
-					<a title="" href="#"><i class="icon-angle-left"></i></a>
-					<a title="" href="#"><i class="icon-angle-right"></i></a>
-				</div> -->
-				
-				<span>{{__('home.page')}} {{$sucess_stories->currentPage()}} {{__('home.of')}} {{$sucess_stories->lastPage()}}</span>
-			</div><!--Pagination-->
+			
 	</div>
 		
 

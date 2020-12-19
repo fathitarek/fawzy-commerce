@@ -57,12 +57,13 @@ class projects_formController extends AppBaseController
     public function store(Createprojects_formRequest $request)
     {
         $input = $request->all();
-
+// return $input;
         $projectsForm = $this->projectsFormRepository->create($input);
 
         Flash::success('Projects Form saved successfully.');
+        return redirect()->back()->with('success', 'successfully ');   
 
-        return redirect(route('projectsForms.index'));
+        // return redirect(route('projectsForms.index'));
     }
 
     /**

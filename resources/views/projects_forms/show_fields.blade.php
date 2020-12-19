@@ -24,8 +24,8 @@
 
 <!-- Project Id Field -->
 <div class="form-group">
-    {!! Form::label('project_id', 'Project Id:') !!}
-    <p>{{ $projectsForm->project_id }}</p>
+    {!! Form::label('project_id', 'Project:') !!}
+    <p>{{ $projectsForm->project->name_en }}</p>
 </div>
 
 <!-- Created At Field -->

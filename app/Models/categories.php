@@ -55,4 +55,10 @@ class categories extends Model
         return $this->hasMany('App\Models\sub_categories','category_id');
 
     }  
+
+    public function shop_items(){
+
+        return $this->hasMany('App\Models\shop_items','category_id');
+
+    } 
 }

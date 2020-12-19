@@ -61,8 +61,9 @@ class live_certificate_formController extends AppBaseController
         $liveCertificateForm = $this->liveCertificateFormRepository->create($input);
 
         Flash::success('Live Certificate Form saved successfully.');
+        return redirect()->back()->with('success', 'successfully ');   
 
-        return redirect(route('liveCertificateForms.index'));
+        // return redirect(route('liveCertificateForms.index'));
     }
 
     /**
