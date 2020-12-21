@@ -43,7 +43,7 @@ return [
     'high_to_low'=>'High To Low',
     'products'=>'Products',
     'category_list'=>'Category List',
-    ''=>'',
+    'order'=>'Products Order ',
     ''=>'',
     ''=>'',
     ''=>'',

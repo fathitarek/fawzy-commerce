@@ -17,7 +17,7 @@
 					<!-- <h3 class="sub-head">Buy these products to help us raise donations for the poor</h3> -->
 					<!-- <p>Aenean tristique pulvinar urna, et lacinia magna imperdiet vitae. In vitae lorem dolor, in lacinia augue. Fusce pretium dolor non odio aucto at iaculis nibh pellentesque. Integer dapibus vehicula ligula sit amet aliquam lorem ipsum dolor sit amet. Vestibulum posuere placerat me tus, nec porttitor nisl tempus et tristique pulvinar urna, et lacinia magna imperdiet vitae.</p> -->
 			<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<select name="category_id"  id='category_id' class="form-control">
 				<option value='0'>{{__('home.select_category')}}</option>
 				@foreach($categories as $category)
@@ -25,7 +25,7 @@
 				@endforeach
 				</select>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-3">
 				<select class="form-control" name="sub_category_id" id="sub_category_id">
    				 <option value='0'>{{__('home.select_sub_category')}}</option>
    				 </select>
@@ -37,8 +37,20 @@
 					<option value="1">{{__('home.high_to_low')}} </option>
    				 </select>
 					</div>
-					<div class="col-md-1">
+					<div class="col-md-2">
+					<select class="form-control" name="order" id="order">
+					<option value="2">{{__('home.order')}}</option>
+   					<option value="0">{{__('home.low_to_high')}}</option>
+					<option value="1">{{__('home.high_to_low')}} </option>
+   				 </select>
+					</div>
+					<div class="row">
+					<div class="col-md-3">
 					<input type="submit" value="{{__('home.search')}}" class="btn" style="background-color: #4fc0aa;color:white">
+					</div>
+					<div class="col-md-3">
+					<!-- <input type="submit" value="{{__('home.search')}}" class="btn" style="background-color: #4fc0aa;color:white"> -->
+					</div>
 					</div>
 		</form>
 	</div>
