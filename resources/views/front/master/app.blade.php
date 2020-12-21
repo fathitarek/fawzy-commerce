@@ -266,7 +266,7 @@ $(window).load(function(){
 					</ul>
 				</li>
 				<li>
-				<select id="language_select" class="form-control" style="border: 1px solid #4fc0aa;color: #3d3d3d;margin-top: 30px;">
+				<select id="language_select"  class="form-control" style="margin-left: 10px;border: 1px solid #4fc0aa;color: #3d3d3d;margin-top: 30px;">
                     <option value="">@lang('home.select_language') </option>
                     <option value="en">English</option>
                     <option value="ar">عربي</option>
@@ -468,5 +468,40 @@ console.log(msg);
                                 });
 });
 </script>
+
+<script type="text/javascript">
+            $(document).ready(function () {
+             
+                $('#category_id').on('change',function(e) {
+                 
+                 var cat_id = jQuery(this).val();
+if (cat_id) {
+    
+
+                 $.ajax({
+                       
+                       url:"/subcat/"+cat_id,
+                       type:"get",
+                       data: {
+                       // "category_id": cat_id,
+                        //"_token": "{{ csrf_token() }}",
+                        },
+                      
+                       success:function (data) {
+                        $('#sub_category_id').empty();
+                        $.each(data.subcategories[0].subcategories,function(index,subcategory){    
+                            $('#sub_category_id').append('<option value="'+subcategory.id+'">'+subcategory.name_en+'</option>');
+                        })
+
+                       }
+                   })
+}else{
+    $('#sub_category_id').empty();  
+    $('#sub_category_id').append('<option>Select Sub Category...</option>');
+}
+                });
+
+            });
+        </script>
 </body>
 </html>

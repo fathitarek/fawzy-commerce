@@ -1,21 +1,47 @@
 @extends('front.master.app')
 @section('content')
 <div class="top-image">
-	<img src="images/single-page-top2.jpg" alt="" />
+	<img src="{{URL('images/single-page-top2.jpg')}}" alt="" />
 </div><!-- Page Top Image -->
 	
 <section class="page">
 	<div class="container">
 		<div class="page-title">
-			<h1>Featured <span>Products</span></h1>
+			<h1>{{__('home.products')}}</h1>
 		</div><!-- Page Title -->
 		<div class="row">
+		<form method="get" action="{{URL('/our-products')}}"> 
 			<div class="left-content col-md-9">
 				
 				<div class="featured-products">
 					<!-- <h3 class="sub-head">Buy these products to help us raise donations for the poor</h3> -->
 					<!-- <p>Aenean tristique pulvinar urna, et lacinia magna imperdiet vitae. In vitae lorem dolor, in lacinia augue. Fusce pretium dolor non odio aucto at iaculis nibh pellentesque. Integer dapibus vehicula ligula sit amet aliquam lorem ipsum dolor sit amet. Vestibulum posuere placerat me tus, nec porttitor nisl tempus et tristique pulvinar urna, et lacinia magna imperdiet vitae.</p> -->
-				
+			<div class="row">
+			<div class="col-md-4">
+				<select name="category_id"  id='category_id' class="form-control">
+				<option value='0'>{{__('home.select_category')}}</option>
+				@foreach($categories as $category)
+				<option value="{{$category->id}}"> {{$category->{'name_'.strtolower(app()->getLocale())} }}</option>
+				@endforeach
+				</select>
+				</div>
+				<div class="col-md-4">
+				<select class="form-control" name="sub_category_id" id="sub_category_id">
+   				 <option value='0'>{{__('home.select_sub_category')}}</option>
+   				 </select>
+					</div>
+					<div class="col-md-3">
+					<select class="form-control" name="price" id="price">
+					<option value="2">{{__('home.select_price')}}</option>
+   					<option value="0">{{__('home.low_to_high')}}</option>
+					<option value="1">{{__('home.high_to_low')}} </option>
+   				 </select>
+					</div>
+					<div class="col-md-1">
+					<input type="submit" value="{{__('home.search')}}" class="btn" style="background-color: #4fc0aa;color:white">
+					</div>
+		</form>
+	</div>
 					<div class="row">
                         @foreach($shop_items as $product)
 						<div class="col-md-4">
@@ -43,10 +69,10 @@
 			
 			<div class="sidebar col-md-3 pull-right">
 				<div class="sidebar-widget">
-					<div class="sidebar-search">
+					<!-- <div class="sidebar-search">
 						<input class="search" type="text" placeholder="Enter Search Item" />
 						<input class="search-button" type="submit" value="" />
-					</div>
+					</div> -->
 				</div><!--Sidebar Search-->
                 <div class="sidebar-widget">
 				<div class="sidebar-title">
@@ -123,18 +149,19 @@
 			
 				<div class="sidebar-widget">
 					<div class="sidebar-title">
-						<h4>Category <span>List</span></h4>
+						<h4>{{__('home.category_list')}}</h4>
 					</div>
 					<ul class="sidebar-list">
                         @foreach($categories as $category)
-                        <li><a href="#" title="">{{$category->{'name_'.strtolower(app()->getLocale())} }} ({{count($category->shop_items) }})</a></li>
-                        <li class="sidebar-list">
+                        <li><a href="/our-products-with-category/{{$category->id}}" title="">{{$category->{'name_'.strtolower(app()->getLocale())} }} ({{count($category->shop_items) }})</a></li>
+                        <ul class="sidebar-list">
                             @foreach($category->subcategories as $sub)
-                            <ul class="sidebar-list">
-                            <li>  {{$sub->{'name_'.strtolower(app()->getLocale())} }}  ({{count($sub->shop_items) }})</li>
-                            </ul>
+                           
+                            <li style="width: 90%;"><a href="/our-products-with-sub_category/{{$sub->id}}" title="">  {{$sub->{'name_'.strtolower(app()->getLocale())} }}  ({{count($sub->shop_items) }}) </a></li>
+                            
                             @endforeach
-                        </li>
+							</ul>
+                        
                         @endforeach
 					</ul>
 				</div><!-- Category List -->

@@ -55,4 +55,10 @@ Route::GET('inner-certifcate/{id}', 'liveCertificatePageController@innerCertific
 Route::GET('our-products', 'productsPageController@productsPage');
 Route::GET('our-infoBank', 'infoBankPageController@infoBanksPage');
 Route::GET('inner-infoBank/{id}', 'infoBankPageController@innerInfoBank');
+Route::GET('our-products-with-category/{category_id}', 'productsPageController@productsByCategoryPage');
+Route::GET('our-products-with-sub_category/{sub_category_id}', 'productsPageController@productsBySubCategoryPage');
+
+
+
+
 
