@@ -18,9 +18,16 @@ class productsPageController extends Controller
     public function productsPage(){
         $categories=categories::get();
 
-if (isset($_GET['price'])||isset($_GET['sub_category_id'])||isset($_GET['category_id'])) { //search
+if (isset($_GET['order'])||isset($_GET['price'])||isset($_GET['sub_category_id'])||isset($_GET['category_id'])) { //search
+    if (isset($_GET['order'])&&$_GET['order']==1) {
     $shop_items=shop_items::latest();
-    if (isset($_GET['category_id'])) {
+    }
+    elseif (isset($_GET['order'])&&$_GET['order']==0) {
+        $shop_items=shop_items::oldest();
+        }else{
+            $shop_items=shop_items::latest();
+        }
+    if (isset($_GET['category_id'])&&$_GET['category_id']!=0) {
         $shop_items=$shop_items->where('category_id',$_GET['category_id']);
     }
 

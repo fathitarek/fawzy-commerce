@@ -37,16 +37,18 @@
 					<option value="1">{{__('home.high_to_low')}} </option>
    				 </select>
 					</div>
-					<div class="col-md-2">
+					<div class="col-md-3">
 					<select class="form-control" name="order" id="order">
 					<option value="2">{{__('home.order')}}</option>
-   					<option value="0">{{__('home.low_to_high')}}</option>
-					<option value="1">{{__('home.high_to_low')}} </option>
+   					<option value="0">{{__('home.oldest_to_latest')}}</option>
+					<option value="1">{{__('home.latest_to_oldest')}} </option>
    				 </select>
 					</div>
+					<!-- <input type="submit" value="{{__('home.search')}}" class="btn" style="background-color: #4fc0aa;color:white"> -->
+
 					<div class="row">
-					<div class="col-md-3">
-					<input type="submit" value="{{__('home.search')}}" class="btn" style="background-color: #4fc0aa;color:white">
+					<div class="col-md-12">
+					<input type="submit" value="{{__('home.search')}}" class="btn" style="background-color: #4fc0aa;color:white;margin: 20px;">
 					</div>
 					<div class="col-md-3">
 					<!-- <input type="submit" value="{{__('home.search')}}" class="btn" style="background-color: #4fc0aa;color:white"> -->
