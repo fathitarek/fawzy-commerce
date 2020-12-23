@@ -6,18 +6,19 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class categories
+ * Class partners
  * @package App\Models
- * @version November 13, 2020, 7:20 pm UTC
+ * @version December 23, 2020, 3:00 pm UTC
  *
  * @property string $name_en
  * @property string $name_ar
+ * @property string $image
  */
-class categories extends Model
+class partners extends Model
 {
     use SoftDeletes;
 
-    public $table = 'categories';
+    public $table = 'partners';
     
 
     protected $dates = ['deleted_at'];
@@ -26,7 +27,8 @@ class categories extends Model
 
     public $fillable = [
         'name_en',
-        'name_ar'
+        'name_ar',
+        'image'
     ];
 
     /**
@@ -37,7 +39,8 @@ class categories extends Model
     protected $casts = [
         'id' => 'integer',
         'name_en' => 'string',
-        'name_ar' => 'string'
+        'name_ar' => 'string',
+        'image' => 'string'
     ];
 
     /**
@@ -47,20 +50,13 @@ class categories extends Model
      */
     public static $rules = [
         'name_en' => 'required',
-        'name_ar' => 'required'
+        'name_ar' => 'required',
+        'image' => 'required|image|mimes:png,jpeg,gif'
     ];
 
-    public function subcategories(){
-
-        return $this->hasMany('App\Models\sub_categories','category_id');
-
-    }  
-
-    public function shop_items(){
-
-        return $this->hasMany('App\Models\shop_items','category_id');
-
-    } 
-
-    
+    public static $rulesUpdate = [
+        'name_en' => 'required',
+        'name_ar' => 'required',
+        'image' => 'image|mimes:png,jpeg,gif'
+    ];
 }

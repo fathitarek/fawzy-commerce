@@ -16,29 +16,32 @@ Route::get('/', function () {
 });
 
 Auth::routes(['verify' => true]);
-
+Route::group(['prefix' =>"admin" ], function () {
+  Route::resource('categories', 'categoriesController');
+  Route::resource('sucessStories', 'sucess_storiesController');
+  Route::resource('settings', 'settingsController');
+  Route::resource('socials', 'socialController');
+  Route::resource('subCategories', 'sub_categoriesController');
+  Route::resource('sliders', 'sliderController');
+  Route::resource('blogs', 'blogsController');
+  Route::resource('shopItems', 'shop_itemsController');
+  Route::resource('bankInformations', 'bank_informationController');
+  Route::resource('infoBankForms', 'info_bank_formController');
+  Route::resource('competitions', 'competitionsController');
+  Route::resource('competitionsForms', 'competitions_formController');
+  Route::resource('liveCertificates', 'live_certificateController');
+  Route::resource('liveCertificateForms', 'live_certificate_formController');
+  Route::resource('projects', 'projectsController');
+  Route::resource('projectsForms', 'projects_formController');
+  Route::resource('aboutUses', 'about_usController');
+  Route::resource('categoryBlogs', 'category_blogController');
+  Route::resource('newsletters', 'newslettersController');
+});
 Route::get('/home', 'HomeController@index')->middleware('verified');
-Route::resource('categories', 'categoriesController');
-Route::resource('sucessStories', 'sucess_storiesController');
-Route::resource('settings', 'settingsController');
-Route::resource('socials', 'socialController');
-Route::resource('subCategories', 'sub_categoriesController');
-Route::resource('sliders', 'sliderController');
-Route::resource('blogs', 'blogsController');
-Route::resource('shopItems', 'shop_itemsController');
-Route::resource('bankInformations', 'bank_informationController');
-Route::resource('infoBankForms', 'info_bank_formController');
-Route::resource('competitions', 'competitionsController');
-Route::resource('competitionsForms', 'competitions_formController');
-Route::resource('liveCertificates', 'live_certificateController');
-Route::resource('liveCertificateForms', 'live_certificate_formController');
-Route::resource('projects', 'projectsController');
-Route::resource('projectsForms', 'projects_formController');
-Route::resource('aboutUses', 'about_usController');
+
 Route::get("remove_image_item/{id}","shop_itemsController@removeImage");
 Route::get("remove_image_project/{id}","projectsController@removeImage");
 Route::get('subcat/{category_id}','shop_itemsController@getSubCategories')->name('subcat');
-Route::resource('categoryBlogs', 'category_blogController');
 Route::GET('changelanguage', 'LanguageController@changelanguage');
 
 //front
@@ -57,7 +60,13 @@ Route::GET('our-infoBank', 'infoBankPageController@infoBanksPage');
 Route::GET('inner-infoBank/{id}', 'infoBankPageController@innerInfoBank');
 Route::GET('our-products-with-category/{category_id}', 'productsPageController@productsByCategoryPage');
 Route::GET('our-products-with-sub_category/{sub_category_id}', 'productsPageController@productsBySubCategoryPage');
-
+Route::GET('inner-product/{id}', 'productsPageController@productInnerPage');
+Route::GET('our-blogs', 'blogPageController@blogPage');
+Route::GET('add_to_cart/{product_id}/{customer_id}/{quantity}', 'CartController@addToCart');
+Route::GET('my-cart', 'CartController@getCart');
+Route::GET('remove_cart/{id}', 'CartController@deleteCart');
+Route::GET('our-blogs-with-category/{category_id}', 'blogPageController@blogsByCategoryPage');
+Route::GET('inner_blog/{id}', 'blogPageController@innerBlog');
 
 
 
@@ -76,3 +85,8 @@ Route::group(['prefix' => 'customer'], function () {
   Route::get('/password/reset', 'CustomerAuth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
   Route::get('/password/reset/{token}', 'CustomerAuth\ResetPasswordController@showResetForm');
 });
+
+
+
+
+Route::resource('partners', 'partnersController');

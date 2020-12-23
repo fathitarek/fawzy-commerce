@@ -30,7 +30,7 @@
 							<!-- <p>#8901 Marmora Road Chi Minh City, Vietnam</p> -->
 						</li>
 						<li>
-							<span><i class="icon-link"></i>{{__('home.web_address')}}</span>
+							<span><i class="icon-link"></i>{{__('home.email_id')}}</span>
 							<p>{{$settings[0]->email}}</p>
 						</li>
 					</ul>

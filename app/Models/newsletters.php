@@ -6,18 +6,17 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class category_blog
+ * Class newsletters
  * @package App\Models
- * @version December 1, 2020, 9:19 am UTC
+ * @version December 23, 2020, 2:36 pm UTC
  *
- * @property string $name_en
- * @property string $name_ar
+ * @property string $email
  */
-class category_blog extends Model
+class newsletters extends Model
 {
     use SoftDeletes;
 
-    public $table = 'category_blogs';
+    public $table = 'newsletters';
     
 
     protected $dates = ['deleted_at'];
@@ -25,8 +24,7 @@ class category_blog extends Model
 
 
     public $fillable = [
-        'name_en',
-        'name_ar'
+        'email'
     ];
 
     /**
@@ -36,8 +34,7 @@ class category_blog extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'name_en' => 'string',
-        'name_ar' => 'string'
+        'email' => 'string'
     ];
 
     /**
@@ -46,13 +43,8 @@ class category_blog extends Model
      * @var array
      */
     public static $rules = [
-        'name_en' => 'required',
-        'name_ar' => 'required'
+        'email' => 'required'
     ];
 
-    public function blogs(){
-
-        return $this->hasMany('App\Models\blogs','category_blog_id');
-
-    } 
+    
 }

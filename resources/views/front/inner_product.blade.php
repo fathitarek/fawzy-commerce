@@ -1,120 +1,60 @@
 @extends('front.master.app')
 @section('content')
-<script type="text/javascript">
-function addToCart(product_id,qty,customer_id){
-	
-           // $("#product-cart-btn").click(function () {
-               // qty = this.data('qty');
-               // customer_id = this.val('customer-id');
-               // product_id = this.val('product-id');
-				//alert(qty);
-                $.ajax({
-                    type: "GET",
-                    // url: "{{ URL('changelanguage') }}",
-                    url: "/add_to_cart/" + product_id + '/' + customer_id + '/' + qty,
-                    data: {
-                        //"lang": language,
-                    },
-                    success: function (msg) {
-						//$(this).addClass('inactiveLink');
-                        console.log(msg);
-						location.reload();
-                    },
-                    error: function (msg) {
-                        console.log(msg);
-                    }
-                });
-           // });
-}
 
-        </script>
 <div class="top-image">
 	<img src="{{URL('images/single-page-top2.jpg')}}" alt="" />
 </div><!-- Page Top Image -->
 	
 <section class="page">
 	<div class="container">
-		<div class="page-title">
-			<h1>{{__('home.products')}}</h1>
-		</div><!-- Page Title -->
 		<div class="row">
-		<form method="get" action="{{URL('/our-products')}}"> 
 			<div class="left-content col-md-9">
-				
-				<div class="featured-products">
-					<!-- <h3 class="sub-head">Buy these products to help us raise donations for the poor</h3> -->
-					<!-- <p>Aenean tristique pulvinar urna, et lacinia magna imperdiet vitae. In vitae lorem dolor, in lacinia augue. Fusce pretium dolor non odio aucto at iaculis nibh pellentesque. Integer dapibus vehicula ligula sit amet aliquam lorem ipsum dolor sit amet. Vestibulum posuere placerat me tus, nec porttitor nisl tempus et tristique pulvinar urna, et lacinia magna imperdiet vitae.</p> -->
-			<div class="row">
-			<div class="col-md-3">
-				<select name="category_id"  id='category_id' class="form-control">
-				<option value='0'>{{__('home.select_category')}}</option>
-				@foreach($categories as $category)
-				<option value="{{$category->id}}"> {{$category->{'name_'.strtolower(app()->getLocale())} }}</option>
-				@endforeach
-				</select>
-				</div>
-				<div class="col-md-3">
-				<select class="form-control" name="sub_category_id" id="sub_category_id">
-   				 <option value='0'>{{__('home.select_sub_category')}}</option>
-   				 </select>
-					</div>
-					<div class="col-md-3">
-					<select class="form-control" name="price" id="price">
-					<option value="2">{{__('home.select_price')}}</option>
-   					<option value="0">{{__('home.low_to_high')}}</option>
-					<option value="1">{{__('home.high_to_low')}} </option>
-   				 </select>
-					</div>
-					<div class="col-md-3">
-					<select class="form-control" name="order" id="order">
-					<option value="2">{{__('home.order')}}</option>
-   					<option value="0">{{__('home.oldest_to_latest')}}</option>
-					<option value="1">{{__('home.latest_to_oldest')}} </option>
-   				 </select>
-					</div>
-					<!-- <input type="submit" value="{{__('home.search')}}" class="btn" style="background-color: #4fc0aa;color:white"> -->
-
-					<div class="row">
-					<div class="col-md-12">
-					<input type="submit" value="{{__('home.search')}}" class="btn" style="background-color: #4fc0aa;color:white;margin: 20px;">
-					</div>
-					<div class="col-md-3">
-					<!-- <input type="submit" value="{{__('home.search')}}" class="btn" style="background-color: #4fc0aa;color:white"> -->
-					</div>
-					</div>
-		</form>
-	</div>
-					<div class="row">
-                        @foreach($shop_items as $product)
-						<div class="col-md-4">
-							<img src="{{URL($product->main_image )}}" alt="" />
-							<a href="inner-product/{{$product->id}}" ><h4>{{$product->{'name_'.strtolower(app()->getLocale())} }}</h4></a>
-							<!-- <div class="ratings">
-								<i class="icon-star"></i>
-								<i class="icon-star"></i>
-								<i class="icon-star"></i>
-								<i class="icon-star"></i>
-								<i class="icon-star-empty"></i>
-							</div> -->
-							<div class="product-price">
-								<span>{{$product->main_price}} EGP</span>
-								<p>{{$product->sale_price}} EGP</p>
-								@if(isset($product->cart)&&$product->cart >0)
-								<a class="inactiveLink"  title="">Added in Cart</a>
-								@else
-								@if(Auth::guard('customer')->check())
-								<a class="" id="product-cart-btn" onclick="addToCart({{$product->id}},1,{{Auth::guard('customer')->user()->id}})" title="">Add To Cart</a>
-								@endif
-								@endif
+				<div class="post">
+					<div class="single-product-page">
+						<div class="row">
+							<div class="col-md-5">
+								<img src="{{URL($shop_items->main_image )}}" alt="" /><!-- Post Image -->
 							</div>
-                        </div><!--Product-->
-                        @endforeach
+	
+							<div class="col-md-7">
+							<div class="alert alert-success" id="alert_cart" role="alert"style="display:none;">
+							{{__('home.cart_msg')}}  
+</div>
+								<h1>{{$shop_items->{'name_'.strtolower(app()->getLocale())} }}</h1>
+								<div class="post-desc">
+									<p>{!! $shop_items->{'description_'.strtolower(app()->getLocale())} !!}</p>
+									<button class="favorite-btn"><i class="icon-heart"></i> Add To Favorites</button>
+									<button type="button" class="btn btn-primary active">{{$shop_items->main_price}} EGP</button>
+									@if($shop_items->sale_price)
+									<button type="button" class="btn btn-primary disabled">{{$shop_items->sale_price}}  EGP</button>
+									@endif
+									@if(Auth::guard('customer')->check())
+									<div class="row">
+										<div class="col-md-6">
+											<div id="quantity-field">
+												<button id="up" onclick="setQuantity('up');">+</button>
+                                                <input type="text" id="quantity" value="{{$shop_items->cart[0]->quantity}}">
+                                                <input type="hidden" id="customer_id" value="{{ Auth::guard('customer')->user()->id }}">
+                                                <input type="hidden" id="product_id" value="{{$shop_items->id}}">
+												<button id="down" onclick="setQuantity('down');">-</button>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<a class="cart-btn"  id="cart-btn"   title=""><span><i class="fa fa-shopping-cart"></i></span>Add To Cart</a>
+										</div>
+									</div>
+								@endif
+								</div>
+							</div>					
+						</div>					
 					</div>
-				
+					
 				</div>
-				{{$shop_items->render()}}
+				
+				
+				
+
 			</div>
-			
 			<div class="sidebar col-md-3 pull-right">
 				<div class="sidebar-widget">
 					<!-- <div class="sidebar-search">
@@ -221,5 +161,4 @@ function addToCart(product_id,qty,customer_id){
 
 </section>
 </div>
-
 @endsection

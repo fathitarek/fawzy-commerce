@@ -70,3 +70,11 @@
     <a href="{{ route('categoryBlogs.index') }}"><i class="fa fa-edit"></i><span>Category Blogs</span></a>
 </li>
 
+<li class="{{ Request::is('newsletters*') ? 'active' : '' }}">
+    <a href="{{ route('newsletters.index') }}"><i class="fa fa-edit"></i><span>Newsletters</span></a>
+</li>
+
+<li class="{{ Request::is('partners*') ? 'active' : '' }}">
+    <a href="{{ route('partners.index') }}"><i class="fa fa-edit"></i><span>Partners</span></a>
+</li>
+
