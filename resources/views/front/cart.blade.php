@@ -80,73 +80,104 @@
 			
 			<div class="sidebar col-md-3 pull-right">
 				<div class="sidebar-widget">
-					<div class="sidebar-search">
+					<!-- <div class="sidebar-search">
 						<input class="search" type="text" placeholder="Enter Search Item" />
 						<input class="search-button" type="submit" value="" />
+					</div> -->
+				</div><!--Sidebar Search-->
+                <div class="sidebar-widget">
+				<div class="sidebar-title">
+					<h4>{{__('home.recent')}} <span> {{__('home.info_bank')}}</span></h4>
+                </div>
+               @foreach($bank_information as $bank_info)
+				<div class="popular-post">
+					<img src="{{URL($bank_info->image )}}" alt="" />
+					<div class="popular-post-title">
+					<h6><a href="{{$bank_info->id}}" title="">{{$bank_info->{'name_'.strtolower(app()->getLocale())} }}</a></h6>
 					</div>
-				</div><!-- Sidebar Search -->
-				<div class="sidebar-widget">
-					<div class="sidebar-title">
-						<h4>Popular <span>Posts</span></h4>
-					</div>
-					<div class="popular-post">
-						<img src="images/popular-post1.jpg" alt="" />
-						<div class="popular-post-title">
-							<h6><a href="#" title="">Quisque Sit Amet Unte</a></h6>
-							<span>May 3,2013 / 02 comments</span>
-						</div>
-					</div>
-					<div class="popular-post">
-						<img src="images/popular-post2.jpg" alt="" />
-						<div class="popular-post-title">
-							<h6><a href="#" title="">Quisque Sit Amet Unte</a></h6>
-							<span>May 3,2013 / 02 comments</span>
-						</div>
-					</div>
+				</div>
+		@endforeach
 
-				</div><!-- Popular Post -->
+			</div><!-- Recent Events -->
+			
+			<div class="sidebar-widget">
+				<div class="sidebar-title">
+					<h4>{{__('home.recent')}} <span> {{__('home.sucess_stories')}}</span></h4>
+                </div>
+               @foreach($sucess_stories as $sucess_story)
+				<div class="popular-post">
+					<img src="{{URL($sucess_story->image )}}" alt="" />
+					<div class="popular-post-title">
+					<h6><a href="{{URL('inner-successful-stories/')}}/{{$sucess_story->id}}" title="">{{$sucess_story->{'name_'.strtolower(app()->getLocale())} }}</a></h6>
+					</div>
+				</div>
+		@endforeach
+
+			</div><!-- Recent Events -->
+			
+            <div class="sidebar-widget">
+				<div class="sidebar-title">
+					<h4>{{__('home.recent')}} <span> {{__('home.compitiion')}}</span></h4>
+                </div>
+               @foreach($competitions as $competition)
+				<div class="popular-post">
+					<img src="{{URL($competition->image )}}" alt="" />
+					<div class="popular-post-title">
+					<h6><a href="{{URL('inner-competition')}}/{{$competition->id}}" title="">{{$competition->{'name_'.strtolower(app()->getLocale())} }}</a></h6>
+					</div>
+				</div>
+		@endforeach
+
+			</div><!-- Recent Events -->
+            
+            <div class="sidebar-widget">
+				<div class="sidebar-title">
+					<h4>{{__('home.recent')}} <span>{{__('home.projects')}} </span></h4>
+                </div>
+               @foreach($projects as $project)
+				<div class="popular-post">
+					<img src="{{URL($project->images[0]->images)}}" alt="" />
+					<div class="popular-post-title">
+					<h6><a href="{{URL('inner-project/')}}/{{$project->id}}" title="">{{$project->{'name_'.strtolower(app()->getLocale())} }}</a></h6>
+					</div>
+				</div>
+		@endforeach
+
+        <div class="sidebar-widget">
+				<div class="sidebar-title">
+					<h4>{{__('home.recent')}} <span>{{__('home.live_certificate')}} </span></h4>
+                </div>
+               @foreach($live_certificate as $live_cert)
+				<div class="popular-post">
+					<img src="{{URL($live_cert->image)}}" alt="" />
+					<div class="popular-post-title">
+					<h6><a href="{{URL('inner-certifcate/')}}/{{$live_cert->id}}" title="">{{$live_cert->{'name_'.strtolower(app()->getLocale())} }}</a></h6>
+					</div>
+				</div>
+        @endforeach
+        
+			</div><!-- Recent Events -->
+			
 				<div class="sidebar-widget">
 					<div class="sidebar-title">
-						<h4>Meta <span>Data</span></h4>
+						<h4>{{__('home.category_list')}}</h4>
 					</div>
 					<ul class="sidebar-list">
-						<li><a href="#" title="">Blog</a></li>
-						<li><a href="#" title="">Creative</a></li>
-						<li><a href="#" title="">Powerful</a></li>
-						<li><a href="#" title="">Clean</a></li>
-					</ul>
-				</div><!-- Meta Data -->
-				<div class="sidebar-widget">
-					<div class="sidebar-title">
-						<h4>Tags <span>Clouds</span></h4>
-					</div>
-					<div class="cloud-tags">
-						<a href="#" title="">Uncategorized</a>
-						<a href="#" title="">Susipit</a>
-						<a href="#" title="">Diam</a>
-						<a href="#" title="">Diam</a>
-						<a href="#" title="">Susipit</a>
-						<a href="#" title="">Diam</a>
-						<a href="#" title="">Susipit</a>
-						<a href="#" title="">Uncategorized</a>
-						<a href="#" title="">Susipit</a>
-					</div>
-				</div><!-- Tags Clouds -->
-				<div class="sidebar-widget">
-					<div class="sidebar-title">
-						<h4>Category <span>List</span></h4>
-					</div>
-					<ul class="sidebar-list">
-						<li><a href="#" title="">Blog (6)</a></li>
-						<li><a href="#" title="">Colourful (5)</a></li>
-						<li><a href="#" title="">Feature (2)</a></li>
-						<li><a href="#" title="">Nature (7)</a></li>
-						<li><a href="#" title="">Scenery(3)</a></li>
-						<li><a href="#" title="">Uncategorized(1)</a></li>
+                        @foreach($categories as $category)
+                        <li><a href="/our-products-with-category/{{$category->id}}" title="">{{$category->{'name_'.strtolower(app()->getLocale())} }} ({{count($category->shop_items) }})</a></li>
+                        <ul class="sidebar-list">
+                            @foreach($category->subcategories as $sub)
+                           
+                            <li style="width: 90%;"><a href="/our-products-with-sub_category/{{$sub->id}}" title="">  {{$sub->{'name_'.strtolower(app()->getLocale())} }}  ({{count($sub->shop_items) }}) </a></li>
+                            
+                            @endforeach
+							</ul>
+                        
+                        @endforeach
 					</ul>
 				</div><!-- Category List -->
 				
-			</div><!-- Sidebar -->
+			</div>
 		</div>
 	</div>
 
