@@ -12,6 +12,7 @@ use App\galleryProjects;
 use App\Models\shop_items;
 use App\Models\categories;
 use App\Models\carts;
+use App\Models\wishlist;
 use Illuminate\Support\Facades\Auth;
 
 class productsPageController extends Controller
@@ -123,8 +124,11 @@ if(isset(Auth::guard('customer')->user()->id)){
         // return $categories;
         $shop_items=shop_items::find($id);
         if(isset(Auth::guard('customer')->user()->id)){
-            $shop_items->cart= carts::where('customer_id',Auth::guard('customer')->user()->id)->where('product_id',$shop_items->id)->get();
-         }
+            $shop_items->cart= carts::where('customer_id',Auth::guard('customer')->user()->id)->where('product_id',$id)->get();
+            $shop_items->wishlist= wishlist::where('customer_id',Auth::guard('customer')->user()->id)->where('product_id',$id)->count();
+
+        }
+        // return $shop_items;
         $competitions=competitions::latest()->limit(2)->get();
         $sucess_stories=sucess_stories::latest()->limit(2)->get();
         $bank_information=bank_information::latest()->limit(2)->get();

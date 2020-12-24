@@ -20,13 +20,22 @@
 							<div class="alert alert-success" id="alert_cart" role="alert"style="display:none;">
 							{{__('home.cart_msg')}}  
 </div>
+
+<div class="alert alert-success" id="alert_wishlist" role="alert"style="display:none;">
+							{{__('home.wishlist_msg')}}  
+</div>
 								<h1>{{$shop_items->{'name_'.strtolower(app()->getLocale())} }}</h1>
 								<div class="post-desc">
 									<p>{!! $shop_items->{'description_'.strtolower(app()->getLocale())} !!}</p>
-									<button class="favorite-btn"><i class="icon-heart"></i> Add To Favorites</button>
-									<button type="button" class="btn btn-primary active">{{$shop_items->main_price}} EGP</button>
+									@if(Auth::guard('customer')->check()&&$shop_items->wishlist>0)
+									<button class="favorite-btn disabled" disabled id="favorite-btn"><i class="icon-heart"></i> {{__('home.add_to_favorites')}}</button>
+									@else
+									<button class="favorite-btn" id="favorite-btn"><i class="icon-heart"></i>{{__('home.add_to_favorites')}}</button>
+								@endif
+									<button type="button" class="btn btn-primary disabled">{{$shop_items->main_price}}  EGP</button>
+									
 									@if($shop_items->sale_price)
-									<button type="button" class="btn btn-primary disabled">{{$shop_items->sale_price}}  EGP</button>
+									<button type="button" class="btn btn-primary active">{{$shop_items->sale_price}} EGP</button>
 									@endif
 									@if(Auth::guard('customer')->check())
 									<div class="row">

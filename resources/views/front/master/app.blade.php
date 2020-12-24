@@ -608,5 +608,33 @@
             });
         </script>
 
+
+
+
+
+<script type="text/javascript">
+
+$("#favorite-btn").click(function () {
+    customer_id = $('#customer_id').val();
+    product_id = $('#product_id').val();
+    $.ajax({
+        type: "GET",
+        // url: "{{ URL('changelanguage') }}",
+        url: "/add_to_wishlist/" + product_id + '/' + customer_id ,
+        data: {
+            //"lang": language,
+        },
+        success: function (msg) {
+            $('#alert_wishlist').css('display','block');
+            $("#favorite-btn").addClass('disabled');
+            $("#favorite-btn").prop('disabled',true);
+            console.log(msg);
+        },
+        error: function (msg) {
+            console.log(msg);
+        }
+    });
+});
+</script>
 </body>
 </html>
