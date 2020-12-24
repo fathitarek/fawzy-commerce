@@ -41,7 +41,9 @@
 				<div class="form">
 					<h3 class="sub-head">{{__('home.contact_us_by_message')}}</h3>
 					<!-- <p>Anean sit amet nibh ut magna malesuada <span>*</span></p> -->
-					<form method="post"  action="contact.php" name="contactform" id="contactform">
+					 
+					  {!!Form::open(array('action' => 'ContactFormController@send'))!!}
+
 						<label for="name" accesskey="U">{{__('home.full_name')}} <span>*</span></label>
 						<input name="name" class="form-control input-field" type="text" id="name" size="30" value="" />
 						<label for="email" accesskey="E">{{__('home.email_address')}} <span>*</span></label>

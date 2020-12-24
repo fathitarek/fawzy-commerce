@@ -25,6 +25,7 @@
 							{{__('home.wishlist_msg')}}  
 </div>
 								<h1>{{$shop_items->{'name_'.strtolower(app()->getLocale())} }}</h1>
+							
 								<div class="post-desc">
 									<p>{!! $shop_items->{'description_'.strtolower(app()->getLocale())} !!}</p>
 									@if(Auth::guard('customer')->check()&&$shop_items->wishlist>0)
@@ -59,7 +60,20 @@
 					</div>
 					
 				</div>
-				
+				<div class="post-image-list">
+										@foreach( $shop_items->shopImages as $img)
+									<a href="#" class=" post-image" title="">
+											<img src="{{URL($img->images)}}" alt="" />
+										</a>	
+										@endforeach
+										<!--
+										<a href="images/blank-image.jpg" class="html5lightbox post-image" title="">
+											<img src="http://placehold.it/370x374" alt="" />
+										</a>
+										<a href="images/blank-image.jpg" class="html5lightbox post-image" title="">
+											<img src="http://placehold.it/370x374" alt="" />
+										</a>						 -->
+									</div>
 				
 				
 

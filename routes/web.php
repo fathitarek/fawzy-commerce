@@ -67,12 +67,11 @@ Route::GET('my-cart', 'CartController@getCart');
 Route::GET('remove_cart/{id}', 'CartController@deleteCart');
 Route::GET('our-blogs-with-category/{category_id}', 'blogPageController@blogsByCategoryPage');
 Route::GET('inner_blog/{id}', 'blogPageController@innerBlog');
-
 Route::GET('add_to_wishlist/{product_id}/{customer_id}', 'WishlistsController@addToWishlist');
 Route::GET('my-wishlist', 'WishlistsController@getWishlist');
 Route::GET('remove_wishlist/{id}', 'WishlistsController@deleteWishlist');
 
-
+Route::POST('send_mail', 'ContactFormController@send');
  
 
 Route::group(['prefix' => 'customer'], function () {

@@ -54,14 +54,11 @@ class newslettersController extends AppBaseController
      *
      * @return Response|Factory|RedirectResponse|Redirector|View
      */
-    public function store(CreatenewslettersRequest $request)
-    {
+    public function store(CreatenewslettersRequest $request){
         $input = $request->all();
-
         $newsletters = $this->newslettersRepository->create($input);
-return $newsletters;
+        return $newsletters;
        // Flash::success('Newsletters saved successfully.');
-
       //  return redirect(route('newsletters.index'));
     }
 

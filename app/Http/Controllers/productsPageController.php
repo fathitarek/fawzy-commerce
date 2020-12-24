@@ -13,6 +13,7 @@ use App\Models\shop_items;
 use App\Models\categories;
 use App\Models\carts;
 use App\Models\wishlist;
+use App\shopImage;
 use Illuminate\Support\Facades\Auth;
 
 class productsPageController extends Controller
@@ -138,6 +139,7 @@ if(isset(Auth::guard('customer')->user()->id)){
             $project->images=galleryProjects::where('project_id',$project->id)->get();
 
         }
+       // $shop_items->images= shopImage::where('',$id)->get();
         return view('front.inner_product')->with('categories',$categories)->with('shop_items',$shop_items)->with('competitions',$competitions)->with('sucess_stories',$sucess_stories)->with('bank_information',$bank_information)->with('live_certificate',$live_certificate)->with('projects',$projects);
    
 

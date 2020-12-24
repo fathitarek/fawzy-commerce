@@ -108,4 +108,8 @@ class shop_items extends Model
     public function sub_category() {
         return $this->belongsTo('App\Models\sub_categories');
     }
+
+    public function shopImages() {
+        return $this->hasMany('App\shopImage','shop_item_id');
+    }
 }
