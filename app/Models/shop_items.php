@@ -112,4 +112,5 @@ class shop_items extends Model
     public function shopImages() {
         return $this->hasMany('App\shopImage','shop_item_id');
     }
+    
 }

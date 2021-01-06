@@ -78,3 +78,11 @@
     <a href="{{ route('partners.index') }}"><i class="fa fa-edit"></i><span>Partners</span></a>
 </li>
 
+<li class="{{ Request::is('orders*') ? 'active' : '' }}">
+    <a href="{{ route('orders.index') }}"><i class="fa fa-edit"></i><span>Orders</span></a>
+</li>
+
+<!-- <li class="{{ Request::is('orderDetails*') ? 'active' : '' }}">
+    <a href="{{ route('orderDetails.index') }}"><i class="fa fa-edit"></i><span>Order Details</span></a>
+</li> -->
+

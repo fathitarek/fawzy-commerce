@@ -44,7 +44,12 @@ foreach($carts as $cart){
 
         }
 
-        $carts=  carts::where('is_order',0)->where('customer_id',Auth::guard('customer')->user()->id)->get();
+        if (Auth::guard('customer')->user()) {
+            $carts=  carts::where('is_order',0)->where('customer_id',Auth::guard('customer')->user()->id)->get();
+        }else{
+            return redirect()->back()->with('success', 'successfully ');
+        }
+       
         foreach($carts as $cart){
            $product= shop_items::find($cart->product_id);
            if ($product->sale_price) {

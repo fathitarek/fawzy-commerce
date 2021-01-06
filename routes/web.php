@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['verify' => true]);
+
 Route::group(['prefix' =>"admin" ], function () {
   Route::resource('categories', 'categoriesController');
   Route::resource('sucessStories', 'sucess_storiesController');
@@ -36,6 +36,8 @@ Route::group(['prefix' =>"admin" ], function () {
   Route::resource('aboutUses', 'about_usController');
   Route::resource('categoryBlogs', 'category_blogController');
   Route::resource('newsletters', 'newslettersController');
+  Route::resource('partners', 'partnersController');
+  Route::resource('orders', 'ordersController');
 });
 Route::get('/home', 'HomeController@index')->middleware('verified');
 
@@ -70,9 +72,18 @@ Route::GET('inner_blog/{id}', 'blogPageController@innerBlog');
 Route::GET('add_to_wishlist/{product_id}/{customer_id}', 'WishlistsController@addToWishlist');
 Route::GET('my-wishlist', 'WishlistsController@getWishlist');
 Route::GET('remove_wishlist/{id}', 'WishlistsController@deleteWishlist');
-
 Route::POST('send_mail', 'ContactFormController@send');
- 
+Route::GET('search-successful-stories', 'sucessStoriesPageController@search');
+Route::GET('search-projects', 'projectsPageController@search');
+Route::GET('search-infoBank', 'infoBankPageController@search');
+Route::GET('search-competitions', 'competitionsPageController@search');
+Route::GET('search-certifcate', 'liveCertificatePageController@search');
+Route::GET('search-product', 'productsPageController@search');
+Route::GET('profile', 'CustomerController@profile');
+Route::GET('search-blogs', 'blogPageController@search');
+Route::GET('/', 'IndexController@index');
+Route::GET('checkout', 'CheckoutPageController@checkoutPage');
+
 
 Route::group(['prefix' => 'customer'], function () {
   Route::get('/login', 'CustomerAuth\LoginController@showLoginForm')->name('login');
@@ -87,8 +98,10 @@ Route::group(['prefix' => 'customer'], function () {
   Route::get('/password/reset', 'CustomerAuth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
   Route::get('/password/reset/{token}', 'CustomerAuth\ResetPasswordController@showResetForm');
 });
+Auth::routes(['verify' => true]);
 
 
 
 
-Route::resource('partners', 'partnersController');
+
+Route::resource('orderDetails', 'order_detailsController');

@@ -93,7 +93,7 @@
 				<div class="popular-post">
 					<img src="{{URL($bank_info->image )}}" alt="" />
 					<div class="popular-post-title">
-					<h6><a href="{{$bank_info->id}}" title="">{{$bank_info->{'name_'.strtolower(app()->getLocale())} }}</a></h6>
+					<h6><a href="inner-infoBank/{{$bank_info->id}}" title="">{{$bank_info->{'name_'.strtolower(app()->getLocale())} }}</a></h6>
 					</div>
 				</div>
 		@endforeach

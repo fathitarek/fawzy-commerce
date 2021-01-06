@@ -45,14 +45,17 @@
 		
 		<div class="sidebar col-md-3 pull-right">
 			<div class="sidebar-widget">
-				<!-- <div class="sidebar-search">
-					<input class="search" type="text" placeholder="Enter Search Item" />
+			<div class="sidebar-widget">
+				<div class="sidebar-search">
+					<input class="search"  name="word" id="blog_search" type="text" placeholder="{{__('home.Enter_Search_Item')}}" />
 					<input class="search-button" type="submit" value="" />
-				</div> -->
+				</div>
+				<div id="country_list"></div>
+			</div>
 			</div><!-- Sidebar Search -->
             <div class="sidebar-widget">
 				<div class="sidebar-title">
-				<h4>{{__('home.recent')}} <span> {{__('home.info_bank')}}</span></h4>
+				<h4>{{__('home.recent')}} <span> </span></h4>
                 </div>
                @foreach($bank_information as $bank_info)
 				<div class="popular-post">

@@ -1,7 +1,7 @@
 <!DOCTYPE html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Life Line</title>
+    <title>Fldo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
@@ -52,12 +52,14 @@
 
     <!-- Scripts -->
     {!! Html::script('js/jquery.1.9.1.js') !!}
-    {!! Html::script('js/jquery.jigowatt.js') !!}<!-- AJAX Form Submit -->
-    {!! Html::script('js/script.js') !!}
     {!! Html::script('js/bootstrap.js') !!}
     {!! Html::script('js/html5lightbox.js') !!}
+    {!! Html::script('js/jquery.carouFredSel-6.2.1-packed.js') !!}
+    {!! Html::script('js/jquery.jigowatt.js') !!}<!-- AJAX Form Submit -->
+    {!! Html::script('js/script.js') !!}
     {!! Html::script('js/jquery.flexslider.js') !!}
     {!! Html::script('js/jquery.mousewheel.js') !!}
+
 
     <script>
         $(window).load(function () {
@@ -108,12 +110,143 @@
             }
         }
     </script>
+    <script>
+$(window).load(function(){
+  $('.our-causes').flexslider({
+	animation: "slide",
+	animationLoop: false,
+	controlNav: true,	
+    maxItems: 1,
+	pausePlay: false,
+	mousewheel:true,
+	start: function(slider){
+	  $('body').removeClass('loading');
+	}
+	});
+	
+	
+  $('.slideshow').flexslider({
+	animation: "fade",
+	animationLoop: false,
+	slideShow:false,
+	controlNav: true,	
+    maxItems: 1,
+	pausePlay: false,
+	mousewheel:true,
+	start: function(slider){
+	  $('body').removeClass('loading');
+	}
+	});
+	
+  $('.footer_carousel').flexslider({
+	animation: "slide",
+	animationLoop: false,
+	slideShow:false,
+	controlNav: true,	
+    maxItems: 1,
+	pausePlay: false,
+	mousewheel:true,
+	start: function(slider){
+	  $('body').removeClass('loading');
+	}
+	});
+	
+});
+  
+</script>
+
+	
+<!-- Scripts For Layer Slider  -->
+{!! Html::script('layerslider/JQuery/jquery-easing-1.3.js') !!}
+{!! Html::script('layerslider/JQuery/jquery-transit-modified.js') !!}
+{!! Html::script('layerslider/js/layerslider.transitions.js') !!}
+{!! Html::script('layerslider/js/layerslider.kreaturamedia.jquery.js') !!}
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#layerslider').layerSlider({
+			skinsPath : 'layerslider/skins/',
+			skin : 'defaultskin',
+			responsive: true,
+			responsiveUnder: 1200,			
+			pauseOnHover: false,
+			showCircleTimer: false,
+			navStartStop:false,
+			navButtons:false,
+		}); // LAYER SLIDER
+		
+$(function() {
+	
+
+
+	$('#carousel').carouFredSel({
+		responsive: true,
+		circular: false,
+		auto: false,
+		items: {
+			visible: 1,
+			width: 20,
+		},
+		scroll: {
+			fx: 'directscroll'
+		}
+	});
+	$('#thumbs').carouFredSel({
+		responsive: true,
+		circular: false,
+		infinite: false,
+		auto: false,
+		prev: '#prev',
+		next: '#next',
+		items: {
+			visible: {
+				min: 1,
+				max: 6
+			},
+			width: 200,
+			height: '80%'
+		}
+	});
+	$('#thumbs a').click(function() {
+		$('#carousel').trigger('slideTo', '#' + this.href.split('#').pop() );
+		$('#thumbs a').removeClass('selected');
+		$(this).addClass('selected');
+		return false;
+	});
+	
+});
+	
+			
+});		
+
+</script>
 </head>
 <body>
     <div class="theme-layout">
         <div id="top-bar">
             <div class="container">
                 <ul>
+                @if (Auth::guard('customer')->guest())
+                        <li><a href="{{ url('/customer/login') }}" style="color: #9d9b9b;">{{__('home.login')}}</a></li>
+                        <li><a href="{{ url('/customer/register') }}" style="color: #9d9b9b;">{{__('home.register')}}</a></li>
+                    @else
+                        <li class="">
+                            <a href="#" class="" style="color: #9d9b9b;" >
+                                {{ Auth::guard('customer')->user()->name }} 
+                            </a>
+    </li>
+    <li>
+                                    <a href="{{ url('/customer/logout') }}" style="color: #9d9b9b;" onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        {{__('home.logout')}}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ url('/customer/logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                           
+                    @endif
                     <li>
                         <i class="icon-home"></i>
                         {{$settings[0]->address}}
@@ -129,10 +262,12 @@
                 </ul> 
                 <div class="search-box">
                     <input class="submit-button" type="submit" value="" >
-                    <input class="search-input" type="text" onblur="if (this.value == '')
+                    <input class="search-input" type="text" id="search_products" name="word" onblur="if (this.value == '')
                                 this.value = this.defaultValue;" onfocus="if (this.value == this.defaultValue)
-                                            this.value = '';"  value="Search">
+                                            this.value = '';"  value="{{__('home.search')}}">
+                                             <div id="product_list" style="padding-right: 104px;  overflow: scroll;overflow-x: hidden;"></div>
                 </div>
+               
             </div>
         </div><!--top bar-->
 
@@ -164,7 +299,7 @@
                             </ul> -->
                             <!-- Drop Down -->
                         </li>
-                        <li><a>{{__('home.blog')}}</a>
+                        <li><a href="{{URL('our-blogs')}}">{{__('home.blog')}}</a>
                             <!-- <ul class="mega-menu">
                                     <li><a href="about.html" title="">About Wide</a></li>
                                     <li><a href="contact.html" title="">Contact Wide</a></li>
@@ -197,7 +332,7 @@
                             </ul> -->
                             <!-- Drop Down -->				
                         </li>
-                        <li><a>{{__('home.shop')}}</a>
+                        <li><a  href="{{URL('our-products')}}">{{__('home.shop')}}</a>
                             <!-- <ul>
                                     <li><a>My Cart</a>
                                             <ul class="drop-right">
@@ -226,14 +361,14 @@
                                     <li><a href="single-product.html"  title="">Product Single Page</a></li>
                             </ul> -->
                         </li>
-                        <li><a>{{__('home.projects')}}</a>
+                        <li><a href="{{URL('our-projects')}}">{{__('home.projects')}}</a>
                             <!-- <ul>
                                     <li><a href="portfolio-2-column.html" title="">2 Column Wide</a></li>
                                     <li><a href="portfolio-3-column.html" title="">3 Column Wide</a></li>
                                     <li><a href="portfolio-4-column.html" title="">4 Column Wide</a></li>
                             </ul> -->
                         </li>
-                        <li><a>{{__('home.about_us')}}</a>
+                        <li><a href="{{URL('about')}}">{{__('home.about_us')}}</a>
                             <!-- <ul>
                                     <li><a href="gallery-one-column.html" title="">1 Column Wide</a></li>
                                     <li><a href="gallery-two-column.html" title="">2 Column Wide</a></li>
@@ -256,7 +391,7 @@
                             </ul> -->
                             <!-- Drop Down -->
                         </li>
-                        <li><a>{{__('home.contact')}} {{__('home.us')}}</a>
+                        <li><a href="{{URL('contact')}}">{{__('home.contact')}} {{__('home.us')}}</a>
                             <!-- <ul>
                                     <li><a href="blog-without-sidebar.html" title="">Blog Wide</a></li>
                                     <li><a href="blog-with-sidebar.html" title="">Blog With Left Sidebar</a></li>
@@ -280,15 +415,18 @@
                                     
                             </ul>Drop Down -->
                         </li>
-                        <li><a href="elements.html">{{__('home.more')}}</a>
+                        <li><a >{{__('home.more')}}</a>
                             <ul class="drop-right">
-                                <li><a href="elements.html#tabs-style">{{__('home.info_bank')}} </a></li>
+                                <li><a href="{{URL('our-infoBank')}}">{{__('home.info_bank')}} </a></li>
                                 <li><a href="{{URL('successful-stories')}}">{{__('home.sucess_stories')}}</a></li>
-                                <li><a href="elements.html#blockquotes-style">{{__('home.compitiion')}} </a></li>
-                                <li><a href="elements.html#highlightedtext">{{__('home.partners')}}</a></li>
-                                <li><a href="elements.html#buttons-style">{{__('home.live_certificate')}}</a></li>
+                                <li><a href="{{URL('our-competitions')}}">{{__('home.compitiion')}} </a></li>
+                                <!-- <li><a href="elements.html#highlightedtext">{{__('home.partners')}}</a></li> -->
+                                <li><a href="{{URL('our-certifcate')}}">{{__('home.live_certificate')}}</a></li>
                             </ul>
                         </li>
+                        @if (Auth::guard('customer')->user()) 
+                        <li><a href="{{URL('profile')}}">{{__('home.profile')}}</a>
+                        @endif
                         <li>
                             <select id="language_select"  class="form-control" style="margin-left: 10px;border: 1px solid #4fc0aa;color: #3d3d3d;margin-top: 30px;">
                                 <option value="">@lang('home.select_language') </option>
@@ -402,7 +540,7 @@
                             <h4><strong>{{__('home.sucess_stories')}}</h4>
                         </div>
                         <div class="flickr-images">
-                            @foreach($sucess_stories as $sucess_story)
+                            @foreach($our_sucess_stories as $sucess_story)
                             <a href="inner-successful-stories/{{$sucess_story->id}}" title=""><img src="{{URL($sucess_story->image)}}" alt="" /></a>
                             @endforeach
                                 <!-- <a href="#" title=""><img src="http://placehold.it/77x75" alt="" /></a>
@@ -465,11 +603,11 @@
             <div class="container">
                 <p>Copyright © 2013 Global News. <span>All rights reserved.</span> </p>
                 <ul>
-                    <li><a href="index.html" title="">{{__('home.home')}}</a></li>
-                    <li><a href="about.html" title="">{{__('home.blog')}}</a></li>
-                    <li><a href="elements.html" title="">{{__('home.projects')}}</a></li>
-                    <li><a href="blog-with-sidebar.html" title="">{{__('home.about_us')}}</a></li>
-                    <li><a href="events.html" title="">{{__('home.contact')}} {{__('home.us')}}</a></li>
+                    <li><a href="{{URL('/')}}" title="">{{__('home.home')}}</a></li>
+                    <li><a href="{{URL('our-blogs')}}" title="">{{__('home.blog')}}</a></li>
+                    <li><a href="{{URL('our-projects')}}" title="">{{__('home.projects')}}</a></li>
+                    <li><a href="{{URL('about')}}" title="">{{__('home.about_us')}}</a></li>
+                    <li><a href="{{URL('contact')}}" title="">{{__('home.contact')}} {{__('home.us')}}</a></li>
                     <!-- <li><a href="contact.html" title="">CONTACT</a></li> -->
                 </ul>
 
@@ -636,5 +774,192 @@ $("#favorite-btn").click(function () {
     });
 });
 </script>
+<script type="text/javascript">
+            // jQuery wait till the page is fullt loaded
+            $(document).ready(function () {
+                // keyup function looks at the keys typed on the search box
+                $('#sucess_story_search').on('keyup',function() {
+                    // the text typed in the input field is assigned to a variable 
+                    var query = $(this).val();
+                    // call to an ajax function
+                    $.ajax({
+                        // assign a controller function to perform search action - route name is search
+                        url:"/search-successful-stories",
+                        // since we are getting data methos is assigned as GET
+                        type:"GET",
+                        // data are sent the server
+                        data:{'word':query},
+                        // if search is succcessfully done, this callback function is called
+                        success:function (data) {
+                            // print the search results in the div called country_list(id)
+                            $('#country_list').html(data);
+                        }
+                    })
+                    // end of ajax call
+                });
+            });
+</script>
+
+
+<script type="text/javascript">
+            // jQuery wait till the page is fullt loaded
+            $(document).ready(function () {
+                // keyup function looks at the keys typed on the search box
+                $('#project_search').on('keyup',function() {
+                    // the text typed in the input field is assigned to a variable 
+                    var query = $(this).val();
+                    // call to an ajax function
+                    $.ajax({
+                        // assign a controller function to perform search action - route name is search
+                        url:"/search-projects",
+                        // since we are getting data methos is assigned as GET
+                        type:"GET",
+                        // data are sent the server
+                        data:{'word':query},
+                        // if search is succcessfully done, this callback function is called
+                        success:function (data) {
+                            // print the search results in the div called country_list(id)
+                            $('#country_list').html(data);
+                        }
+                    })
+                    // end of ajax call
+                });
+            });
+</script>
+
+
+<script type="text/javascript">
+            // jQuery wait till the page is fullt loaded
+            $(document).ready(function () {
+                // keyup function looks at the keys typed on the search box
+                $('#info_bank_search').on('keyup',function() {
+                    // the text typed in the input field is assigned to a variable 
+                    var query = $(this).val();
+                    // call to an ajax function
+                    $.ajax({
+                        // assign a controller function to perform search action - route name is search
+                        url:"/search-infoBank",
+                        // since we are getting data methos is assigned as GET
+                        type:"GET",
+                        // data are sent the server
+                        data:{'word':query},
+                        // if search is succcessfully done, this callback function is called
+                        success:function (data) {
+                            // print the search results in the div called country_list(id)
+                            $('#country_list').html(data);
+                        }
+                    })
+                    // end of ajax call
+                });
+            });
+</script>
+
+<script type="text/javascript">
+            // jQuery wait till the page is fullt loaded
+            $(document).ready(function () {
+                // keyup function looks at the keys typed on the search box
+                $('#competition_search').on('keyup',function() {
+                    // the text typed in the input field is assigned to a variable 
+                    var query = $(this).val();
+                    // call to an ajax function
+                    $.ajax({
+                        // assign a controller function to perform search action - route name is search
+                        url:"/search-competitions",
+                        // since we are getting data methos is assigned as GET
+                        type:"GET",
+                        // data are sent the server
+                        data:{'word':query},
+                        // if search is succcessfully done, this callback function is called
+                        success:function (data) {
+                            // print the search results in the div called country_list(id)
+                            $('#country_list').html(data);
+                        }
+                    })
+                    // end of ajax call
+                });
+            });
+</script>
+
+
+<script type="text/javascript">
+            // jQuery wait till the page is fullt loaded
+            $(document).ready(function () {
+                // keyup function looks at the keys typed on the search box
+                $('#certificate_search').on('keyup',function() {
+                    // the text typed in the input field is assigned to a variable 
+                    var query = $(this).val();
+                    // call to an ajax function
+                    $.ajax({
+                        // assign a controller function to perform search action - route name is search
+                        url:"/search-certifcate",
+                        // since we are getting data methos is assigned as GET
+                        type:"GET",
+                        // data are sent the server
+                        data:{'word':query},
+                        // if search is succcessfully done, this callback function is called
+                        success:function (data) {
+                            // print the search results in the div called country_list(id)
+                            $('#country_list').html(data);
+                        }
+                    })
+                    // end of ajax call
+                });
+            });
+</script>
+
+
+<script type="text/javascript">
+            // jQuery wait till the page is fullt loaded
+            $(document).ready(function () {
+                // keyup function looks at the keys typed on the search box
+                $('#search_products').on('keyup',function() {
+                    // the text typed in the input field is assigned to a variable 
+                    var query = $(this).val();
+                    // call to an ajax function
+                    $.ajax({
+                        // assign a controller function to perform search action - route name is search
+                        url:"/search-product",
+                        // since we are getting data methos is assigned as GET
+                        type:"GET",
+                        // data are sent the server
+                        data:{'word':query},
+                        // if search is succcessfully done, this callback function is called
+                        success:function (data) {
+                            // print the search results in the div called country_list(id)
+                            $('#product_list').html(data);
+                        }
+                    })
+                    // end of ajax call
+                });
+            });
+</script>
+
+
+<script type="text/javascript">
+            // jQuery wait till the page is fullt loaded
+            $(document).ready(function () {
+                // keyup function looks at the keys typed on the search box
+                $('#blog_search').on('keyup',function() {
+                    // the text typed in the input field is assigned to a variable 
+                    var query = $(this).val();
+                    // call to an ajax function
+                    $.ajax({
+                        // assign a controller function to perform search action - route name is search
+                        url:"/search-blogs",
+                        // since we are getting data methos is assigned as GET
+                        type:"GET",
+                        // data are sent the server
+                        data:{'word':query},
+                        // if search is succcessfully done, this callback function is called
+                        success:function (data) {
+                            // print the search results in the div called country_list(id)
+                            $('#country_list').html(data);
+                        }
+                    })
+                    // end of ajax call
+                });
+            });
+</script>
+
 </body>
 </html>

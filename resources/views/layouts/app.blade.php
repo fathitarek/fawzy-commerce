@@ -35,7 +35,7 @@
 
                 <!-- Logo -->
                 <a href="#" class="logo">
-                    <b>InfyOm</b>
+                    <b>Fldo</b>
                 </a>
 
                 <!-- Header Navbar -->
@@ -119,7 +119,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        InfyOm Generator
+                        Fldo
                     </a>
                 </div>
 

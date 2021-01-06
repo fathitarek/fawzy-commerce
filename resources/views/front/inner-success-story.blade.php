@@ -45,11 +45,13 @@
 		
 		<div class="sidebar col-md-3 pull-right">
 			<div class="sidebar-widget">
-				<!-- <div class="sidebar-search">
-					<input class="search" type="text" placeholder="Enter Search Item" />
+				<div class="sidebar-search">
+					<input class="search"  name="word" id="sucess_story_search" type="text" placeholder="{{__('home.Enter_Search_Item')}}" />
 					<input class="search-button" type="submit" value="" />
-				</div> -->
-			</div><!-- Sidebar Search -->
+				</div>
+				<div id="country_list"></div>
+			</div>
+			<!-- Sidebar Search -->
             <div class="sidebar-widget">
 				<div class="sidebar-title">
 				<h4>{{__('home.recent')}} <span> {{__('home.info_bank')}}</span></h4>
@@ -58,7 +60,7 @@
 				<div class="popular-post">
 					<img src="{{URL($bank_info->image )}}" alt="" />
 					<div class="popular-post-title">
-						<h6><a href="{{$bank_info->id}}" title="">{{$bank_info->{'name_'.strtolower(app()->getLocale())} }}</a></h6>
+						<h6><a href="{{URL('inner-infoBank/')}}/{{$bank_info->id}}" title="">{{$bank_info->{'name_'.strtolower(app()->getLocale())} }}</a></h6>
 					</div>
 				</div>
 		@endforeach
