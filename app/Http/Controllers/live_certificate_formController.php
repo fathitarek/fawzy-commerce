@@ -23,7 +23,8 @@ class live_certificate_formController extends AppBaseController
     public function __construct(live_certificate_formRepository $liveCertificateFormRepo)
     {
         $this->liveCertificateFormRepository = $liveCertificateFormRepo;
-        $this->middleware('auth');
+        // $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['store']]);
     }
 
     /**

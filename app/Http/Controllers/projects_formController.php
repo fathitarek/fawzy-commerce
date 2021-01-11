@@ -23,7 +23,8 @@ class projects_formController extends AppBaseController
     public function __construct(projects_formRepository $projectsFormRepo)
     {
         $this->projectsFormRepository = $projectsFormRepo;
-        $this->middleware('auth');
+        // $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['store']]);
     }
 
     /**

@@ -13,7 +13,7 @@
                 @foreach($sucess_stories as $key=>$sucess_story)
 				<div class="col-md-3">
 					<div class="story">
-						<div class="story-img">
+						<div class="story-img" style="height: 196px;width: 270px;">
 							<img src="{{URL($sucess_story->image )}}" alt="" />
                             <a href="inner-successful-stories/{{$sucess_story->id}}" title="">
                                 <h5>{{$sucess_story->{'name_'.strtolower(app()->getLocale())} }}</h5>

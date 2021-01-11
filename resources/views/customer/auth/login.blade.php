@@ -80,7 +80,7 @@
                 <!-- /.col -->
             </div>
                     </form>
-                    <a  href="{{ url('/customer/password/reset') }}">I forgot my password</a><br>
+                    <!-- <a  href="{{ url('/customer/password/reset') }}">I forgot my password</a><br> -->
         <a href="{{ url('/customer/register') }}" class="text-center">Register a new membership</a>
 
     </div>

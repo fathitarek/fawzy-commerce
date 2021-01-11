@@ -26,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        \Session::put('locale',"en");
+        // app()->setLocale(\Session::get('locale'));
         $social=social::get();
         $settings=settings::get();
         $about_us=about_us::get();

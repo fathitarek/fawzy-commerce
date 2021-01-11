@@ -31,7 +31,7 @@
 									@if(Auth::guard('customer')->check()&&$shop_items->wishlist>0)
 									<button class="favorite-btn disabled" disabled id="favorite-btn"><i class="icon-heart"></i> {{__('home.add_to_favorites')}}</button>
 									@else
-									<button class="favorite-btn" id="favorite-btn"><i class="icon-heart"></i>{{__('home.add_to_favorites')}}</button>
+									<!-- <button class="favorite-btn" id="favorite-btn"><i class="icon-heart"></i>{{__('home.add_to_favorites')}}</button> -->
 								@endif
 									<button type="button" class="btn btn-primary disabled">{{$shop_items->main_price}}  EGP</button>
 									

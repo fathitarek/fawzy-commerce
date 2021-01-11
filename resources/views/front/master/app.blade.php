@@ -42,6 +42,11 @@
         .inactiveLink {
             pointer-events: none;
             cursor: default;
+            
+        }
+        button, html input[type="button"], input[type="reset"], input[type="submit"] {
+            padding:1rem !important;
+            color:black !important;
         }
     </style>
     <!--[if lt IE 9]>
@@ -59,9 +64,8 @@
     {!! Html::script('js/script.js') !!}
     {!! Html::script('js/jquery.flexslider.js') !!}
     {!! Html::script('js/jquery.mousewheel.js') !!}
-
-
-    <script>
+   
+     <script>
         $(window).load(function () {
             $('.countries').flexslider({
                 animation: "slide",
@@ -260,160 +264,44 @@ $(function() {
                         {{$settings[0]->email}}
                     </li>
                 </ul> 
-                <div class="search-box">
-                    <input class="submit-button" type="submit" value="" >
-                    <input class="search-input" type="text" id="search_products" name="word" onblur="if (this.value == '')
-                                this.value = this.defaultValue;" onfocus="if (this.value == this.defaultValue)
-                                            this.value = '';"  value="{{__('home.search')}}">
-                                             <div id="product_list" style="padding-right: 104px;  overflow: scroll;overflow-x: hidden;"></div>
-                </div>
+
                
             </div>
         </div><!--top bar-->
 
 
         <header>
-            <div class="container">
-                <div class="logo">
-                    <a href="#" title=""><img src="{{URL('images/logo.png')}}" alt="Logo" /><h1><i>L</i>ifeline</h1></a>
+            <div class="" style="width:100%;padding:0 5rem">
+                    <div class="row">
+                    <div class="logo col-2">
+                    <a href="{{URL('/')}}" title=""><img src="{{URL('images/logo.png')}}" alt="Logo" /><h1><i>L</i>ifeline</h1></a>
                 </div><!-- Logo -->
-                <nav class="menu">
+                <div class="search-box col-2" style="margin-top:3.1rem;">
+                        <!-- <input class="submit-button" type="submit" value=""  > -->
+                        <input class="search-input" style="border-bottom-style: solid;border-color: #4fc0aa;padding:1.5rem;width: 150px;" type="text" id="search_products" name="word" onblur="if (this.value == '')
+                                this.value = this.defaultValue;" onfocus="if (this.value == this.defaultValue)
+                                            this.value = '';"  value="{{__('home.search')}}">
+                        <div id="product_list" style="width:200px;max-height:200px;overflow-y:overlay;position:absolute;margin-top:30px"></div>
+                </div>
+                <nav class="menu col-5">
                     <ul id="menu-navigation">
-                        <li class="active"><a>{{__('home.home')}}</a>
-                            <!-- <ul>
-                                    <li><a href="index.html" title="">Home Simple 1</a></li>
-                                    <li><a href="index2.html" title="">Home Modern Style</a></li>
-                                    <li><a href="index3.html" title="">Home Simple 2</a></li>
-                                    <li><a href="index4.html" title="">Home Simple 3</a></li>
-                                    <li><a href="index7.html" title="">Home Traditional Style</a></li>
-                                    <li><a href="index5.html" title="">Home With Video</a></li>
-                                    <li><a href="index6.html" title="">Home With Portfolio</a></li>
-                                    <li><a><strong>Header Styles</strong></a>
-                                            <ul>
-                                                    <li><a href="sticky-menu.html" title="">Sticky Header</a></li>
-                                                    <li><a href="menu-below-slider.html" title="">Menu Below Slider</a></li>
-                                                    <li><a href="middle-logo.html" title="">With Logo In The Mid</a></li>
-                                                    <li><a href="index5.html" title="">Toggle Header</a></li>
-                                    </ul>
-                                    </li>
-                            </ul> -->
-                            <!-- Drop Down -->
+                        <li class="active"><a href="{{URL('/')}}">{{__('home.home')}}</a>
+
                         </li>
                         <li><a href="{{URL('our-blogs')}}">{{__('home.blog')}}</a>
-                            <!-- <ul class="mega-menu">
-                                    <li><a href="about.html" title="">About Wide</a></li>
-                                    <li><a href="contact.html" title="">Contact Wide</a></li>
-                                    <li><a href="profile-single-page.html" title="">Profile Single Page</a></li>
-                                    <li><a>Events</a>
-                                            <ul class="drop-right">
-                                                    <li><a href="events.html" title="">Right Sidebar</a></li>
-                                                    <li><a href="events-left-sidebar.html" title="">Left Sidebar</a></li>
-                                                    <li><a href="single-event-page.html" title="">Event Single Page</a></li>
-                                            </ul>
-                                    </li>
-                                    <li><a href="successful-stories.html" title="">Successful Stories Wide</a></li>
-                                    <li><a href="projects.html" title="">On Going Projects Wide</a></li>
-                                    <li><a href="404.html" title="">404 Page Wide</a></li>
-                                    <li><a href="causes.html" title="">Our Causes Wide</a></li>
-                                    <li><a href="single-causes.html" title="">Causes Single Page</a></li>
-                                    <li><a href="services-single.html" title="">Service Single Page</a></li>
-                                    <li><a>Search With Right Sidebar</a>
-                                            <ul>
-                                                    <li><a href="search-found.html" title="">Search Results Found</a></li>
-                                                    <li><a href="nothing-found.html" title="">Search Result Not Found</a></li>
-                                            </ul>
-                                    </li>
-                                    <li><a>Search With Left Sidebar</a>
-                                            <ul class="drop-right">
-                                                    <li><a href="search-found-left-sidebar.html" title="">Search Results Found</a></li>
-                                                    <li><a href="nothing-found-left-sidebar.html" title="">Search Result Not Found</a></li>
-                                            </ul>
-                                    </li>
-                            </ul> -->
-                            <!-- Drop Down -->				
+    				
                         </li>
                         <li><a  href="{{URL('our-products')}}">{{__('home.shop')}}</a>
-                            <!-- <ul>
-                                    <li><a>My Cart</a>
-                                            <ul class="drop-right">
-                                                    <li><a href="cart.html" title="">Right Sidebar</a></li>
-                                                    <li><a href="cart-left-sidebar.html" title="">Left Sidebar</a></li>
-                                            </ul>
-                                    </li>
-                                    <li><a>Products</a>
-                                            <ul class="drop-right">
-                                                    <li><a href="products.html" title="">Right Sidebar</a></li>
-                                                    <li><a href="products-left-sidebar.html" title="">Left Sidebar</a></li>
-                                            </ul>
-                                    </li>
-                                    <li><a>Checkout</a>
-                                            <ul class="drop-right">
-                                                    <li><a href="checkout.html" title="">Right Sidebar</a></li>
-                                                    <li><a href="checkout-left-sidebar.html" title="">Left Sidebar</a></li>
-                                            </ul>
-                                    </li>
-                                    <li><a>Order Recieved</a>
-                                            <ul class="drop-right">
-                                                    <li><a href="order-recieved.html" title="">Right Sidebar</a></li>
-                                                    <li><a href="order-recieved-left-sidebar.html" title="">Left Sidebar</a></li>
-                                            </ul>
-                                    </li>
-                                    <li><a href="single-product.html"  title="">Product Single Page</a></li>
-                            </ul> -->
+       
                         </li>
                         <li><a href="{{URL('our-projects')}}">{{__('home.projects')}}</a>
-                            <!-- <ul>
-                                    <li><a href="portfolio-2-column.html" title="">2 Column Wide</a></li>
-                                    <li><a href="portfolio-3-column.html" title="">3 Column Wide</a></li>
-                                    <li><a href="portfolio-4-column.html" title="">4 Column Wide</a></li>
-                            </ul> -->
+      
                         </li>
                         <li><a href="{{URL('about')}}">{{__('home.about_us')}}</a>
-                            <!-- <ul>
-                                    <li><a href="gallery-one-column.html" title="">1 Column Wide</a></li>
-                                    <li><a href="gallery-two-column.html" title="">2 Column Wide</a></li>
-                                    <li><a href="gallery-three-column.html" title="">3 Column Wide</a></li>
-                                    <li><a href="gallery-four-column.html" title="">4 Column Wide</a></li>
-                                    <li><a>Right Sidebar</a>
-                                            <ul class="drop-right">
-                                                    <li><a href="gallery-one-column-with-sidebar.html" title="">1 Column</a></li>
-                                                    <li><a href="gallery-two-column-with-sidebar.html" title="">2 Column</a></li>
-                                                    <li><a href="gallery-three-column-with-sidebar.html" title="">3 Column</a></li>
-                                            </ul>
-                                    </li>
-                                    <li><a>Left Sidebar</a>
-                                            <ul class="drop-right">
-                                                    <li><a href="gallery-one-column-with-left-sidebar.html" title="">1 Column</a></li>
-                                                    <li><a href="gallery-two-column-with-left-sidebar.html" title="">2 Column</a></li>
-                                                    <li><a href="gallery-three-column-with-left-sidebar.html" title="">3 Column</a></li>
-                                            </ul>
-                                    </li>
-                            </ul> -->
-                            <!-- Drop Down -->
+        
                         </li>
                         <li><a href="{{URL('contact')}}">{{__('home.contact')}} {{__('home.us')}}</a>
-                            <!-- <ul>
-                                    <li><a href="blog-without-sidebar.html" title="">Blog Wide</a></li>
-                                    <li><a href="blog-with-sidebar.html" title="">Blog With Left Sidebar</a></li>
-                                    <li><a href="blog-with-left-sidebar.html" title="">Blog With Right Sidebar</a></li>
-                                    <li><a>Single Posts Right Sidebar</a>
-                                            <ul class="drop-right">
-                                                    <li><a href="single-post-image.html" title="">Single Post With Image</a></li>
-                                                    <li><a href="single-post-video.html" title="">Single Post With Video</a></li>
-                                                    <li><a href="single-post-slider.html" title="">Single Post With Slider</a></li>
-                                                    <li><a href="single-post-project.html" title="">Project Single Post</a></li>
-                                            </ul>
-                                    </li>
-                                    <li><a>Single Posts Left Sidebar</a>
-                                            <ul class="drop-right">
-                                                    <li><a href="single-post-image-left-sidebar.html" title="">Single Post With Image</a></li>
-                                                    <li><a href="single-post-video-left-sidebar.html" title="">Single Post With Video</a></li>
-                                                    <li><a href="single-post-slider-left-sidebar.html" title="">Single Post With Slider</a></li>
-                                                    <li><a href="single-post-project-left-sidebar.html" title="">Project Single Post</a></li>
-                                            </ul>
-                                    </li>
-                                    
-                            </ul>Drop Down -->
+ 
                         </li>
                         <li><a >{{__('home.more')}}</a>
                             <ul class="drop-right">
@@ -434,72 +322,19 @@ $(function() {
                                 <option value="ar">عربي</option>
                             </select>  
                         </li>
+
                     </ul> 
 
+
                 </nav><!-- Menu -->
+
 
                 <select class="ipadMenu">
                     <option value="">Menu</option>
                     <option value="index.html">Home Simple 1</option>
                     <option value="index2.html">Home Modern Style</option>
-                    <option value="index3.html">Home Simple 2</option>
-                    <option value="index4.html">Home Simple 3</option>
-                    <option value="index7.html">Home Traditional Style</option>
-                    <option value="index5.html">Home With Video</option>
-                    <option value="index6.html">Home With Portfolio</option>
-                    <option value="sticky-menu.html">Sticky Header</option>
-                    <option value="menu-below-slider.html">Menu Below Slider</option>
-                    <option value="middle-logo.html">With Logo In The Mid</option>
-                    <option value="index5.html">Toggle Header</option>
-                    <option value="about.html">About Wide</option>
-                    <option value="contact.html">Contact Wide</option>
-                    <option value="events-left-sidebar.html">Events With Left Sidebar</option>
-                    <option value="events.html">Events With Right Sidebar</option>
-                    <option value="single-event-page.html">Events Single Page</option>
-                    <option value="successful-stories.html">Successful Stories Wide</option>
-                    <option value="projects.html">On Going Project Wide</option>
-                    <option value="404.html">404 Page Wide</option>
-                    <option value="causes.html">Our Causes Wide</option>
-                    <option value="single-causes.html">Our Causes Single</option>
-                    <option value="services-single.html">Services Single Page</option>
-                    <option value="search-found.html">Search Found With R.Sidebar</option>
-                    <option value="search-found-left-sidebar.html">Search Found With L.Sidebar</option>
-                    <option value="nothing-found.html">Nothing Found With R.Sidebar</option>
-                    <option value="cart.html">My Cart With R.Sidebar</option>
-                    <option value="cart-left-sidebar.html">My Cart With L.Sidebar</option>
-                    <option value="products.html">Products With R.Sidebar</option>
-                    <option value="products-left-sidebar.html">Products With L.Sidebar</option>
-                    <option value="checkout.html">Checkout With R.Sidebar</option>
-                    <option value="checkout-left-sidebar.html">Checkout With L.Sidebar</option>
-                    <option value="order-recieved.html">Order Recieved With R.Sidebar</option>
-                    <option value="order-recieved-left-sidebar.html">Order Recieved With L.Sidebar</option>
-                    <option value="single-product.html">Products Single Page</option>
-                    <option value="portfolio-2-column.html">Portfolio 2 Col</option>
-                    <option value="portfolio-3-column.html">Portfolio 3 Col</option>
-                    <option value="portfolio-4-column.html">Portfolio 4 Col</option>
-                    <option value="gallery-one-column.html">Gallery 1 Col Wide</option>
-                    <option value="gallery-two-column.html">Gallery 2 Col Wide</option>
-                    <option value="gallery-three-column.html">Gallery 3 Col Wide</option>
-                    <option value="gallery-four-column.html">Gallery 4 Col Wide</option>
-                    <option value="gallery-one-column-with-sidebar.html">Gallery 1 Col With R.Sidebar</option>
-                    <option value="gallery-one-column-with-left-sidebar.html">Gallery 1 Col With L.Sidebar</option>
-                    <option value="gallery-two-column-with-sidebar.html">Gallery 2 Col With R.Sidebar</option>
-                    <option value="gallery-two-column-with-left-sidebar.html">Gallery 2 Col With L.Sidebar</option>
-                    <option value="gallery-three-column-with-sidebar.html">Gallery 3 Col With R.Sidebar</option>
-                    <option value="gallery-three-column-with-left-sidebar.html">Gallery 3 Col With L.Sidebar</option>
-                    <option value="blog-without-sidebar.html">Blog With Out Sidebar</option>
-                    <option value="blog-with-left-sidebar.html">Blog With L.Sidebar</option>
-                    <option value="blog-with-sidebar.html">Blog With R.Sidebar</option>
-                    <option value="single-post-image-left-sidebar.html">Single Post With Image L.Sidebar</option>
-                    <option value="single-post-image.html">Single Post With Image R.Sidebar</option>
-                    <option value="single-post-video-left-sidebar.html">Single Post With Video L.Sidebar</option>
-                    <option value="single-post-video.html">Single Post With Video R.Sidebar</option>
-                    <option value="single-post-slider-left-sidebar.html">Single Post With Slider L.Sidebar</option>
-                    <option value="single-post-slider.html">Single Post With Slider R.Sidebar</option>
-                    <option value="project-single-post-left-sidebar.html">Project Single Post L.Sidebar</option>
-                    <option value="project-single-post.html">Project Single Post R.Sidebar</option>
-                    <option value="elements.html">Features</option>
                 </select>
+                    </div>
             </div>		
         </header><!--header-->
         @yield('content')
@@ -580,8 +415,9 @@ $(function() {
                     <div class="col-md-3">
                         <div class="newsletter">
                             <h4>{{__('home.signup_newsletter')}}</h4>
-                            <p id="sucess_msg"></p>
+                            
                             <input class="form-control" type="email" placeholder="Email" id="news_letter"/>
+                            <p id="sucess_msg"></p>
                         </div>
                         <ul class="social-bar">
                                 <!-- <li><a href="#" title=""><img src="images/rss.jpg" alt="" /></a></li> -->
@@ -737,7 +573,12 @@ $(function() {
                     },
                     success: function (msg) {
                         console.log(msg);
-                        //  $("#sucess_msg").html({{__('home.contact_us_by_message')}});
+                    
+                     @if(Session::get('locale')=='en')
+                     $("#sucess_msg").html('Success Subscribtion ');
+                     @else
+                     $("#sucess_msg").html('تم الاشتراك');
+                     @endif
                     },
                     error: function (msg) {
                         console.log(msg);

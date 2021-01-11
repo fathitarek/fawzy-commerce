@@ -153,11 +153,11 @@ if(isset(Auth::guard('customer')->user()->id)){
             // if searched countries count is larager than zero
             if (count($data)>0) {
                 // concatenate output to the array
-                $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1;">';
+                $output = '<ul class="list-group" style=" width:200px;margin-top:0.5rem;">';
                 // loop through the result array
                 foreach ($data as $row){
                     // concatenate output to the array
-                    $output .= '<li class="list-group-item" style="width: 50px;"> <a style="color: black;"  href="../inner-product/'.$row->id.'" >'.$row->name_en.'</a></li>';
+                    $output .= '<li class="list-group-item" style="width: 200px;text-align:center"> <a style="color: black;"  href="../inner-product/'.$row->id.'" >'.$row->name_en.'</a></li>';
                 }
                 // end of output
                 $output .= '</ul>';

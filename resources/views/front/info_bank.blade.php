@@ -18,7 +18,7 @@
 				
 					<div class="row">
                         @foreach($info_banks as $info_bank)
-						<div class="col-md-4">
+						<div class="col-md-4" style="width: 370px;height: 222px;">
 							<img src="{{URL($info_bank->image )}}" alt="" />
 							<h4> <a href="/inner-infoBank/{{$info_bank->id}}" >{{$info_bank->{'name_'.strtolower(app()->getLocale())} }} </a></h4>
 							<!-- <div class="ratings">
@@ -97,7 +97,7 @@
 				<div class="popular-post">
 					<img src="{{URL($live_cert->image)}}" alt="" />
 					<div class="popular-post-title">
-						<h6><a href="{{URL('inner-certifcate/')}}/{{$live_certific->id}}" title="">{{$live_cert->{'name_'.strtolower(app()->getLocale())} }}</a></h6>
+						<h6><a href="{{URL('inner-certifcate/')}}/{{$live_cert->id}}" title="">{{$live_cert->{'name_'.strtolower(app()->getLocale())} }}</a></h6>
 					</div>
 				</div>
         @endforeach

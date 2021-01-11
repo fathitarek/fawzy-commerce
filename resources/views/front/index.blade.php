@@ -1,16 +1,21 @@
 @extends('front.master.app')
 @section('content')
+<style>
+	span.ls-s-1:after {width:0px;}
 
+	</style>
+		<!-- <script type="text/javascript" language="javascript" src="https://raw.githubusercontent.com/Codeinwp/carouFredSel-jQuery/master/jquery.carouFredSel-6.2.1-packed.js"></script> -->
 
 <div id="layerslider-container-fw">
 	<div id="layerslider" style="width: 100%; height: 600px; margin: 0px auto; ">
 	@foreach($sliders as $slider)
 		<div class="ls-layer" style="transition2d: 5; slidedelay: 8000;" >			
 			<img src="{{URL($slider->image)}}" class="ls-bg" alt="Slide background">
-				<h3 class="ls-s-1" style="top: 223px; left:248px; background: url('{{URL($slider->image)}}') no-repeat scroll 0 0 / auto 100% transparent; font-family:roboto; font-size:34px; font-weight:bold; color:#4c4c4c; line-height:56px; padding:0 60px 0 60px; ; border-radius:3px; delayin:500; scaleout:.5; slidedirection:fade;" >{{$slider->{'title_'.strtolower(app()->getLocale())} }}</h3>
-				<span class="ls-s-1"	style="top: 300px; left:248px; font-family:roboto; font-size:24px; font-weight:600; color:#000; padding:10px 20px 10px 50px; background:rgba(255,255,255,0.9); border-radius:4px 0 0px 4px; border-left:2px solid #93b631; position:relative; line-height:22px; float:left; delayin:1000; scalein:0; slidedirection:left; durationin : 2500;">{!! $slider->{'description_'.strtolower(app()->getLocale())} !!}</span>
-				<!-- <p class="ls-s-1"	style="top: 360px; left:248px; font-family:roboto; font-size:13px; color:#fefefe; delayin:2000; scalein:4; slidedirection:fade; durationin : 2000;">{!! $slider->{'description_'.strtolower(app()->getLocale())} !!}</p> -->
+				<h3 class="ls-s-1" style="top: 223px; left:248px; font-family:roboto; font-size:34px; font-weight:bold; color:#4c4c4c; line-height:56px; padding:0 60px 0 60px; ; border-radius:3px; delayin:500; scaleout:.5; slidedirection:fade;" >{{$slider->{'title_'.strtolower(app()->getLocale())} }}</h3>
+				<span class="ls-s-1"	style="top: 300px; left:248px; font-family:roboto; font-size:24px; font-weight:600; color:#000; padding:10px 20px 10px 50px; position:relative; line-height:22px; float:left; delayin:1000; scalein:0; slidedirection:left; durationin : 2500;">{!! $slider->{'description_'.strtolower(app()->getLocale())} !!}</span>
+				<p class="ls-s-1"	style="top: 360px; left:248px; font-family:roboto; font-size:13px; color:#fefefe; delayin:2000; scalein:4; slidedirection:fade; durationin : 2000;">{!! $slider->{'description_'.strtolower(app()->getLocale())} !!}</p>
 		</div><!-- Slide1 -->
+		
 @endforeach
 	
 		
@@ -101,7 +106,7 @@
 				<a href="checkout.html" class="donate-btn" title="">Donate Us</a>
             </div>
              Donate Us Box -->
-		<!-- </div> --> 
+		<!-- </div>  -->
 	</div>
 	</div>
 </section>
@@ -116,7 +121,7 @@
 				</div><!-- Section Title -->
 				<div class="carusal-slider">
 					<div id="carousel-wrapper">
-						<div id="carousel">
+						<div id="carousel" style="">
 							<div id="news1">
 								<div class="row">
 									<div class="col-md-6 desc">
@@ -137,7 +142,13 @@
 						
 						</div>
 					</div>
-					<div id="thumbs-wrapper">
+					<style>
+					.caroufredsel_wrapper{
+    width: 410px;
+}
+
+	</style>
+					<div id="thumbs-wrapper" >
 						<div id="thumbs">
                         @foreach($blogs as $key=>$blog) 
                         @if($key==0)

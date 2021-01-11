@@ -23,7 +23,8 @@ class newslettersController extends AppBaseController
     public function __construct(newslettersRepository $newslettersRepo)
     {
         $this->newslettersRepository = $newslettersRepo;
-        $this->middleware('auth');
+        // $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['store']]);
     }
 
     /**

@@ -510,6 +510,7 @@ header{
 	float:right;
 	width:100%;
     margin-top:22px;
+    direction: ltr;
 }
 .our-causes .flex-direction-nav {
     display: none;
@@ -930,6 +931,7 @@ header{
     float: right;
     margin-bottom: 30px;
     width: 100%;
+    direction: rtl;
 }
 #thumbs-wrapper {
     float:right;
@@ -2732,8 +2734,8 @@ footer .container {
 	transition:all 0.3s ease 0.1s;
 }
 .flickr-images > a:hover:before{
-	opacity:1;
-	filter:alpha(opacity = 100);
+	/* opacity:1; */
+	/* filter:alpha(opacity = 100); */
 	
 	-webkit-transition:all 0s ease 0s;
 	-moz-transition:all 0s ease 0s;
@@ -3240,8 +3242,8 @@ footer .container {
 	transition:all 0.4s ease 0s;
 }
 .gallery-image:hover:before{
-	opacity:1;
-	filter:alpha(opacity = 100);
+	/* opacity:1; */
+	/* filter:alpha(opacity = 100); */
 }
 .gallery-image > span {
     bottom:0;
@@ -8281,6 +8283,9 @@ blockquote span,
 
     background:url("../images/link-arrow-sea-green.png") no-repeat scroll left center transparent;
 }
-
+.popular-post img{
+    width: 270px;
+    height: 103px;
+}
 
 

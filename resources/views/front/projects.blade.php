@@ -17,7 +17,7 @@
                             @foreach($projects as $key=> $project)
 
 								<div class="col-md-4">
-									<div class="gallery-image">
+									<div class="gallery-image" style="width: 370px;height: 222px;">
 										<img src="{{URL($project->images[0]->images)}}" alt="" />
 										<!-- <span>GALLERY / EVENTS</span> -->
 										<!-- <div class="image-lists">

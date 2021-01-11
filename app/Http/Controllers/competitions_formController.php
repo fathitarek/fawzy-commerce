@@ -23,7 +23,8 @@ class competitions_formController extends AppBaseController
     public function __construct(competitions_formRepository $competitionsFormRepo)
     {
         $this->competitionsFormRepository = $competitionsFormRepo;
-        $this->middleware('auth');
+        // $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['store']]);
     }
 
     /**

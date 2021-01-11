@@ -17,7 +17,7 @@
                             @foreach($competitions as $key=> $competition)
 
 								<div class="col-md-4">
-									<div class="gallery-image">
+									<div class="gallery-image" style="width: 370px;height: 222px;">
 										<img src="{{URL($competition->image )}}" alt="" />
 										<!-- <span>GALLERY / EVENTS</span> -->
 										<!-- <div class="image-lists">

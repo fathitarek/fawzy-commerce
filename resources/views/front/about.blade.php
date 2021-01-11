@@ -33,7 +33,7 @@
 				</div>
 				<div class="col-md-5">
 					<div class="about-charity-video">
-						<img src="{{URL($about_us[0]->image )}}" alt="" />
+						<img src="{{URL($about_us[0]->image )}}" alt="" style="width: 470px;height: 278px;" />
 						<!-- <a class="html5lightbox" href="http://player.vimeo.com/video/31943945?color=ffffff" title="This Is a Demo Video"><span><i class="icon-play"></i></span></a> -->
 					</div>
 				</div> <!-- Video -->

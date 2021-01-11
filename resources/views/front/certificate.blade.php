@@ -17,7 +17,7 @@
                             @foreach($live_certificates as $key=> $live_certificate)
 
 								<div class="col-md-4">
-									<div class="gallery-image">
+									<div class="gallery-image" style="width: 370px;height: 222px;">
 										<img src="{{URL($live_certificate->image )}}" alt="" />
 										<!-- <span>GALLERY / EVENTS</span> -->
 										<!-- <div class="image-lists">
