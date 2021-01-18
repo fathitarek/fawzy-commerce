@@ -59,7 +59,7 @@ class bank_information extends Model
         'name_en' => 'required',
         'name_ar' => 'required',
         'image' => 'required|image|mimes:png,jpeg,gif',
-        'video_url' => 'required|url',
+       // 'video_url' => 'url',
         'details_en' => 'required',
         'details_ar' => 'required',
     ];
@@ -68,7 +68,7 @@ class bank_information extends Model
         'name_en' => 'required',
         'name_ar' => 'required',
         'image' => 'image|mimes:png,jpeg,gif',
-        'video_url' => 'required|url',
+       // 'video_url' => 'url',
         'details_en' => 'required',
         'details_ar' => 'required',
     ];

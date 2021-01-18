@@ -1,24 +1,40 @@
 @extends('front.master.app')
 @section('content')
 <style>
-	span.ls-s-1:after {width:0px;}
-
-	</style>
-		<!-- <script type="text/javascript" language="javascript" src="https://raw.githubusercontent.com/Codeinwp/carouFredSel-jQuery/master/jquery.carouFredSel-6.2.1-packed.js"></script> -->
+	span.ls-s-1:after {
+		width: 0px;
+	}
+	#thumbs{
+		width:100% !important;
+	}
+	#thumbs-wrapper{
+		margin-bottom:5rem;
+	}
+	#carousel{
+		position:static !important;
+	}
+</style>
+<!-- <script type="text/javascript" language="javascript" src="https://raw.githubusercontent.com/Codeinwp/carouFredSel-jQuery/master/jquery.carouFredSel-6.2.1-packed.js"></script> -->
 
 <div id="layerslider-container-fw">
 	<div id="layerslider" style="width: 100%; height: 600px; margin: 0px auto; ">
-	@foreach($sliders as $slider)
-		<div class="ls-layer" style="transition2d: 5; slidedelay: 8000;" >			
+		@foreach($sliders as $slider)
+		<div class="ls-layer" style="transition2d: 5; slidedelay: 8000;">
 			<img src="{{URL($slider->image)}}" class="ls-bg" alt="Slide background">
-				<h3 class="ls-s-1" style="top: 223px; left:248px; font-family:roboto; font-size:34px; font-weight:bold; color:#4c4c4c; line-height:56px; padding:0 60px 0 60px; ; border-radius:3px; delayin:500; scaleout:.5; slidedirection:fade;" >{{$slider->{'title_'.strtolower(app()->getLocale())} }}</h3>
-				<span class="ls-s-1"	style="top: 300px; left:248px; font-family:roboto; font-size:24px; font-weight:600; color:#000; padding:10px 20px 10px 50px; position:relative; line-height:22px; float:left; delayin:1000; scalein:0; slidedirection:left; durationin : 2500;">{!! $slider->{'description_'.strtolower(app()->getLocale())} !!}</span>
-				<p class="ls-s-1"	style="top: 360px; left:248px; font-family:roboto; font-size:13px; color:#fefefe; delayin:2000; scalein:4; slidedirection:fade; durationin : 2000;">{!! $slider->{'description_'.strtolower(app()->getLocale())} !!}</p>
+			<h3 class="ls-s-1"
+				style="top: 223px; left:248px; font-family:roboto; font-size:34px; font-weight:bold; color:#4c4c4c; line-height:56px; padding:0 60px 0 60px; ; border-radius:3px; delayin:500; scaleout:.5; slidedirection:fade;">
+				{{$slider->{'title_'.strtolower(app()->getLocale())} }}</h3>
+			<span class="ls-s-1"
+				style="top: 300px; left:248px; font-family:roboto; font-size:24px; font-weight:600; color:#000; padding:10px 20px 10px 50px; position:relative; line-height:22px; float:left; delayin:1000; scalein:0; slidedirection:left; durationin : 2500;">{!!
+				$slider->{'description_'.strtolower(app()->getLocale())} !!}</span>
+			<p class="ls-s-1"
+				style="top: 360px; left:248px; font-family:roboto; font-size:13px; color:#fefefe; delayin:2000; scalein:4; slidedirection:fade; durationin : 2000;">
+				{!! $slider->{'description_'.strtolower(app()->getLocale())} !!}</p>
 		</div><!-- Slide1 -->
-		
-@endforeach
-	
-		
+
+		@endforeach
+
+
 	</div>
 
 	<!-- <div class="message-box">
@@ -38,36 +54,37 @@
 			</form>
 		</div>
     </div> -->
-    <!-- Message Box -->
-	
-</div><!-- Layer Slider -->			
+	<!-- Message Box -->
+
+</div><!-- Layer Slider -->
 
 
 <section class="block">
 	<div class="container">
-	<div class="row">
-		<div class="col-md-9">
-			<div class="sec-heading">
-                <!-- <h2><strong>Our</strong> Causes</h2> -->
-                <h2><strong>{{__('home.stories')}}  </strong>{{__('home.successful')}}</h2>
-			</div><!-- Section Title -->
-			<div class="our-causes">	
+		<div class="row">
+			<div class="col-md-9">
+				<div class="sec-heading">
+					<!-- <h2><strong>Our</strong> Causes</h2> -->
+					<h2><strong>{{__('home.stories')}} </strong>{{__('home.successful')}}</h2>
+				</div><!-- Section Title -->
+				<div class="our-causes">
 					<ul class="slides">
 						<li>
 							<div class="row">
-                                @foreach( $sucess_stories as $key=>$sucess_story)
+								@foreach( $sucess_stories as $key=>$sucess_story)
 								<div class="col-md-4">
 									<div class="causes-image">
-                                    <a href="inner-successful-stories/{{$sucess_story->id}}" title="">
-                                        <img src="{{URL($sucess_story->image )}}" style="height: 40%;" alt="thumb1" />
-</a>
+										<a href="inner-successful-stories/{{$sucess_story->id}}" title="">
+											<img src="{{URL($sucess_story->image )}}" style="height: 40%;"
+												alt="thumb1" />
+										</a>
 										<div class="cause-heading">
-                                        <a href="inner-successful-stories/{{$sucess_story->id}}" title="">
-                                            <h3>{{$sucess_story->{'name_'.strtolower(app()->getLocale())} }}</h3>
-</a>
+											<a href="inner-successful-stories/{{$sucess_story->id}}" title="">
+												<h3>{{$sucess_story->{'name_'.strtolower(app()->getLocale())} }}</h3>
+											</a>
 											<!-- <p>We needed to collect: <span><i>$</i>29,000</span> </p> -->
 										</div>
-											<!-- <div class="our-causes-hover">
+										<!-- <div class="our-causes-hover">
 												<h3>Feeding the Hungry</h3>
 												<span>in <i>South Africa</i></span>
 												<p>Duis accumsan rhosn cius arcvira orem bland it sit admet. Sedi ceel ugue. In idn iacues ante. Proi rien is mi gravida viverra.</p>
@@ -76,23 +93,23 @@
 											</div> -->
 									</div>
 								</div>
-								
-                                <?php ++$key; ?>
-                                @if($key>=3&&$key%3==0)
-                                </div>
-</li>
-<li>
-<div class="row">
-    @endif
-                                @endforeach
+
+								<?php ++$key; ?>
+								@if($key>=3&&$key%3==0)
 							</div>
 						</li>
-						
+						<li>
+							<div class="row">
+								@endif
+								@endforeach
+							</div>
+						</li>
+
 					</ul>
-			</div><!-- Causes -->
-		</div>
-		
-		<!-- <div class="col-md-3 pull-right">
+				</div><!-- Causes -->
+			</div>
+
+			<!-- <div class="col-md-3 pull-right">
 			<div class="sec-heading">
 				<h2><strong>Donate</strong> Us</h2>
 			</div>
@@ -106,8 +123,8 @@
 				<a href="checkout.html" class="donate-btn" title="">Donate Us</a>
             </div>
              Donate Us Box -->
-		<!-- </div>  -->
-	</div>
+			<!-- </div>  -->
+		</div>
 	</div>
 </section>
 
@@ -125,13 +142,16 @@
 							<div id="news1">
 								<div class="row">
 									<div class="col-md-6 desc">
-										<h3><a href="{{URL('/inner_blog')}}/{{$blogs[0]->id}}" title="">{{$blogs[0]->{'name_'.strtolower(app()->getLocale())} }}</a></h3>
-                                        <p>{!! str_limit($blogs[0]->{'description_'.strtolower(app()->getLocale())},100) !!}</p>
+										<h3><a href="{{URL('/inner_blog')}}/{{$blogs[0]->id}}"
+												title="">{{$blogs[0]->{'name_'.strtolower(app()->getLocale())} }}</a>
+										</h3>
+										<p>{!! str_limit($blogs[0]->{'description_'.strtolower(app()->getLocale())},100)
+											!!}</p>
 
 									</div>
 									<div class="col-md-6">
-										<div class="image">
-											<img src="{{URl($blogs[0]->image)}}" alt="" />
+										<div class="image"style="width:250px;height:150px ">
+											<img src="{{URl($blogs[0]->image)}}" alt="" style="width:100%;height:100% " />
 											<!-- <a class="html5lightbox" href="http://player.vimeo.com/video/31943945?color=ffffff" title="This Is a Demo Video"> -->
 											<!-- <span><i class="icon-play"></i></span> -->
 											<!-- </a> -->
@@ -139,52 +159,55 @@
 									</div>
 								</div>
 							</div><!-- News -->
-						
+
 						</div>
 					</div>
 					<style>
-					.caroufredsel_wrapper{
-    width: 410px;
-}
-
-	</style>
-					<div id="thumbs-wrapper" >
+						.caroufredsel_wrapper {
+							width: 410px;
+						}
+					</style>
+					<div id="thumbs-wrapper">
 						<div id="thumbs">
-                        @foreach($blogs as $key=>$blog) 
-                        @if($key==0)
-                        @continue
-                        @endif
-							<a href="{{URL('/inner_blog')}}/{{$blog->id}}" class=""><img src="{{URl($blog->image)}}" alt="" /><span class="carusal-our-news">{{$blog->{'name_'.strtolower(app()->getLocale())} }}</span></a>
+							@foreach($blogs as $key=>$blog)
+							@if($key==0)
+							@continue
+							@endif
+							<a href="{{URL('/inner_blog')}}/{{$blog->id}}" class=""><img src="{{URl($blog->image)}}"
+									alt="" /><span
+									class="carusal-our-news">{{$blog->{'name_'.strtolower(app()->getLocale())}
+									}}</span></a>
 							<!-- <a href="#news2"><img src="http://placehold.it/131x78" alt="" /><span class="carusal-our-news">Safety Quiz and Tips </span></a>
 							<a href="#news3"><img src="http://placehold.it/131x78" alt="" /><span class="carusal-our-news">Safety Quiz and Tips </span></a>
 							<a href="#news4"><img src="http://placehold.it/131x78" alt="" /><span class="carusal-our-news">Safety Quiz and Tips </span></a>
 							<a href="#news5"><img src="http://placehold.it/131x78" alt="" /><span class="carusal-our-news">Safety Quiz and Tips </span></a>
 							<a href="#news6"><img src="http://placehold.it/131x78" alt="" /><span class="carusal-our-news">Safety Quiz and Tips </span></a> -->
-                       @endforeach
-                        </div>
-                        <!-- Selectors -->
+							@endforeach
+						</div>
+						<!-- Selectors -->
 						<a id="prev" href="#"><i class="icon-angle-left"></i></a>
 						<a id="next" href="#"><i class="icon-angle-right"></i></a>
-					</div>	
+					</div>
 				</div>
 			</div><!-- Recent News -->
-			
+
 			<div class="col-md-6 pull-right">
 				<div class="sec-heading">
 					<h2> {{__('home.compitiion')}}</h2>
 				</div>
-			
-			
+
+
 				<div class="our-project-box">
 					<div class="row">
-                    @foreach( $competitions as $key=>$competition)
-						<div class="col-md-6">
+						@foreach( $competitions as $key=>$competition)
+						<div class="col-md-6" style="height:35%">
 							<div class="row">
 								<div class="col-md-5">
 									<div class="icon-box" style="border: none;">
 										<!-- <i class="icon-cloud"> -->
-                                        <img src="{{URL($competition->image )}}" class="img-circle" style="width: 100%;height: 100%;" alt="" />
-                                        <!-- </i> -->
+										<img src="{{URL($competition->image )}}" class="img-circle"
+											style="width: 100%;height: 100%;" alt="" />
+										<!-- </i> -->
 										<!-- <div class="need">
 											<p>NEED <span>$5,550,20</span></p>
 											<a href="#" title="">Donate</a>
@@ -193,7 +216,8 @@
 								</div>
 								<div class="col-md-7" style="margin-top: 30px;">
 									<div class="project-detail">
-										<a href="inner-competition/{{$competition->id}}">{{$competition->{'name_'.strtolower(app()->getLocale())} }}</a>
+										<a href="inner-competition/{{$competition->id}}">{{$competition->{'name_'.strtolower(app()->getLocale())}
+											}}</a>
 										<!-- <p>{{ $competition->{'description_'.strtolower(app()->getLocale())} }}</p>			 -->
 									</div>
 								</div>
@@ -202,10 +226,10 @@
 						@endforeach
 					</div>
 				</div><!-- Projects -->
-				
+
 			</div>
 		</div>
 	</div>
-</section>			
-</div>
+</section>
+<!-- </div> -->
 @endsection

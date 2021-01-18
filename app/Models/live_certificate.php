@@ -65,8 +65,8 @@ class live_certificate extends Model
         'name_ar' => 'required',
         'description_en' => 'required',
         'description_ar' => 'required',
-        'company_en' => 'required',
-        'company_ar' => 'required',
+      //  'company_en' => 'required',
+      //  'company_ar' => 'required',
         'image' => 'required|image|mimes:png,jpeg,gif'
     ];
     public static $rulesUpdate = [
@@ -74,8 +74,8 @@ class live_certificate extends Model
         'name_ar' => 'required',
         'description_en' => 'required',
         'description_ar' => 'required',
-        'company_en' => 'required',
-        'company_ar' => 'required',
+      //  'company_en' => 'required',
+      //  'company_ar' => 'required',
         'image' => 'image|mimes:png,jpeg,gif'
     ];
     
