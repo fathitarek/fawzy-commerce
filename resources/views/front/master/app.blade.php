@@ -224,6 +224,7 @@ $(function() {
 });		
 
 </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="theme-layout">
@@ -233,12 +234,17 @@ $(function() {
                 @if (Auth::guard('customer')->guest())
                         <li><a href="{{ url('/customer/login') }}" style="color: #9d9b9b;">{{__('home.login')}}</a></li>
                         <li><a href="{{ url('/customer/register') }}" style="color: #9d9b9b;">{{__('home.register')}}</a></li>
+                      <li>  <a href="{{ url('/customer/login') }}"><i class="fa fa-shopping-cart" style="margin-top: -2px;color: #9d9b9b;e;font-size: 20px;float: left;"></i></a></li>
+
                     @else
+
                         <li class="">
                             <a href="#" class="" style="color: #9d9b9b;" >
                                 {{ Auth::guard('customer')->user()->name }} 
                             </a>
     </li>
+    <li>  <a href="{{ url('/my-cart') }}"><i class="fa fa-shopping-cart" style="margin-top: -2px;color: #9d9b9b;e;font-size: 20px;float: left;"></i></a></li>
+
     <li>
                                     <a href="{{ url('/customer/logout') }}" style="color: #9d9b9b;" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">

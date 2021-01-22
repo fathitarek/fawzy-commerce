@@ -74,7 +74,7 @@ return [
     'city'=>'Town / City',
     'order'=>'Order',
     'checkout'=>'Checkout',
-    ''=>'',
-    ''=>'',
-    ''=>'',
+    'add_to_cart'=>'Added in Cart',
+    'added_to_cart'=>'Added in Cart',
+    'please_login'=>'please login',
 ];
