@@ -33,7 +33,7 @@
 									@else
 									<!-- <button class="favorite-btn" id="favorite-btn"><i class="icon-heart"></i>{{__('home.add_to_favorites')}}</button> -->
 								@endif
-									<button type="button" class="btn btn-primary disabled">{{$shop_items->main_price}}  EGP</button>
+									<button type="button"  style="margin: 25px;" class="btn btn-primary disabled">{{$shop_items->main_price}}  EGP</button>
 									
 									@if($shop_items->sale_price)
 									<button type="button" class="btn btn-primary active">{{$shop_items->sale_price}} EGP</button>
@@ -50,7 +50,7 @@
 											</div>
 										</div>
 										<div class="col-md-6">
-											<a class="cart-btn"  id="cart-btn"   title=""><span><i class="fa fa-shopping-cart"></i></span>Add To Cart</a>
+											<a class="cart-btn"  id="cart-btn"   title=""><span><i class="fa fa-shopping-cart"></i></span>{{__('home.add_to_cart')}}</a>
 										</div>
 									</div>
 								@endif

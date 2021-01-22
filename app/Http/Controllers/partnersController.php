@@ -24,6 +24,7 @@ class partnersController extends AppBaseController
     public function __construct(partnersRepository $partnersRepo)
     {
         $this->partnersRepository = $partnersRepo;
+        $this->middleware('auth');
     }
 
     /**
@@ -138,7 +139,7 @@ class partnersController extends AppBaseController
             return redirect(route('partners.index'));
         }
 
-        $partners = $this->partnersRepository->update($request->all(), $id);
+        $partners = $this->partnersRepository->update($input, $id);
 
         Flash::success('Partners updated successfully.');
 
