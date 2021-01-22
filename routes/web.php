@@ -83,7 +83,7 @@ Route::GET('profile', 'CustomerController@profile');
 Route::GET('search-blogs', 'blogPageController@search');
 Route::GET('/', 'IndexController@index');
 Route::GET('checkout', 'CheckoutPageController@checkoutPage');
-
+Route::post('profile_update', 'CustomerController@update');
 
 Route::group(['prefix' => 'customer'], function () {
   Route::get('/login', 'CustomerAuth\LoginController@showLoginForm')->name('login');

@@ -77,4 +77,11 @@ return [
     'add_to_cart'=>'Added in Cart',
     'added_to_cart'=>'Added in Cart',
     'please_login'=>'please login',
+    'image'=>'Image',
+    'successfully_update'=>' Update Successfully',
+    'update_btn'=>'‘Update',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
 ];
