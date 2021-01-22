@@ -25,7 +25,7 @@ class UpdatecompetitionsRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = competitions::$rules;
+        $rules = competitions::$rulesUpdate;
         
         return $rules;
     }

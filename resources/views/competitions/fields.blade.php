@@ -20,7 +20,7 @@
 <!-- Video Url Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('video_url', 'Video Url:') !!}
-    {!! Form::text('video_url', null, ['class' => 'form-control']) !!}
+    {!! Form::url('video_url', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

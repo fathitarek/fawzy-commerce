@@ -23,12 +23,12 @@ class productsPageController extends Controller
 
 if (isset($_GET['order'])||isset($_GET['price'])||isset($_GET['sub_category_id'])||isset($_GET['category_id'])) { //search
     if (isset($_GET['order'])&&$_GET['order']==1) {
-    $shop_items=shop_items::latest();
+    $shop_items=shop_items::where('publish',1)->latest();
     }
     elseif (isset($_GET['order'])&&$_GET['order']==0) {
         $shop_items=shop_items::oldest();
         }else{
-            $shop_items=shop_items::latest();
+            $shop_items=shop_items::where('publish',1)->latest();
         }
     if (isset($_GET['category_id'])&&$_GET['category_id']!=0) {
         $shop_items=$shop_items->where('category_id',$_GET['category_id']);
@@ -47,7 +47,7 @@ if (isset($_GET['order'])||isset($_GET['price'])||isset($_GET['sub_category_id']
     }
     $shop_items=$shop_items->paginate(12);
 }else{
-    $shop_items=shop_items::latest()->paginate(12);
+    $shop_items=shop_items::latest()->where('publish',1)->paginate(12);
 }
 foreach($shop_items as $product){
 if(isset(Auth::guard('customer')->user()->id)){
@@ -92,7 +92,7 @@ if(isset(Auth::guard('customer')->user()->id)){
     public function productsByCategoryPage($category_id){
         $categories=categories::get();
         // return $categories;
-        $shop_items=shop_items::latest()->where('category_id',$category_id)->paginate(12);
+        $shop_items=shop_items::latest()->where('category_id',$category_id)->where('publish',1)->paginate(12);
         $competitions=competitions::latest()->limit(2)->get();
         $sucess_stories=sucess_stories::latest()->limit(2)->get();
         $bank_information=bank_information::latest()->limit(2)->get();
@@ -108,7 +108,7 @@ if(isset(Auth::guard('customer')->user()->id)){
     public function productsBySubCategoryPage($sub_category_id){
         $categories=categories::get();
         // return $categories;
-        $shop_items=shop_items::latest()->where('sub_category_id',$sub_category_id)->paginate(12);
+        $shop_items=shop_items::latest()->where('sub_category_id',$sub_category_id)->where('publish',1)->paginate(12);
         $competitions=competitions::latest()->limit(2)->get();
         $sucess_stories=sucess_stories::latest()->limit(2)->get();
         $bank_information=bank_information::latest()->limit(2)->get();
@@ -146,7 +146,7 @@ if(isset(Auth::guard('customer')->user()->id)){
         // check if ajax request is coming or not
         if($request->ajax()) {
             // select country name from database
-            $data = shop_items::where('name_en', 'LIKE', $request->word.'%')
+            $data = shop_items::where('name_en', 'LIKE', $request->word.'%')->where('publish',1)
                 ->get();
             // declare an empty array for output
             $output = '';

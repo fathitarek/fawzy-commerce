@@ -18,9 +18,11 @@
 				
 					<div class="row">
                         @foreach($info_banks as $info_bank)
-						<div class="col-md-4" style="width: 370px;height: 222px;">
-							<img src="{{URL($info_bank->image )}}" alt="" />
-							<h4> <a href="/inner-infoBank/{{$info_bank->id}}" >{{$info_bank->{'name_'.strtolower(app()->getLocale())} }} </a></h4>
+						<div class="col-md-4" style="width: 370px;height: 222px;margin: 14px;">
+						<h4> <a href="/inner-infoBank/{{$info_bank->id}}" >{{$info_bank->{'name_'.strtolower(app()->getLocale())} }} </a></h4>
+						<a href="/inner-infoBank/{{$info_bank->id}}" >
+							<img src="{{URL($info_bank->image )}}" style="height: 222px;width: 370px;" alt="" />
+</a>
 							<!-- <div class="ratings">
 								<i class="icon-star"></i>
 								<i class="icon-star"></i>

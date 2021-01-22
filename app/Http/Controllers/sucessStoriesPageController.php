@@ -27,7 +27,7 @@ class sucessStoriesPageController extends Controller
         $live_certificate=live_certificate::latest()->limit(2)->get();
         $projects=projects::latest()->limit(2)->get();
         foreach($projects as $project){
-            $project->images=galleryProjects::where('project_id',$id)->get();
+            $project->images=galleryProjects::where('project_id',$project->id)->get();
 
         }
         return view('front.inner-success-story')->with('sucess_stories',$sucess_stories)->with('competitions',$competitions)->with('bank_information',$bank_information)->with('live_certificate',$live_certificate)->with('projects',$projects);

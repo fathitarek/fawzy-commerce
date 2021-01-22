@@ -9,11 +9,14 @@
 		<div class="row">
 		<div class="left-content col-md-9">
 			<div class="post">
+			<h1>{{$competitions->{'name_'.strtolower(app()->getLocale())} }}</h1>
                 <img src="{{URL($competitions->image )}}" alt="" /><!-- Post Image -->
-                <div class="post-desc">
-                <iframe src="{{$competitions->video_url}}" style="width: 100%;height: 100%;"></iframe>			
+               
+			   @if(isset($competitions->video_url)) 
+			   <div class="post-desc">
+				<iframe src="{{$competitions->video_url}}" style="width: 100%;height: 100%;"></iframe>			
             	</div>
-				<h1>{{$competitions->{'name_'.strtolower(app()->getLocale())} }}</h1>
+				@endif
 				
 				
 				<div class="post-image-list">

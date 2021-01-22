@@ -9,9 +9,10 @@
 		<div class="row">
 		<div class="left-content col-md-9">
 			<div class="post">
+			<h1>{{$sucess_stories->{'name_'.strtolower(app()->getLocale())} }}</h1>
 				<img src="{{URL($sucess_stories->image)}}" alt="" /><!-- Post Image -->
 				<!-- <span class="category">In <a href="#" title="">Home</a>, <a href="#" title="">Blog</a>, <a href="#" title="">Charity</a></span>Categories -->
-				<h1>{{$sucess_stories->{'name_'.strtolower(app()->getLocale())} }}</h1>
+				
 				<!-- <ul class="post-meta">
 					<li><a href="" title=""><i class="icon-calendar-empty"></i><span>September</span> 1,2013</a></li>
 					<li><a href="" title=""><i class="icon-user"></i>By James Gomaz</a></li>

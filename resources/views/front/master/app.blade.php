@@ -274,7 +274,9 @@ $(function() {
             <div class="" style="width:100%;padding:0 5rem">
                     <div class="row">
                     <div class="logo col-2">
-                    <a href="{{URL('/')}}" title=""><img src="{{URL('images/logo.png')}}" alt="Logo" /><h1><i>L</i>ifeline</h1></a>
+                    <a href="{{URL('/')}}" title=""><img src="{{URL($settings[0]->logo)}}" style="width: 54px;height: 54px;"  alt="Logo" /><h1>
+                    <!-- <i>L</i>ifeline</h1> -->
+                    </a>
                 </div><!-- Logo -->
                 <div class="search-box col-2" style="margin-top:3.1rem;">
                         <!-- <input class="submit-button" type="submit" value=""  > -->
@@ -285,23 +287,38 @@ $(function() {
                 </div>
                 <nav class="menu col-5">
                     <ul id="menu-navigation">
-                        <li class="active"><a href="{{URL('/')}}">{{__('home.home')}}</a>
-
-                        </li>
-                        <li><a href="{{URL('our-blogs')}}">{{__('home.blog')}}</a>
-    				
-                        </li>
-                        <li><a  href="{{URL('our-products')}}">{{__('home.shop')}}</a>
-       
-                        </li>
-                        <li><a href="{{URL('our-projects')}}">{{__('home.projects')}}</a>
-      
-                        </li>
-                        <li><a href="{{URL('about')}}">{{__('home.about_us')}}</a>
-        
-                        </li>
+                        
+                        @if (Request::path() == '/')
+                        <li class="active"><a href="{{URL('/')}}">{{__('home.home')}}</a></li>
+                        @else
+                        <li class=""><a href="{{URL('/')}}">{{__('home.home')}}</a></li>
+                    @endif
+                    @if (Request::path() == 'our-blogs')
+                    <li class="active"><a href="{{URL('our-blogs')}}">{{__('home.blog')}}</a></li>
+                    @else
+                        <li><a href="{{URL('our-blogs')}}">{{__('home.blog')}}</a></li>
+                        @endif
+                        @if (Request::path() == 'our-products')
+                        <li class="active"><a  href="{{URL('our-products')}}">{{__('home.shop')}}</a></li>
+                        @else
+                        <li><a  href="{{URL('our-products')}}">{{__('home.shop')}}</a></li>
+                        @endif
+                        @if (Request::path() == 'our-projects')
+                        <li class="active"><a href="{{URL('our-projects')}}">{{__('home.projects')}}</a></li>
+                        @else
+                        <li><a href="{{URL('our-projects')}}">{{__('home.projects')}}</a></li>
+                        @endif
+                        @if (Request::path() == 'about')
+                        <li class="active"><a href="{{URL('about')}}">{{__('home.about_us')}}</a></li>
+                        @else
+                        <li><a href="{{URL('about')}}">{{__('home.about_us')}}</a></li>
+                        @endif
+                        
+                        @if (Request::path() == 'contact')
+                        <li class="active"><a href="{{URL('contact')}}">{{__('home.contact')}} {{__('home.us')}}</a>
+                        @else
                         <li><a href="{{URL('contact')}}">{{__('home.contact')}} {{__('home.us')}}</a>
- 
+                        @endif
                         </li>
                         <li><a >{{__('home.more')}}</a>
                             <ul class="drop-right">
@@ -313,7 +330,11 @@ $(function() {
                             </ul>
                         </li>
                         @if (Auth::guard('customer')->user()) 
+                        @if (Request::path() == 'profile')
+                        <li class="active"><a href="{{URL('profile')}}">{{__('home.profile')}}</a>
+                        @else
                         <li><a href="{{URL('profile')}}">{{__('home.profile')}}</a>
+                        @endif
                         @endif
                         <li>
                             <select id="language_select"  class="form-control" style="margin-left: 10px;border: 1px solid #4fc0aa;color: #3d3d3d;margin-top: 30px;">
@@ -331,8 +352,17 @@ $(function() {
 
                 <select class="ipadMenu">
                     <option value="">Menu</option>
-                    <option value="index.html">Home Simple 1</option>
-                    <option value="index2.html">Home Modern Style</option>
+                    <option value="{{URL('/')}}">{{__('home.home')}}</option>
+                    <option value="{{URL('our-blogs')}}">{{__('home.blog')}}</option>
+                    <option value="{{URL('our-products')}}">{{__('home.shop')}}</option>
+                    <option value="{{URL('our-projects')}}">{{__('home.projects')}}</option>
+                    <option value="{{URL('about')}}">{{__('home.about_us')}}</option>
+                    <option value="{{URL('contact')}}">{{__('home.contact')}} {{__('home.us')}}</option>
+                    <option value="{{URL('our-infoBank')}}">{{__('home.info_bank')}}</option>
+                    <option value="{{URL('successful-stories')}}">{{__('home.sucess_stories')}}</option>
+                    <option value="{{URL('our-competitions')}}">{{__('home.compitiion')}}</option>
+                    <option value="{{URL('our-certifcate')}}">{{__('home.live_certificate')}}</option>     
+            
                 </select>
                     </div>
             </div>		
@@ -421,10 +451,21 @@ $(function() {
                         </div>
                         <ul class="social-bar">
                                 <!-- <li><a href="#" title=""><img src="images/rss.jpg" alt="" /></a></li> -->
+                                @if(isset($social[0]->facebook))
                             <li><a href="{{$social[0]->facebook}}" title=""><img src="{{URL('images/facebook.jpg')}}" alt="" /></a></li>
+                            @endif
+                            @if(isset($social[0]->youtube))
                             <li><a href="{{$social[0]->youtube}}" title=""><img src="{{URL('images/youtube.png')}}" alt=""  style="width: 35px; height: 35px;"/></a></li>
+                            @endif
+                            @if(isset($social[0]->linkedin))
                             <li><a href="{{$social[0]->linkedin}}" title=""><img src="{{URL('images/linked-in.jpg')}}" alt="" /></a></li>
+                            @endif
+                            @if(isset($social[0]->instgram))
                             <li><a href="{{$social[0]->instgram}}" title=""><img src="{{URL('images/ins.png')}}" alt="" style="width: 35px; height: 35px;"  /></a></li>
+                            @endif
+                            @if(isset($social[0]->twitter))
+				<li><a title="" href="{{$social[0]->twitter}}"><img alt="" src="{{URL('images/twitter.png')}}" style="    width: 48px;height: 45px;margin-top: -4px;margin-left: -6px;"></a></li>
+			@endif
                         </ul>
                         <div class="newsletter-btn">
                             <input type="button" value="{{__('home.submit')}}" id="news_letter_btn"/>

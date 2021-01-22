@@ -25,7 +25,7 @@ class competitionsPageController extends Controller
         $live_certificate=live_certificate::latest()->limit(2)->get();
         $projects=projects::latest()->limit(2)->get();
         foreach($projects as $project){
-            $project->images=galleryProjects::where('project_id',$id)->get();
+            $project->images=galleryProjects::where('project_id',$project->id)->get();
 
         }
 

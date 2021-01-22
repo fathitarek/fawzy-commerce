@@ -25,8 +25,8 @@ class UpdatepartnersRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = partners::$rules;
+        $rules = partners::$rulesUpdate;
         
-        return $rulesUpdate;
+        return $rules;
     }
 }

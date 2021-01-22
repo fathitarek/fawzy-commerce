@@ -16,9 +16,13 @@
 							<div class="row">
                             @foreach($projects as $key=> $project)
 
-								<div class="col-md-4">
-									<div class="gallery-image" style="width: 370px;height: 222px;">
-										<img src="{{URL($project->images[0]->images)}}" alt="" />
+								<div class="col-md-4">	
+									
+										<a href="inner-project/{{$project->id}}">
+										<div class="gallery-image" style="width: 370px;height: 222px;">
+								
+										<img src="{{URL($project->images[0]->images)}}"  style="height: 100%; " alt="" />
+
 										<!-- <span>GALLERY / EVENTS</span> -->
 										<!-- <div class="image-lists">
 											<ul>
@@ -28,6 +32,7 @@
 											</ul>
 										</div> -->
 									</div>
+	</a>
 									<h3 class="image-title"><a href="inner-project/{{$project->id}}" title="">{{$project->{'name_'.strtolower(app()->getLocale())} }}</a></h3>
 								</div>
                                 <?php ++$key; ?>

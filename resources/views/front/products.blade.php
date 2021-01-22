@@ -74,21 +74,23 @@ function addToCart(product_id,qty,customer_id){
 					</div>
 					<!-- <input type="submit" value="{{__('home.search')}}" class="btn" style="background-color: #4fc0aa;color:white"> -->
 
-					<div class="row">
-					<div class="col-md-12">
+					<!-- <div class="row"> -->
+					<!-- <div class="col-md-12"> -->
 					<input type="submit" value="{{__('home.search')}}" class="btn" style="background-color: #4fc0aa;color:white;margin: 20px;">
-					</div>
-					<div class="col-md-3">
-					<!-- <input type="submit" value="{{__('home.search')}}" class="btn" style="background-color: #4fc0aa;color:white"> -->
-					</div>
-					</div>
+					<!-- </div> -->
+					<!-- <div class="col-md-3">
+					 <input type="submit" value="{{__('home.search')}}" class="btn" style="background-color: #4fc0aa;color:white"> 
+					</div> -->
+					<!-- </div> -->
 		</form>
 	</div>
 					<div class="row">
                         @foreach($shop_items as $product)
 						<div class="col-md-4">
-							<img src="{{URL($product->main_image )}}" alt="" />
-							<a href="inner-product/{{$product->id}}" ><h4>{{$product->{'name_'.strtolower(app()->getLocale())} }}</h4></a>
+						<a href="inner-product/{{$product->id}}" >
+						<img src="{{URL($product->main_image )}}" style="width: 270px;height: 200px;" alt="" />
+</a>
+							<a href="inner-product/{{$product->id}}" ><h4 style="margin-top: 4px;">{{$product->{'name_'.strtolower(app()->getLocale())} }}</h4></a>
 							<!-- <div class="ratings">
 								<i class="icon-star"></i>
 								<i class="icon-star"></i>

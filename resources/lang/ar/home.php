@@ -7,7 +7,7 @@ return [
     'message'=>'الرساله',
     'send_msg'=>'ارسل الرساله',
     'contact_us_by_message'=>'تواصل معنا عبر الرسائل',
-    'select_language'=>'اختر اللغه',
+    'select_language'=>  'Select Language',
     'contact_information'=>'معلومات للتواصل',
     'address'=>'العنوان',
     'phone_no'=>'رقم التليفون',

@@ -55,11 +55,11 @@ class social extends Model
      * @var array
      */
     public static $rules = [
-        'facebook' => 'required|url',
-        'instgram' => 'required|url',
-        'linkedin' => 'required|url',
-        'twitter' => 'required|url',
-        'youtube' => 'required|url'
+        // 'facebook' => 'required|url',
+        // 'instgram' => 'required|url',
+        // 'linkedin' => 'required|url',
+        // 'twitter' => 'required|url',
+        // 'youtube' => 'required|url'
     ];
 
     

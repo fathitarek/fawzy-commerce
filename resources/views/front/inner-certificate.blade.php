@@ -9,9 +9,10 @@
 		<div class="row">
 		<div class="left-content col-md-9">
 			<div class="post">
+			<h1>{{$live_certificate->{'name_'.strtolower(app()->getLocale())} }}</h1>
                 <img src="{{URL($live_certificate->image )}}" alt="" /><!-- Post Image -->
                
-				<h1>{{$live_certificate->{'name_'.strtolower(app()->getLocale())} }}</h1>
+			
 				<div class="post-desc">
 <p>{!! $live_certificate->{'description_'.strtolower(app()->getLocale())} !!}  </p>
 				</div>

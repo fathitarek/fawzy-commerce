@@ -41,7 +41,13 @@
 				<div class="form">
 					<h3 class="sub-head">{{__('home.contact_us_by_message')}}</h3>
 					<!-- <p>Anean sit amet nibh ut magna malesuada <span>*</span></p> -->
-					 
+					@if (isset($_GET['msg'])&&$_GET['msg']==1)
+						<div class="alert alert-success">
+							<ul>
+								<li>{{__('home.successfully')}}</li>
+							</ul>
+						</div>
+					@endif
 					  {!!Form::open(array('action' => 'ContactFormController@send'))!!}
 
 						<label for="name" accesskey="U">{{__('home.full_name')}} <span>*</span></label>
@@ -64,10 +70,21 @@
 			<h3>{{__('home.find_us_on_socisl_meida')}}</h3>
 			<ul class="social-bar">
 				<!-- <li><a title="" href="#"><img alt="" src="images/rss.jpg"></a></li> -->
+				@if(isset($social[0]->facebook))
 				<li><a title="" href="{{$social[0]->facebook}}"><img alt="" src="images/facebook.jpg"></a></li>
+				@endif
+				@if(isset($social[0]->youtube))
 				<li><a title="" href="{{$social[0]->youtube}}"><img alt="" src="images/youtube.png" style="width: 35px;height: 35px;"></a></li>
+			@endif
+			@if(isset($social[0]->linkedin))
 				<li><a title="" href="{{$social[0]->linkedin}}"><img alt="" src="images/linked-in.jpg"></a></li>
+				@endif
+				@if(isset($social[0]->instgram))
 				<li><a title="" href="{{$social[0]->instgram}}"><img alt="" src="images/ins.png" style="width: 35px;height: 36px;"></a></li>
+			@endif
+			@if(isset($social[0]->twitter))
+				<li><a title="" href="{{$social[0]->twitter}}"><img alt="" src="images/twitter.png" style="width: 40px;height: 50px;margin-top: -8px"></a></li>
+			@endif
 			</ul>			
 		</div>
 	</div><!-- Social Media Bar -->

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Flash;
 class ContactFormController extends Controller
 {
     public function send(Request $request){
@@ -15,6 +15,6 @@ class ContactFormController extends Controller
         "CC: fathitarek208@gmail.com";
          mail($to,$subject,$txt,$headers);
         Flash::success('Newsletters saved successfully.');
-       return redirect(route('/contact'));
+       return redirect('contact?msg=1');
     }
 }

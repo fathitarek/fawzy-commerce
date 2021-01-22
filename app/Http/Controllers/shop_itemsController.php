@@ -27,7 +27,8 @@ class shop_itemsController extends AppBaseController
     public function __construct(shop_itemsRepository $shopItemsRepo)
     {
         $this->shopItemsRepository = $shopItemsRepo;
-        $this->middleware('auth');
+        // $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['getSubCategories']]);
     }
 
 
