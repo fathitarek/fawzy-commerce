@@ -243,7 +243,10 @@ $(function() {
                                 {{ Auth::guard('customer')->user()->name }} 
                             </a>
     </li>
-    <li>  <a href="{{ url('/my-cart') }}"><i class="fa fa-shopping-cart" style="margin-top: -2px;color: #9d9b9b;e;font-size: 20px;float: left;"></i></a></li>
+    @php 
+$count_carts=App\Models\carts::where('is_order',0)->where('customer_id',Auth::guard('customer')->user()->id)->count();
+@endphp
+    <li>  <a href="{{ url('/my-cart') }}"><i class="fa fa-shopping-cart" style="margin-top: -2px;color: #9d9b9b;e;font-size: 20px;float: left;"> {{$count_carts}}</i></a></li>
 
     <li>
                                     <a href="{{ url('/customer/logout') }}" style="color: #9d9b9b;" onclick="event.preventDefault();
@@ -259,7 +262,7 @@ $(function() {
                     @endif
                     <li>
                         <i class="icon-home"></i>
-                        {{$settings[0]->address}}
+                        {{$settings[0]->address}} 
                     </li>
                     <li>
                         <i class="icon-phone"></i>

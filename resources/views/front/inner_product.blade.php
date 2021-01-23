@@ -43,7 +43,11 @@
 										<div class="col-md-6">
 											<div id="quantity-field">
 												<button id="up" onclick="setQuantity('up');">+</button>
-                                                <input type="text" id="quantity" value="{{$shop_items->cart[0]->quantity}}">
+												@if(isset($shop_items->cart[0]))
+												<input type="text" id="quantity" value="{{$shop_items->cart[0]->quantity}}">
+												@else
+												 <input type="text" id="quantity" value="1">
+												@endif
                                                 <input type="hidden" id="customer_id" value="{{ Auth::guard('customer')->user()->id }}">
                                                 <input type="hidden" id="product_id" value="{{$shop_items->id}}">
 												<button id="down" onclick="setQuantity('down');">-</button>

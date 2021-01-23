@@ -17,6 +17,7 @@
                             @foreach($live_certificates as $key=> $live_certificate)
 
 								<div class="col-md-4">
+								<a href="inner-certifcate/{{$live_certificate->id}}" title="">
 									<div class="gallery-image" style="width: 370px;height: 222px;">
 										<img src="{{URL($live_certificate->image )}}" alt="" />
 										<!-- <span>GALLERY / EVENTS</span> -->
@@ -28,6 +29,7 @@
 											</ul>
 										</div> -->
 									</div>
+</a>
 									<h3 class="image-title"><a href="inner-certifcate/{{$live_certificate->id}}" title="">{{$live_certificate->{'name_'.strtolower(app()->getLocale())} }}</a></h3>
 								</div>
                                 <?php ++$key; ?>

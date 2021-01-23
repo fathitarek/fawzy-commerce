@@ -57,7 +57,7 @@
 						<li>
 							<!-- <input type="text" /> -->
 							<!-- <a class="cart-btn pull-left" href="#" title="">Apply Coupon</a> -->
-							<a class="cart-btn pull-right" href="checkout.html" title="">Proceed To Checkout</a>
+							<a class="cart-btn pull-right" href="{{URL('/checkout')}}" title="">Proceed To Checkout</a>
 							<!-- <a class="cart-btn pull-right" href="#" title="">Update Cart</a> -->
 						</li>
 					</ul>

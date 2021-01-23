@@ -17,8 +17,11 @@
                             @foreach($competitions as $key=> $competition)
 
 								<div class="col-md-4">
+								<a href="inner-competition/{{$competition->id}}" title="">
 									<div class="gallery-image" style="width: 370px;height: 222px;">
+									
 										<img src="{{URL($competition->image )}}" alt="" />
+
 										<!-- <span>GALLERY / EVENTS</span> -->
 										<!-- <div class="image-lists">
 											<ul>
@@ -27,7 +30,7 @@
 												<li><a href="images/blank-image.jpg" class="html5lightbox" data-group="group1" title=""><img src="http://placehold.it/68x61" alt="" /></a></li>
 											</ul>
 										</div> -->
-									</div>
+									</div></a>
 									<h3 class="image-title"><a href="inner-competition/{{$competition->id}}" title="">{{$competition->{'name_'.strtolower(app()->getLocale())} }}</a></h3>
 								</div>
                                 <?php ++$key; ?>

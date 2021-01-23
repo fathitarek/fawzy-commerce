@@ -54,7 +54,9 @@
 						<label>{{__('home.full_name')}} <span>*</span></label>
 						<input type="text" class="form-control input-field" name="name" value="{{$user->name}}" required/>
 						<label>{{__('home.email_address')}} <span>*</span></label>
-						<input type="email" class="form-control input-field"  value="{{$user->email}}"  name="email" required/>
+						<input type="email" class="form-control input-field" disabled value="{{$user->email}}"  name="email"/>
+						<label>{{__('auth.password')}}</label>
+						<input type="password" class="form-control input-field"  value=""  name="password"/>
 						<label>{{__('home.mobile')}} <span>*</span></label>
 						<input type="number" class="form-control input-field"  value="{{$user->mobile}}"  name="mobile"/>
 						<label>{{__('home.address')}}</label>

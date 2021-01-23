@@ -18,8 +18,13 @@ class CustomerController  extends AppBaseController
 
     protected function profile()
     {
-       $user= Customer::find(Auth::guard('customer')->user()->id);
-        return view('front.profile-single-page')->with('user',$user);
+        if (Auth::guard('customer')->user()) {
+            $user= Customer::find(Auth::guard('customer')->user()->id);
+            return view('front.profile-single-page')->with('user',$user);
+        }else {
+            return redirect('/customer/login');
+        }
+      
     }
 
 
@@ -29,6 +34,7 @@ class CustomerController  extends AppBaseController
        $user= Customer::find(Auth::guard('customer')->user()->id);
 
        $input = $request->all();
+    //    return $input;
        $destination = 'images/customers';
        if (!is_null(Input::file('image'))) {
 
@@ -40,8 +46,13 @@ class CustomerController  extends AppBaseController
        }
 
        $user->name=$request->name;
+       if (isset($request->email)&&!empty($request->email)) {
        $user->email=$request->email; 
-       $user->mobile=$request->mobile; 
+       }
+       if (isset($request->password)&&!empty($request->password)) {
+        $user->password=bcrypt($request->password); 
+       }
+      
        $user->address=$request->address; 
       // $user->image=$input['image'];
        $user->save();

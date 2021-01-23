@@ -19,13 +19,16 @@ class CartController extends Controller
     public function addToCart($product_id,$customer_id,$quantity){
 
         $carts=  carts::where('is_order',0)->where('product_id',$product_id)->where('customer_id',$customer_id)->get();
-foreach($carts as $cart){
-    carts::destroy($cart->id);
+    $qty_cart=0;
+
+        foreach($carts as $cart){
+            $qty_cart=$cart->quantity;
+        carts::destroy($cart->id);
 }
        return  carts::create([
             'product_id' => $product_id,
             'customer_id' => $customer_id,
-            'quantity' =>$quantity,
+            'quantity' =>$qty_cart+$quantity,
         ]);
     }
       

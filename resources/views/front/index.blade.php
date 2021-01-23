@@ -169,13 +169,13 @@
 									<a href="{{URL('/inner_blog')}}/{{$blogs[0]->id}}" style="width:100%;height:100% " >
 									<div class="col-md-6">
 									
-										<div class=""style="width:250px;height:150px ">
+										<!-- <div class="" style="width:250px;height:150px "> -->
 										
-											<img src="{{URl($blogs[0]->image)}}" alt="" style="width:100%;height:100% " />
+											<img src="{{URl($blogs[0]->image)}}" alt="" style="width:250px;height:150px" />
 											<!-- <a class="html5lightbox" href="http://player.vimeo.com/video/31943945?color=ffffff" title="This Is a Demo Video"> -->
 											<!-- <span><i class="icon-play"></i></span> -->
 											<!-- </a> -->
-										</div>
+										<!-- </div> -->
 									</div>
 								</a>
 								</div>
