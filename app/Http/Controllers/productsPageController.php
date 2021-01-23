@@ -41,7 +41,7 @@ class productsPageController extends Controller {
 
             if (isset($_GET['price']) && $_GET['price'] == 1) {
 //                $shop_items = $shop_items->orderBy('main_price as price', 'DESC');
-        $shop_items = $shop_items->orderBy('main_price', 'DESC');
+        $shop_items = $shop_items->orderBy('sale_price', 'DESC')->orderBy('main_price', 'DESC');
 //        $users = $shop_items->sortBy(function($query){
 //	return $query->sale_price;
 //});
@@ -53,14 +53,14 @@ class productsPageController extends Controller {
             }
             if (isset($_GET['price']) && $_GET['price'] == 0) {
 //                return 8;
-//                $shop_items = $shop_items->orderBy('main_price', 'ASC');
+                $shop_items = $shop_items->orderBy('main_price', 'ASC')->orderBy('sale_price', 'DESC');
 //                $shop_items = $shop_items->orderBy('sale_price');
 //                                $shop_items = $shop_items->orderBy('main_price');
 
 //                ->orderBy(\DB::raw('sale_price IS NOT NULL, sale_price'), 'ASC');
 //        $shop_items=$shop_items->orderBy('sale_price',  'ASC');
 //                )->orderBy('main_price', 'ASC');
-        $shop_items=$shop_items->addSelect(\DB::raw('IF( main_price, sale_price ) AS current_price'))->orderBy('current_price','ASC');
+//        $shop_items=$shop_items->addSelect(\DB::raw('IF( main_price, sale_price ) AS current_price'))->orderBy('current_price','ASC');
             }
 //            return 0;
             $shop_items = $shop_items->where('publish', 1)->paginate(12);

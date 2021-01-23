@@ -16,12 +16,14 @@ use App\Models\wishlist;
 use App\Models\orders;
 use App\shopImage;
 use Illuminate\Support\Facades\Auth;
+use App\Customer;
 
 class CheckoutPageController extends Controller
 {
     public function checkoutPage(){
         $total=0;
         if (Auth::guard('customer')->user()) {
+            $user= Customer::find(Auth::guard('customer')->user()->id);
             $carts=  carts::where('is_order',0)->where('customer_id',Auth::guard('customer')->user()->id)->get();
             $categories=categories::get();
             $competitions=competitions::latest()->limit(2)->get();
@@ -41,7 +43,7 @@ class CheckoutPageController extends Controller
  
             }
          }
-        return view('front.checkout')->with('carts',$carts)->with('total',$total)->with('categories',$categories)->with('competitions',$competitions)->with('sucess_stories',$sucess_stories)->with('bank_information',$bank_information)->with('live_certificate',$live_certificate)->with('projects',$projects);
+        return view('front.checkout')->with('user',$user)->with('carts',$carts)->with('total',$total)->with('categories',$categories)->with('competitions',$competitions)->with('sucess_stories',$sucess_stories)->with('bank_information',$bank_information)->with('live_certificate',$live_certificate)->with('projects',$projects);
     }else{
         return redirect()->back()->with('success', 'successfully ');
     }

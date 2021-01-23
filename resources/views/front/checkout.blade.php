@@ -39,7 +39,7 @@
 						{!! Form::open(['route' => 'orders.store']) !!}
 							<div class="col-md-12 co-form">
 								<label>{{__('home.full_name')}} <span>*</span></label>
-								<input type="text" name="full_name" class="form-control input-field" placeholder=" {{__('home.full_name')}}">
+								<input type="text" name="full_name" value='{{$user->name}}' class="form-control input-field" placeholder=" {{__('home.full_name')}}">
 							</div>
 							<!-- <div class="col-md-6 co-form">
 								<label>Last name<span>*</span></label>
@@ -51,7 +51,7 @@
 							</div> -->
 							<div class="col-md-12 co-form">
 								<label>{{__('home.address')}} <span>*</span></label>
-								<input type="text"   name="address" class="form-control input-field" placeholder=" {{__('home.address')}}">
+								<input type="text"   name="address"  value='{{$user->address}}'  class="form-control input-field" placeholder=" {{__('home.address')}}">
 								<!-- <input type="text" class="form-control input-field" placeholder="Apartment, suite, unit etc. (opitional)"> -->
 							</div>
 							<div class="col-md-12 co-form">
@@ -65,11 +65,11 @@
 							</div>
 							<div class="col-md-6 co-form half-field">
 								<label>{{__('home.email_address')}} <span>*</span></label>
-								<input type="text"  placeholder="{{__('home.email_address')}}" name="email"  class="form-control input-field">
+								<input type="text"  placeholder="{{__('home.email_address')}}"  value='{{$user->email}}' name="email"  class="form-control input-field">
 							</div>
 							<div class="col-md-12 co-form half-field">
 								<label>{{__('home.phone_no')}}<span>*</span></label>
-								<input type="text" placeholder="{{__('home.phone_no')}}"  name="mobile" class="form-control input-field">
+								<input type="text" placeholder="{{__('home.phone_no')}}"  value='{{$user->mobile}}' name="mobile" class="form-control input-field">
 							</div>
 							<div class="col-md-12  co-form half-field">
 									
