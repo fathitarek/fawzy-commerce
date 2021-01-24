@@ -53,7 +53,8 @@ class CustomerController  extends AppBaseController
         $user->password=bcrypt($request->password); 
        }
       
-       $user->address=$request->address; 
+       $user->address=$request->address;
+       $user->mobile=$request->mobile;  
       // $user->image=$input['image'];
        $user->save();
        Flash::success('Competitions Form saved successfully.');

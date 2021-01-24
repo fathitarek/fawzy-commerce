@@ -239,7 +239,7 @@ $(function() {
                     @else
 
                         <li class="">
-                            <a href="#" class="" style="color: #9d9b9b;" >
+                            <a href="{{ url('/profile') }}" class="" style="color: #9d9b9b;" >
                                 {{ Auth::guard('customer')->user()->name }} 
                             </a>
     </li>

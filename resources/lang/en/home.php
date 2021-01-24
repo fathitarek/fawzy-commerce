@@ -80,7 +80,7 @@ return [
     'image'=>'Image',
     'successfully_update'=>' Update Successfully',
     'update_btn'=>'Update',
-    ''=>'',
+    'order_msg'=>'The order has been requested successfully',
     ''=>'',
     ''=>'',
     ''=>'',

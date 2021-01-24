@@ -13,7 +13,8 @@
 				<img src="{{URL($bank_information->image )}}" alt="" /><!-- Post Image -->
 				@if(isset($bank_information->video_url)) 
                 <div class="post-desc">
-                <iframe src="{{$bank_information->video_url}}" style="width: 100%;height: 100%;"></iframe>			
+				{!! $bank_information->video_url !!}
+                <!-- <iframe src="{{$bank_information->video_url}}" style="width: 100%;height: 100%;"></iframe>			 -->
             	</div>
 				@endif
 				<div class="post-desc">

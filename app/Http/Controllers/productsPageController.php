@@ -15,6 +15,7 @@ use App\Models\carts;
 use App\Models\wishlist;
 use App\shopImage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Collection;
 
 class productsPageController extends Controller {
 
@@ -41,7 +42,9 @@ class productsPageController extends Controller {
 
             if (isset($_GET['price']) && $_GET['price'] == 1) {
 //                $shop_items = $shop_items->orderBy('main_price as price', 'DESC');
-        $shop_items = $shop_items->orderBy('sale_price', 'DESC')->orderBy('main_price', 'DESC');
+//        $shop_items = $shop_items->orderBy('sale_price', 'DESC')->orderBy('main_price', 'DESC');
+        $shop_items = $shop_items->select(['*', \DB::raw('IF(`sale_price` IS NOT NULL, `sale_price`, main_price) `sortOrder`')])
+        ->orderBy('sortOrder', 'DESC');
 //        $users = $shop_items->sortBy(function($query){
 //	return $query->sale_price;
 //});
@@ -53,7 +56,9 @@ class productsPageController extends Controller {
             }
             if (isset($_GET['price']) && $_GET['price'] == 0) {
 //                return 8;
-                $shop_items = $shop_items->orderBy('main_price', 'ASC')->orderBy('sale_price', 'DESC');
+//                $shop_items = $shop_items->orderByRaw('sale_price - main_price ASC');
+               $shop_items = $shop_items->select(['*', \DB::raw('IF(`sale_price` IS NOT NULL, `sale_price`, main_price) `sortOrder`')])
+        ->orderBy('sortOrder', 'asc');
 //                $shop_items = $shop_items->orderBy('sale_price');
 //                                $shop_items = $shop_items->orderBy('main_price');
 
@@ -68,6 +73,18 @@ class productsPageController extends Controller {
             $shop_items = shop_items::latest()->where('publish', 1)->paginate(12);
         }
         foreach ($shop_items as $product) {
+//            return $shop_items;
+//            if (isset($_GET['price']) && $_GET['price'] == 0) {
+//                $collection = collect($shop_items);
+//
+//$sorted = $collection->sortBy([
+//    fn ($a, $b) => $a['main_price'] <=> $b['main_price'],
+//    fn ($a, $b) => $b['sale_price'] <=> $a['sale_price'],
+//]);
+//
+//$shop_items=$sorted->values()->all();
+//return $shop_items;
+//            }
             if (isset(Auth::guard('customer')->user()->id)) {
                 $product->cart = carts::where('customer_id', Auth::guard('customer')->user()->id)->where('product_id', $product->id)->where('is_order',0)->count();
             }

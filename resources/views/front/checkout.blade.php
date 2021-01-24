@@ -31,7 +31,7 @@
 						@if (\Session::has('success'))
 						<div class="alert alert-success">
 							<ul>
-								<li>{{__('home.successfully')}}</li>
+								<li>{{__('home.order_msg')}}</li>
 							</ul>
 						</div>
 					@endif

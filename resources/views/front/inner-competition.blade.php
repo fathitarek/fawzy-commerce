@@ -14,7 +14,8 @@
                
 			   @if(isset($competitions->video_url)) 
 			   <div class="post-desc">
-				<iframe src="{{$competitions->video_url}}" style="width: 100%;height: 100%;"></iframe>			
+			   { !! $competitions->video_url !!}
+				<!-- <iframe src="{{$competitions->video_url}}" style="width: 100%;height: 100%;"></iframe>			 -->
             	</div>
 				@endif
 				
