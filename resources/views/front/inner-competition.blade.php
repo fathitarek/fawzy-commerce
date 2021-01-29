@@ -9,7 +9,7 @@
 		<div class="row">
 		<div class="left-content col-md-9">
 			<div class="post">
-			<h1>{{$competitions->{'name_'.strtolower(app()->getLocale())} }}</h1>
+			<h1 style="color: black;font-weight: 400;font-size: 40px;">{{$competitions->{'name_'.strtolower(app()->getLocale())} }}</h1>
                 <img src="{{URL($competitions->image )}}" alt="" /><!-- Post Image -->
                
 			   @if(isset($competitions->video_url)) 

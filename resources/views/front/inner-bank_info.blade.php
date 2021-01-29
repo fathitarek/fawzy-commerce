@@ -9,17 +9,18 @@
 		<div class="row">
 		<div class="left-content col-md-9">
 			<div class="post">
-			<h1>{{$bank_information->{'name_'.strtolower(app()->getLocale())} }}</h1>
+			<h1 style="color: black;text-decoration: none;font-size: 40px;font-weight: 400;">{{$bank_information->{'name_'.strtolower(app()->getLocale())} }}</h1>
 				<img src="{{URL($bank_information->image )}}" alt="" /><!-- Post Image -->
+				<div class="post-desc">
+				<p>{!! $bank_information->{'details_'.strtolower(app()->getLocale())} !!}</p>						
+				</div>
 				@if(isset($bank_information->video_url)) 
                 <div class="post-desc">
 				{!! $bank_information->video_url !!}
                 <!-- <iframe src="{{$bank_information->video_url}}" style="width: 100%;height: 100%;"></iframe>			 -->
             	</div>
 				@endif
-				<div class="post-desc">
-				<p>{!! $bank_information->{'details_'.strtolower(app()->getLocale())} !!}</p>						
-				</div>
+				
 				
 				<div class="post-image-list">
 					<!-- <a href="images/blank-image.jpg" class="html5lightbox post-image" title="">

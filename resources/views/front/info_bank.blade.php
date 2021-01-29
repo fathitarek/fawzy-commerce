@@ -7,7 +7,8 @@
 <section class="page">
 	<div class="container">
 		<div class="page-title">
-			<h1>{{__('home.info_bank')}}</h1>
+			
+			<h1> {{__('home.info')}}  <span> {{__('home.bank')}} </span></h1>
 		</div><!-- Page Title -->
 		<div class="row">
 			<div class="left-content col-md-9">
@@ -19,7 +20,7 @@
 					<div class="row">
                         @foreach($info_banks as $info_bank)
 						<div class="col-md-4" style="width: 370px;height: 222px;margin: 14px;">
-						<h4> <a href="/inner-infoBank/{{$info_bank->id}}" >{{$info_bank->{'name_'.strtolower(app()->getLocale())} }} </a></h4>
+						<h4> <a href="/inner-infoBank/{{$info_bank->id}}" style="color: black;text-decoration: none;font-size: 40px;font-weight: 400;">{{$info_bank->{'name_'.strtolower(app()->getLocale())} }} </a></h4>
 						<a href="/inner-infoBank/{{$info_bank->id}}" >
 							<img src="{{URL($info_bank->image )}}" style="height: 222px;width: 370px;" alt="" />
 </a>

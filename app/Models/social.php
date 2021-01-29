@@ -32,7 +32,10 @@ class social extends Model
         'instgram',
         'linkedin',
         'twitter',
-        'youtube'
+        'youtube',
+        'skype',
+        'pinterest',
+        'dribbble' 
     ];
 
     /**
@@ -46,7 +49,10 @@ class social extends Model
         'instgram' => 'string',
         'linkedin' => 'string',
         'twitter' => 'string',
-        'youtube' => 'string'
+        'youtube' => 'string',
+        'skype' => 'string',
+        'pinterest' => 'string',
+        'dribbble' => 'string',
     ];
 
     /**

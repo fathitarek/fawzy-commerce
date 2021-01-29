@@ -85,6 +85,17 @@
 			@if(isset($social[0]->twitter))
 				<li><a title="" href="{{$social[0]->twitter}}"><img alt="" src="images/twitter.png" style="width: 40px;height: 50px;margin-top: -8px"></a></li>
 			@endif
+
+			@if(isset($social[0]->skype))
+				<li><a title="" href="{{$social[0]->skype}}"><img alt="" src="{{URL('images/skype-icon.png')}}" style="    width: 48px;height: 45px;margin-top: -4px;margin-left: -6px;"></a></li>
+			@endif
+            @if(isset($social[0]->pinterest))
+				<li><a title="" href="{{$social[0]->pinterest}}"><img alt="" src="{{URL('images/pinterest.jpg')}}" style="    width: 48px;height: 45px;margin-top: -4px;margin-left: -6px;"></a></li>
+			@endif
+            @if(isset($social[0]->dribbble))
+				<li><a title="" href="{{$social[0]->dribbble}}"><img alt="" src="{{URL('images/dribbble.png')}}" style="background-color: white;width: 48px;height: 45px;margin-top: -4px;margin-left: -6px;"></a></li>
+			@endif
+            
 			</ul>			
 		</div>
 	</div><!-- Social Media Bar -->

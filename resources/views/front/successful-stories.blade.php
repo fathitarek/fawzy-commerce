@@ -27,7 +27,8 @@
                                 </div>
                             </a>
 
-                            <p>{!! str_limit($sucess_story->{'description_'.strtolower(app()->getLocale())},250) !!}</p>
+                            <p>{!! str_limit($sucess_story->{'description_'.strtolower(app()->getLocale())},150) !!}</p>
+                            <a href="inner-successful-stories/{{$sucess_story->id}}" >{{__('home.more')}}</a>
                             <!-- <h6><i>$</i> 85920<span>Money Spent</span></h6> -->
                             <!-- <span><i class="icon-map-marker"></i>In SouthAfrica</span> -->
                         </div><!--Story-->

@@ -9,7 +9,7 @@
 		<div class="row">
 		<div class="left-content col-md-9">
 			<div class="post">
-			<h1>{{$sucess_stories->{'name_'.strtolower(app()->getLocale())} }}</h1>
+			<h1 style="color: black;text-decoration: none;font-size: 40px;font-weight: 400;">{{$sucess_stories->{'name_'.strtolower(app()->getLocale())} }}</h1>
 				<img src="{{URL($sucess_stories->image)}}" alt="" /><!-- Post Image -->
 				<!-- <span class="category">In <a href="#" title="">Home</a>, <a href="#" title="">Blog</a>, <a href="#" title="">Charity</a></span>Categories -->
 				

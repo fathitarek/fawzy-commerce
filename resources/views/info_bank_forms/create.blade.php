@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Info Bank Form
+            Info Bank Forms
         </h1>
     </section>
     <div class="content">

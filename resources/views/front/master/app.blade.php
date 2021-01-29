@@ -473,8 +473,18 @@ $count_carts=App\Models\carts::where('is_order',0)->where('customer_id',Auth::gu
                             <li><a href="{{$social[0]->instgram}}" title=""><img src="{{URL('images/ins.png')}}" alt="" style="width: 35px; height: 35px;"  /></a></li>
                             @endif
                             @if(isset($social[0]->twitter))
-				<li><a title="" href="{{$social[0]->twitter}}"><img alt="" src="{{URL('images/twitter.png')}}" style="    width: 48px;height: 45px;margin-top: -4px;margin-left: -6px;"></a></li>
+				<li><a title="" href="{{$social[0]->twitter}}"><img alt="" src="{{URL('images/twitter.png')}}" style="width: 48px;height: 45px;margin-top: -4px;margin-left: -6px;"></a></li>
 			@endif
+            @if(isset($social[0]->skype))
+				<li><a title="" href="{{$social[0]->skype}}"><img alt="" src="{{URL('images/skype-icon.png')}}" style="width: 48px;height: 45px;margin-top: -4px;margin-left: -6px;"></a></li>
+			@endif
+            @if(isset($social[0]->pinterest))
+				<li><a title="" href="{{$social[0]->pinterest}}"><img alt="" src="{{URL('images/pinterest.jpg')}}" style="width: 48px;height: 45px;margin-top: -4px;margin-left: -6px;"></a></li>
+			@endif
+            @if(isset($social[0]->dribbble))
+				<li><a title="" href="{{$social[0]->dribbble}}"><img alt="" src="{{URL('images/dribbble.png')}}" style=" background-color: white;  width: 48px;height: 45px;margin-top: -4px;margin-left: -6px;"></a></li>
+			@endif
+            
                         </ul>
                         <div class="newsletter-btn">
                             <input type="button" value="{{__('home.submit')}}" id="news_letter_btn"/>

@@ -28,6 +28,29 @@
     <p>{{ $social->youtube }}</p>
 </div>
 
+
+
+<!-- Youtube Field -->
+<div class="form-group">
+    {!! Form::label('skype', 'Skype:') !!}
+    <p>{{ $social->skype }}</p>
+</div>
+
+<!-- Youtube Field -->
+<div class="form-group">
+    {!! Form::label('pinterest', 'Pinterest:') !!}
+    <p>{{ $social->pinterest }}</p>
+</div>
+
+<!-- Youtube Field -->
+<div class="form-group">
+    {!! Form::label('dribbble', 'Dribbble:') !!}
+    <p>{{ $social->dribbble }}</p>
+</div>
+
+
+
+
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}

@@ -17,7 +17,7 @@
                             @foreach($competitions as $key=> $competition)
 
 								<div class="col-md-4">
-								<a href="inner-competition/{{$competition->id}}" title="">
+								<a href="inner-competition/{{$competition->id}}"  title="">
 									<div class="gallery-image" style="width: 370px;height: 222px;">
 									
 										<img src="{{URL($competition->image )}}" alt="" />
@@ -31,7 +31,7 @@
 											</ul>
 										</div> -->
 									</div></a>
-									<h3 class="image-title"><a href="inner-competition/{{$competition->id}}" title="">{{$competition->{'name_'.strtolower(app()->getLocale())} }}</a></h3>
+									<h3 class="image-title"><a href="inner-competition/{{$competition->id}}" style="color: black;font-weight: 400;font-size: 20px;" title="">{{$competition->{'name_'.strtolower(app()->getLocale())} }}</a></h3>
 								</div>
                                 <?php ++$key; ?>
                 @if($key>2&&$key%3==0)

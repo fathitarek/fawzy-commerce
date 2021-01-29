@@ -28,6 +28,27 @@
     {!! Form::url('youtube', null, ['class' => 'form-control']) !!}
 </div>
 
+
+
+<!-- Linkedin Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('skype', 'Skype:') !!}
+    {!! Form::url('skype', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Twitter Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('pinterest', 'Pinterest:') !!}
+    {!! Form::url('pinterest', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Youtube Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('dribbble', 'Dribbble:') !!}
+    {!! Form::url('dribbble', null, ['class' => 'form-control']) !!}
+</div>
+
+
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
