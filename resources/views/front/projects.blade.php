@@ -33,7 +33,7 @@
 										</div> -->
 									</div>
 	</a>
-									<h3 class="image-title"><a href="inner-project/{{$project->id}}" title="">{{$project->{'name_'.strtolower(app()->getLocale())} }}</a></h3>
+									<h3 class="image-title"><a href="inner-project/{{$project->id}}"  style="color: black;text-decoration: none;font-size: 20px;font-weight: 400;" title="">{{$project->{'name_'.strtolower(app()->getLocale())} }}</a></h3>
 								</div>
                                 <?php ++$key; ?>
                 @if($key>2&&$key%3==0)

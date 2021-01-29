@@ -9,6 +9,18 @@
     {!! Form::label('name_ar', 'Name Arabic:') !!}
     <p>{{ $projects->name_ar }}</p>
 </div>
+
+<!-- Description En Field -->
+<div class="form-group">
+    {!! Form::label('description_en', 'Description English:') !!}
+    <p>{{ $projects->description_en }}</p>
+</div>
+
+<!-- Description Ar Field -->
+<div class="form-group">
+    {!! Form::label('description_ar', 'Description Arabic:') !!}
+    <p>{{ $projects->description_ar }}</p>
+</div>
 <!-- show more images -->
 {!! Form::label('images', 'Images:') !!}
 <div class="form-group">

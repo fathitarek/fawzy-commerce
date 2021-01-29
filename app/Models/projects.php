@@ -26,7 +26,9 @@ class projects extends Model
 
     public $fillable = [
         'name_en',
-        'name_ar'
+        'name_ar',
+        'description_en',
+        'description_ar'
     ];
 
     /**
@@ -37,7 +39,9 @@ class projects extends Model
     protected $casts = [
         'id' => 'integer',
         'name_en' => 'string',
-        'name_ar' => 'string'
+        'name_ar' => 'string',
+        'description_en' => 'string',
+        'description_ar' => 'string',
     ];
 
     /**
@@ -47,7 +51,9 @@ class projects extends Model
      */
     public static $rules = [
         'name_en' => 'required',
-        'name_ar' => 'required'
+        'name_ar' => 'required',
+        'description_en' => 'required',
+        'description_ar' => 'required'
     ];
 
     

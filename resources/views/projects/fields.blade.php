@@ -10,7 +10,17 @@
     {!! Form::text('name_ar', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Description En Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('description_en', 'Description English:') !!}
+    {!! Form::textarea('description_en', null, ['class' => 'form-control']) !!}
+</div>
 
+<!-- Description Ar Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('description_ar', 'Description Arabic:') !!}
+    {!! Form::textarea('description_ar', null, ['class' => 'form-control']) !!}
+</div>
 
 <!-- more images -->
 @if(isset($images))
