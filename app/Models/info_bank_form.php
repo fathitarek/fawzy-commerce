@@ -43,7 +43,7 @@ class info_bank_form extends Model
     protected $casts = [
         'id' => 'integer',
         'name' => 'string',
-        'mobile' => 'integer',
+        'mobile' => 'string',
         'note' => 'string',
         'address' => 'string',
         'bank_informations_id' => 'integer'
@@ -56,7 +56,7 @@ class info_bank_form extends Model
      */
     public static $rules = [
         'name' => 'required',
-        'mobile' => 'required|integer',
+        'mobile' => 'required',
         'note' => 'required',
         'address' => 'required',
         'bank_informations_id' => 'required'

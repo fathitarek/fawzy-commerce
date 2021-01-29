@@ -43,7 +43,7 @@ class live_certificate_form extends Model
     protected $casts = [
         'id' => 'integer',
         'name' => 'string',
-        'mobile' => 'integer',
+        'mobile' => 'string',
         'note' => 'string',
         'address' => 'string',
         'live_certificates_id' => 'integer'
@@ -56,7 +56,7 @@ class live_certificate_form extends Model
      */
     public static $rules = [
         'name' => 'required',
-        'mobile' => 'required|integer',
+        'mobile' => 'required',
         'note' => 'required',
         'address' => 'required',
         'live_certificates_id' => 'required'

@@ -43,7 +43,7 @@ class projects_form extends Model
     protected $casts = [
         'id' => 'integer',
         'name' => 'string',
-        'mobile' => 'integer',
+        'mobile' => 'string',
         'address' => 'string',
         'note' => 'string',
         'project_id' => 'integer'
@@ -56,7 +56,7 @@ class projects_form extends Model
      */
     public static $rules = [
         'name' => 'required',
-        'mobile' => 'required|integer',
+        'mobile' => 'required',
         'address' => 'required',
         'note' => 'required',
         'project_id' => 'required|integer'

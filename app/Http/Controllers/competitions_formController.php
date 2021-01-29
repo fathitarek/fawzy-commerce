@@ -14,6 +14,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 use Response;
+use Illuminate\Http\Request;
 
 class competitions_formController extends AppBaseController
 {
@@ -24,7 +25,7 @@ class competitions_formController extends AppBaseController
     {
         $this->competitionsFormRepository = $competitionsFormRepo;
         // $this->middleware('auth');
-        $this->middleware('auth', ['except' => ['store']]);
+       $this->middleware('auth', ['except' => ['store']]);
     }
 
     /**
@@ -57,6 +58,7 @@ class competitions_formController extends AppBaseController
      */
     public function store(Createcompetitions_formRequest $request)
     {
+        // return $request;
         $input = $request->all();
 
         $competitionsForm = $this->competitionsFormRepository->create($input);

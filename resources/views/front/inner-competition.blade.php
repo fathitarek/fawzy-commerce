@@ -14,7 +14,7 @@
                
 			   @if(isset($competitions->video_url)) 
 			   <div class="post-desc">
-			   { !! $competitions->video_url !!}
+			   {!! $competitions->video_url !!}
 				<!-- <iframe src="{{$competitions->video_url}}" style="width: 100%;height: 100%;"></iframe>			 -->
             	</div>
 				@endif
@@ -45,8 +45,7 @@
 							</ul>
 						</div>
 					@endif
-					{!! Form::open(['route' => 'competitionsForms.store']) !!}
-						
+					{{ Form::open(array('action' => "competitions_formController@store")) }}
 						<label>{{__('home.full_name')}} <span>*</span></label>
 						<input type="text" class="form-control input-field" name="name" required/>
 						<label>{{__('home.mobile')}} <span>*</span></label>
