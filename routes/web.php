@@ -38,6 +38,13 @@ Route::group(['prefix' =>"admin" ], function () {
   Route::resource('newsletters', 'newslettersController');
   Route::resource('partners', 'partnersController');
   Route::resource('orders', 'ordersController');
+  Route::resource('orderDetails', 'order_detailsController');
+Route::resource('reports', 'reportsController');
+Route::resource('reportsForms', 'reports_formController');
+Route::resource('customOrders', 'custom_orderController');
+Route::resource('customOrderForms', 'custom_order_formController');
+Route::resource('donations', 'donationController');
+Route::resource('donationForms', 'donation_formController');
 });
 Route::get('/home', 'HomeController@index')->middleware('verified');
 
@@ -89,6 +96,9 @@ Route::GET('our-reports', 'ReportsPageController@reportsPage');
 Route::GET('inner-report/{id}', 'ReportsPageController@innerReport');
 Route::GET('search-report', 'ReportsPageController@search');
 
+Route::GET('donation', 'CustomeOrderPageController@donation');
+
+Route::GET('custom_order', 'CustomeOrderPageController@index');
 Route::group(['prefix' => 'customer'], function () {
   Route::get('/login', 'CustomerAuth\LoginController@showLoginForm')->name('login');
   Route::post('/login', 'CustomerAuth\LoginController@login');
@@ -108,8 +118,3 @@ Auth::routes(['verify' => true]);
 
 
 
-Route::resource('orderDetails', 'order_detailsController');
-
-Route::resource('reports', 'reportsController');
-
-Route::resource('reportsForms', 'reports_formController');

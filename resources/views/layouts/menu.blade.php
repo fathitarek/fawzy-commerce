@@ -96,3 +96,19 @@
     <a href="{{ route('reportsForms.index') }}"><i class="fa fa-edit"></i><span>Reports Forms</span></a>
 </li>
 
+<li class="{{ Request::is('customOrders*') ? 'active' : '' }}">
+    <a href="{{ route('customOrders.index') }}"><i class="fa fa-edit"></i><span>Custom Orders</span></a>
+</li>
+
+<li class="{{ Request::is('customOrderForms*') ? 'active' : '' }}">
+    <a href="{{ route('customOrderForms.index') }}"><i class="fa fa-edit"></i><span>Custom Order Forms</span></a>
+</li>
+
+<li class="{{ Request::is('donations*') ? 'active' : '' }}">
+    <a href="{{ route('donations.index') }}"><i class="fa fa-edit"></i><span>Donations</span></a>
+</li>
+
+<li class="{{ Request::is('donationForms*') ? 'active' : '' }}">
+    <a href="{{ route('donationForms.index') }}"><i class="fa fa-edit"></i><span>Donation Forms</span></a>
+</li>
+

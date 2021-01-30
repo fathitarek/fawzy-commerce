@@ -88,9 +88,9 @@ return [
     'story'=>"Stories",
     'reports'=>'Reports',
     'have_spical_request'=>'Have A Special Request',
-    ''=>'',
-    ''=>'',
-    ''=>'',
+    'custom'=>'Custom',
+    'order'=>'Order',
+    'donation'=>'Donation',
     ''=>'',
     ''=>'',
 ];
