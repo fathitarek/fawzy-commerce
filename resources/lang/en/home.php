@@ -87,7 +87,7 @@ return [
     'sucess'=>"Sucess",
     'story'=>"Stories",
     'reports'=>'Reports',
-    ''=>'',
+    'have_spical_request'=>'Have A Special Request',
     ''=>'',
     ''=>'',
     ''=>'',

@@ -181,7 +181,7 @@
 
 
                     <div class="form">
-                        <h3 class="sub-head">{{__('home.contact_us_by_message')}}</h3>
+                        <h3 class="sub-head">{{__('home.have_spical_request')}}</h3>
                         <!-- <p>Anean sit amet nibh ut magna malesuada <span>*</span></p> -->
                         @if (\Session::has('success'))
                         <div class="alert alert-success">
@@ -216,7 +216,7 @@
             <div class="sidebar col-md-3 pull-right">
                 <div class="sidebar-widget">
                     <div class="sidebar-search">
-                        <input class="search"  name="word" id="project_search" type="text" placeholder="{{__('home.Enter_Search_Item')}}" />
+                        <input class="search"  name="word" id="report_search" type="text" placeholder="{{__('home.Enter_Search_Item')}}" />
                         <input class="search-button" type="submit" value="" />
                     </div>
                     <div id="country_list"></div>

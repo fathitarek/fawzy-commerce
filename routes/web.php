@@ -87,7 +87,7 @@ Route::post('profile_update', 'CustomerController@update');
 
 Route::GET('our-reports', 'ReportsPageController@reportsPage');
 Route::GET('inner-report/{id}', 'ReportsPageController@innerReport');
-
+Route::GET('search-report', 'ReportsPageController@search');
 
 Route::group(['prefix' => 'customer'], function () {
   Route::get('/login', 'CustomerAuth\LoginController@showLoginForm')->name('login');

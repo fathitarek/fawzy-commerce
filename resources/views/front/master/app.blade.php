@@ -862,5 +862,31 @@ $("#favorite-btn").click(function () {
             });
 </script>
 
+
+<script type="text/javascript">
+            // jQuery wait till the page is fullt loaded
+            $(document).ready(function () {
+                // keyup function looks at the keys typed on the search box
+                $('#report_search').on('keyup',function() {
+                    // the text typed in the input field is assigned to a variable 
+                    var query = $(this).val();
+                    // call to an ajax function
+                    $.ajax({
+                        // assign a controller function to perform search action - route name is search
+                        url:"/search-report",
+                        // since we are getting data methos is assigned as GET
+                        type:"GET",
+                        // data are sent the server
+                        data:{'word':query},
+                        // if search is succcessfully done, this callback function is called
+                        success:function (data) {
+                            // print the search results in the div called country_list(id)
+                            $('#country_list').html(data);
+                        }
+                    })
+                    // end of ajax call
+                });
+            });
+</script>
 </body>
 </html>
