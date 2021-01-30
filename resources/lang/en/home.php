@@ -91,6 +91,6 @@ return [
     'custom'=>'Custom',
     'order'=>'Order',
     'donation'=>'Donation',
-    ''=>'',
-    ''=>'',
+    'custom_order'=>'Custom Order',
+    ''=>' ',
 ];

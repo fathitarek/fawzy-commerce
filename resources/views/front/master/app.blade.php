@@ -336,6 +336,9 @@ $count_carts=App\Models\carts::where('is_order',0)->where('customer_id',Auth::gu
                                 <li><a href="{{URL('our-competitions')}}">{{__('home.compitiion')}} </a></li>
                                 <!-- <li><a href="elements.html#highlightedtext">{{__('home.partners')}}</a></li> -->
                                 <li><a href="{{URL('our-certifcate')}}">{{__('home.live_certificate')}}</a></li>
+                                <li><a href="{{URL('donation')}}">{{__('home.donation')}}</a></li>
+                                <li><a href="{{URL('custom_order')}}">{{__('home.custom_order')}}</a></li>
+                                <li><a href="{{URL('our-reports')}}">{{__('home.reports')}}</a></li>
                             </ul>
                         </li>
                         @if (Auth::guard('customer')->user()) 
