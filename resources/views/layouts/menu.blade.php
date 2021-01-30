@@ -88,3 +88,11 @@
     <a href="{{ route('orderDetails.index') }}"><i class="fa fa-edit"></i><span>Order Details</span></a>
 </li> -->
 
+<li class="{{ Request::is('reports*') ? 'active' : '' }}">
+    <a href="{{ route('reports.index') }}"><i class="fa fa-edit"></i><span>Reports</span></a>
+</li>
+
+<li class="{{ Request::is('reportsForms*') ? 'active' : '' }}">
+    <a href="{{ route('reportsForms.index') }}"><i class="fa fa-edit"></i><span>Reports Forms</span></a>
+</li>
+

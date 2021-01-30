@@ -22,6 +22,22 @@
     <p>{{ $slider->description_ar }}</p>
 </div>
 
+<div class="form-group">
+    {!! Form::label('btn_en', 'Button English:') !!}
+    <p>{{ $slider->btn_en }}</p>
+</div>
+
+<!-- Title Ar Field -->
+<div class="form-group">
+    {!! Form::label('btn_ar', 'Button Arabic:') !!}
+    <p>{{ $slider->btn_ar }}</p>
+</div>
+
+<!-- Title Ar Field -->
+<div class="form-group">
+    {!! Form::label('url', 'Url:') !!}
+    <p>{{ $slider->url }}</p>
+</div>
 <!-- Image Field -->
 <div class="form-group">
     {!! Form::label('image', 'Image:') !!}

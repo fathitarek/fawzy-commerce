@@ -35,12 +35,16 @@
 
 		<div class="ls-layer" style="transition2d: 5; slidedelay: 8000;">
 			<img src="{{URL($slider->image)}}" class="ls-bg" alt="Slide background">
+			<a href="{{$slider->url}}" class="btn btn-danger">{{$slider->{'btn_'.strtolower(app()->getLocale())} }} </a>
+
 			<h3 class="ls-s-1"
 				style="display:block; top: 300px; left: 248px; font-family: roboto; font-size: 24px; font-weight: 600; color: rgb(0, 0, 0); padding: 10px 20px 10px 50px; background: rgba(255, 255, 255, 0.9); border-radius: 4px 0px 0px 4px; border-width: 0px 0px 0px 2px; border-left-style: solid; border-left-color: rgb(147, 182, 49); position: relative; line-height: 22px; float: left; width: auto; height: auto; opacity: 1; transform: rotate(0deg) scale(1, 1); margin-left: 1272px; margin-top: 0px; display: block; visibility: visible;">
 				{{$slider->{'title_'.strtolower(app()->getLocale())} }}</h3>
+
 			<span class="ls-s-1"
 				style=" display:block; top: 300px; left:248px; font-family:roboto; font-size:24px; font-weight:600; color:#fff; padding:10px 20px 10px 50px; position:relative; line-height:22px; float:left; delayin:1000; scalein:0; slidedirection:left; durationin : 2500;">{!!
 				$slider->{'description_'.strtolower(app()->getLocale())} !!}</span>
+				
 			<p class="ls-s-1"
 				style="display:block; top: 360px; left:248px; font-family:roboto; font-size:13px; color:#fefefe; delayin:2000; scalein:4; slidedirection:fade; durationin : 2000;">
 				{!! $slider->{'description_'.strtolower(app()->getLocale())} !!}</p>
@@ -79,7 +83,7 @@
 			<div class="col-md-9">
 				<div class="sec-heading">
 					<!-- <h2><strong>Our</strong> Causes</h2> -->
-					<h2><strong>{{__('home.stories')}} </strong>{{__('home.successful')}}</h2>
+					<h2>{{__('home.sucess')}} <strong>{{__('home.story')}} </strong></h2>
 				</div><!-- Section Title -->
 				<div class="our-causes">
 					<ul class="slides">
@@ -94,7 +98,7 @@
 										</a>
 										<div class="cause-heading">
 											<a href="inner-successful-stories/{{$sucess_story->id}}" title="">
-												<h3>{{$key}}{{$sucess_story->{'name_'.strtolower(app()->getLocale())} }}</h3>
+												<h3>{{$sucess_story->{'name_'.strtolower(app()->getLocale())} }}</h3>
 											</a>
 											<!-- <p>We needed to collect: <span><i>$</i>29,000</span> </p> -->
 										</div>

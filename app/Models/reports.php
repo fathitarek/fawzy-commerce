@@ -6,22 +6,22 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class slider
+ * Class reports
  * @package App\Models
- * @version November 15, 2020, 8:20 am UTC
+ * @version January 30, 2021, 9:54 am UTC
  *
- * @property string $title_en
- * @property string $title_ar
+ * @property string $name_en
+ * @property string $name_ar
  * @property string $description_en
  * @property string $description_ar
  * @property string $image
- * @property integer $slide_order
+ * @property string $file
  */
-class slider extends Model
+class reports extends Model
 {
     use SoftDeletes;
 
-    public $table = 'sliders';
+    public $table = 'reports';
     
 
     protected $dates = ['deleted_at'];
@@ -29,15 +29,12 @@ class slider extends Model
 
 
     public $fillable = [
-        'title_en',
-        'title_ar',
+        'name_en',
+        'name_ar',
         'description_en',
         'description_ar',
         'image',
-        'slide_order',
-        'btn_en',
-        'btn_ar',
-        'url'
+        'file'
     ];
 
     /**
@@ -47,15 +44,12 @@ class slider extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'title_en' => 'string',
-        'title_ar' => 'string',
+        'name_en' => 'string',
+        'name_ar' => 'string',
         'description_en' => 'string',
         'description_ar' => 'string',
         'image' => 'string',
-        'slide_order' => 'integer',
-        'btn_en'=> 'string',
-        'btn_ar'=> 'string',
-        
+        'file' => 'string'
     ];
 
     /**
@@ -64,24 +58,20 @@ class slider extends Model
      * @var array
      */
     public static $rules = [
-        'title_en' => 'required',
-        'title_ar' => 'required',
+        'name_en' => 'required',
+        'name_ar' => 'required',
         'description_en' => 'required',
         'description_ar' => 'required',
         'image' => 'required|image|mimes:png,jpeg,gif',
-        'slide_order' => 'required|integer',
-        'btn_en'=> 'required',
-        'btn_ar'=> 'required'
+        'file' => 'required|mimes:pdf,doc'
     ];
     public static $rulesUpdate = [
-        'title_en' => 'required',
-        'title_ar' => 'required',
+        'name_en' => 'required',
+        'name_ar' => 'required',
         'description_en' => 'required',
         'description_ar' => 'required',
         'image' => 'image|mimes:png,jpeg,gif',
-        'slide_order' => 'required|integer',
-        'btn_en'=> 'required',
-        'btn_ar'=> 'required'
+        'file' => 'mimes:pdf,doc'
     ];
     
 }

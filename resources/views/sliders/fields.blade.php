@@ -22,6 +22,20 @@
     {!! Form::textarea('description_ar', null, ['class' => 'form-control']) !!}
 </div>
 
+<div class="form-group col-sm-6">
+    {!! Form::label('btn_en', 'Button English:') !!}
+    {!! Form::text('btn_en', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Title Ar Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('btn_ar', 'Button Arabic:') !!}
+    {!! Form::text('btn_ar', null, ['class' => 'form-control']) !!}
+</div> 
+<div class="form-group col-sm-6">
+    {!! Form::label('url', 'Url:') !!}
+    {!! Form::url('url', null, ['class' => 'form-control']) !!}
+</div>
 <!-- Image Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('image', 'Image:') !!}

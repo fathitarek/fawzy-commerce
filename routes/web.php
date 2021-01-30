@@ -85,6 +85,10 @@ Route::GET('/', 'IndexController@index');
 Route::GET('checkout', 'CheckoutPageController@checkoutPage');
 Route::post('profile_update', 'CustomerController@update');
 
+Route::GET('our-reports', 'ReportsPageController@reportsPage');
+Route::GET('inner-report/{id}', 'ReportsPageController@innerReport');
+
+
 Route::group(['prefix' => 'customer'], function () {
   Route::get('/login', 'CustomerAuth\LoginController@showLoginForm')->name('login');
   Route::post('/login', 'CustomerAuth\LoginController@login');
@@ -105,3 +109,7 @@ Auth::routes(['verify' => true]);
 
 
 Route::resource('orderDetails', 'order_detailsController');
+
+Route::resource('reports', 'reportsController');
+
+Route::resource('reportsForms', 'reports_formController');

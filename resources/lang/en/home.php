@@ -84,4 +84,13 @@ return [
     'info'=>'Info',
     'bank'=>'Bank',
     'more'=>'More',
+    'sucess'=>"Sucess",
+    'story'=>"Stories",
+    'reports'=>'Reports',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
 ];
